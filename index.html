@@ -20,44 +20,25 @@
 </head>
 <body>
 
-  <!-- ===================== HERO (VITRINE DA CAPA) ===================== -->
-  <header class="hero">
-    <div class="hero-bg-texture"></div>
-    <div class="container hero-grid">
+  <!-- ===================== HERO (FUNDO COM A CAPA) ===================== -->
+  <header class="hero-bg-cover">
+    <div class="hero-overlay"></div>
+    
+    <div class="container hero-content">
+      <div class="hero-label">
+        <span class="line"></span>
+        <span>Obra de Referência · 2026</span>
+      </div>
       
-      <!-- Coluna Esquerda: Textos de Abertura -->
-      <div class="hero-text">
-        <div class="hero-label">
-          <span class="line"></span>
-          <span>Obra de Referência · 2026</span>
-        </div>
-        
-        <h1 class="hero-title">
-          A TIRANIA<br>
-          <span class="text-red">CONSTITUCIONAL</span>
-        </h1>
-        
-        <h2 class="hero-subtitle">Como a Legalidade Pode Enfraquecer a Democracia</h2>
-        
-        <div class="hero-author">
-          <span>Por</span>
-          <strong>Erigutemberg Meneses</strong>
-        </div>
+      <!-- Título omitido visualmente para não duplicar o texto da capa, 
+           mas mantido no HTML para SEO (Leitores de tela e Google) -->
+      <h1 class="sr-only">A Tirania Constitucional: Como a Legalidade Pode Enfraquecer a Democracia</h1>
+      <h2 class="sr-only">Por Erigutemberg Meneses</h2>
 
-        <div class="hero-actions">
-          <a href="#obra" class="btn btn-red">Explorar a Obra</a>
-          <a href="#autor" class="btn btn-gold">Ouvir o Autor</a>
-        </div>
+      <div class="hero-actions">
+        <a href="#obra" class="btn btn-red">Explorar a Obra</a>
+        <a href="#autor" class="btn btn-gold">Ouvir o Autor</a>
       </div>
-
-      <!-- Coluna Direita: A Capa do Livro -->
-      <div class="hero-cover">
-        <div class="book-wrapper">
-          <img src="capa.jpg" alt="Capa do livro A Tirania Constitucional" class="book-cover">
-          <div class="book-shadow"></div>
-        </div>
-      </div>
-
     </div>
   </header>
 
