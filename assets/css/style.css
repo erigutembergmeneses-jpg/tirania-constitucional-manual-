@@ -1,0 +1,337 @@
+/* =========================================================
+   A Tirania Constitucional — Folha de Estilo
+   Paleta: Azul Petróleo · Cinza Chumbo · Dourado
+   ========================================================= */
+
+:root {
+  --azul-petroleo: #1F3A4D;
+  --azul-petroleo-escuro: #142834;
+  --cinza-chumbo: #2E2E2E;
+  --cinza-texto: #4A4A4A;
+  --cinza-claro: #F4F5F7;
+  --cinza-borda: #E1E4E8;
+  --dourado: #B8892B;
+  --dourado-claro: #D4A64A;
+  --branco: #FFFFFF;
+
+  --fonte-titulo: 'Merriweather', Georgia, serif;
+  --fonte-corpo: 'Inter', -apple-system, sans-serif;
+
+  --sombra-card: 0 2px 8px rgba(31, 58, 77, 0.08);
+  --sombra-card-hover: 0 8px 24px rgba(31, 58, 77, 0.15);
+  --raio: 8px;
+  --transicao: 0.3s ease;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: var(--fonte-corpo);
+  color: var(--cinza-texto);
+  line-height: 1.7;
+  background: var(--branco);
+  font-size: 17px;
+  -webkit-font-smoothing: antialiased;
+}
+
+.container {
+  max-width: 1120px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+/* ---------- HEADER ---------- */
+.site-header {
+  background: var(--azul-petroleo);
+  border-bottom: 3px solid var(--dourado);
+  padding: 16px 0;
+}
+.header-inner { display: flex; justify-content: space-between; align-items: center; }
+.brand { display: flex; gap: 16px; align-items: center; }
+.brand-label {
+  font-family: var(--fonte-titulo);
+  color: var(--branco);
+  font-size: 0.85rem;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  font-weight: 700;
+}
+.brand-year {
+  color: var(--dourado-claro);
+  font-size: 0.85rem;
+  border-left: 1px solid rgba(255,255,255,0.3);
+  padding-left: 16px;
+}
+
+/* ---------- HERO ---------- */
+.hero {
+  background: linear-gradient(135deg, var(--azul-petroleo) 0%, var(--azul-petroleo-escuro) 100%);
+  color: var(--branco);
+  padding: 96px 0 104px;
+  text-align: center;
+}
+.hero-inner { max-width: 860px; margin: 0 auto; }
+.eyebrow {
+  color: var(--dourado-claro);
+  font-size: 0.85rem;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  font-weight: 600;
+  margin-bottom: 24px;
+}
+.hero-title {
+  font-family: var(--fonte-titulo);
+  font-size: clamp(2.4rem, 6vw, 4rem);
+  font-weight: 900;
+  line-height: 1.1;
+  margin-bottom: 16px;
+}
+.hero-subtitle {
+  font-size: clamp(1.1rem, 2.5vw, 1.5rem);
+  color: var(--dourado-claro);
+  font-family: var(--fonte-titulo);
+  font-style: italic;
+  margin-bottom: 20px;
+}
+.hero-author { font-size: 1rem; color: #C9D6DF; margin-bottom: 40px; }
+.hero-author strong { color: var(--branco); }
+
+.hero-actions { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; }
+
+.btn {
+  display: inline-block;
+  padding: 14px 32px;
+  border-radius: var(--raio);
+  font-weight: 600;
+  text-decoration: none;
+  font-size: 1rem;
+  transition: var(--transicao);
+  border: 2px solid transparent;
+}
+.btn-primary {
+  background: var(--dourado);
+  color: var(--branco);
+}
+.btn-primary:hover { background: var(--dourado-claro); transform: translateY(-2px); }
+.btn-outline {
+  border-color: rgba(255,255,255,0.4);
+  color: var(--branco);
+}
+.btn-outline:hover { background: rgba(255,255,255,0.1); border-color: var(--dourado-claro); }
+
+/* ---------- SEÇÕES ---------- */
+.section { padding: 80px 0; }
+.section-alt { background: var(--cinza-claro); }
+.section-title {
+  font-family: var(--fonte-titulo);
+  font-size: 2rem;
+  color: var(--azul-petroleo);
+  margin-bottom: 48px;
+  position: relative;
+  padding-bottom: 16px;
+}
+.section-title::after {
+  content: '';
+  position: absolute;
+  bottom: 0; left: 0;
+  width: 64px; height: 3px;
+  background: var(--dourado);
+}
+
+/* ---------- FICHA TÉCNICA ---------- */
+.ficha-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 20px;
+}
+.ficha-item {
+  background: var(--branco);
+  border-left: 4px solid var(--dourado);
+  padding: 18px 22px;
+  border-radius: var(--raio);
+  box-shadow: var(--sombra-card);
+}
+.ficha-label {
+  display: block;
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  color: var(--dourado);
+  font-weight: 700;
+  margin-bottom: 6px;
+}
+.ficha-value {
+  display: block;
+  color: var(--cinza-chumbo);
+  font-weight: 500;
+  font-size: 0.95rem;
+}
+
+/* ---------- CARDS ---------- */
+.cards-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 32px;
+}
+.card {
+  background: var(--branco);
+  border: 1px solid var(--cinza-borda);
+  border-radius: var(--raio);
+  padding: 36px 32px;
+  box-shadow: var(--sombra-card);
+  transition: var(--transicao);
+}
+.card:hover {
+  box-shadow: var(--sombra-card-hover);
+  transform: translateY(-6px);
+  border-color: var(--dourado);
+}
+.card-featured {
+  border-top: 4px solid var(--dourado);
+}
+.card-icon { font-size: 2.4rem; margin-bottom: 16px; }
+.card-title {
+  font-family: var(--fonte-titulo);
+  font-size: 1.4rem;
+  color: var(--azul-petroleo);
+  margin-bottom: 10px;
+  font-weight: 700;
+}
+.card-subtitle {
+  font-style: italic;
+  color: var(--dourado);
+  font-family: var(--fonte-titulo);
+  margin-bottom: 16px;
+  font-size: 0.95rem;
+}
+.card-text { color: var(--cinza-texto); text-align: justify; }
+.card-list { list-style: none; padding: 0; }
+.card-list li {
+  margin-bottom: 16px;
+  padding-left: 22px;
+  position: relative;
+  text-align: justify;
+}
+.card-list li::before {
+  content: '▸';
+  position: absolute;
+  left: 0;
+  color: var(--dourado);
+  font-weight: 700;
+}
+.card-badges { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 20px; }
+.badge {
+  background: var(--azul-petroleo);
+  color: var(--branco);
+  font-size: 0.75rem;
+  padding: 6px 12px;
+  border-radius: 20px;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+}
+
+/* ---------- AUTOR (DESTAQUE) ---------- */
+.section-author {
+  background: var(--azul-petroleo);
+  color: var(--branco);
+}
+.section-title-light { color: var(--branco); }
+.section-title-light::after { background: var(--dourado-claro); }
+
+.author-block {
+  display: grid;
+  grid-template-columns: 220px 1fr;
+  gap: 48px;
+  align-items: start;
+}
+@media (max-width: 720px) {
+  .author-block { grid-template-columns: 1fr; gap: 32px; }
+}
+
+.author-photo-wrap {
+  position: relative;
+  width: 220px;
+  height: 220px;
+  border-radius: 50%;
+  overflow: hidden;
+  border: 4px solid var(--dourado);
+  background: var(--azul-petroleo-escuro);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.author-photo { width: 100%; height: 100%; object-fit: cover; }
+.author-initials {
+  position: absolute;
+  font-family: var(--fonte-titulo);
+  font-size: 4rem;
+  font-weight: 900;
+  color: var(--dourado-claro);
+  z-index: 0;
+}
+.no-photo .author-initials { z-index: 1; }
+
+.author-name {
+  font-family: var(--fonte-titulo);
+  font-size: 1.8rem;
+  color: var(--branco);
+  margin-bottom: 8px;
+}
+.author-role {
+  color: var(--dourado-claro);
+  font-weight: 600;
+  text-transform: uppercase;
+  font-size: 0.85rem;
+  letter-spacing: 1.5px;
+  margin-bottom: 20px;
+}
+.author-bio {
+  color: #D7E2EA;
+  text-align: justify;
+  margin-bottom: 32px;
+  line-height: 1.8;
+}
+.author-bio strong, .author-bio em { color: var(--branco); }
+
+.author-audio {
+  background: rgba(255,255,255,0.06);
+  border-left: 3px solid var(--dourado);
+  padding: 20px 24px;
+  border-radius: var(--raio);
+}
+.audio-caption {
+  color: #D7E2EA;
+  margin-bottom: 16px;
+  font-size: 0.95rem;
+}
+.audio-caption strong { color: var(--dourado-claro); }
+.audio-player { width: 100%; max-width: 480px; }
+
+/* ---------- FOOTER ---------- */
+.site-footer {
+  background: var(--azul-petroleo-escuro);
+  color: #A9BDCA;
+  padding: 48px 0;
+  text-align: center;
+  border-top: 3px solid var(--dourado);
+}
+.footer-title {
+  font-family: var(--fonte-titulo);
+  color: var(--branco);
+  font-size: 1.2rem;
+  font-weight: 700;
+  margin-bottom: 8px;
+}
+.footer-meta { font-size: 0.9rem; margin-bottom: 6px; }
+.footer-meta a { color: var(--dourado-claro); text-decoration: none; }
+.footer-meta a:hover { text-decoration: underline; }
+.footer-small { font-size: 0.8rem; opacity: 0.8; }
+
+/* ---------- RESPONSIVO ---------- */
+@media (max-width: 640px) {
+  .section { padding: 56px 0; }
+  .hero { padding: 72px 0; }
+  .card { padding: 28px 24px; }
+}
