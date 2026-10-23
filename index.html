@@ -6,8 +6,18 @@
     <meta name="description" content="Manual Executivo - A Tirania Constitucional">
     <meta name="author" content="Erigutemberg Meneses">
     <title>MANUAL EXECUTIVO | A Tirania Constitucional</title>
+    <!-- Estilos Externos -->
     <link rel="stylesheet" href="css/style.css">
+    <!-- Ícones FontAwesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Estilo Adicional para garantir que o bloco de áudio fique bem posicionado caso o style.css não tenha regras específicas para ele -->
+    <style>
+        /* Reset básico para o container do áudio se necessário */
+        #audio-autor {
+            display: block; /* Garante que ocupe linha própria */
+        }
+    </style>
 </head>
 <body>
     <!-- Navegação -->
@@ -21,6 +31,7 @@
                 <li><a href="#inicio" class="nav-link active">Início</a></li>
                 <li><a href="#conceitos" class="nav-link">Conceitos</a></li>
                 <li><a href="#ferramentas" class="nav-link">Ferramentas</a></li>
+                <li><a href="#autor-audio" class="nav-link">Áudio do Autor</a></li> <!-- Link adicionado para facilitar acesso ao áudio -->
                 <li><a href="#propostas" class="nav-link">Propostas</a></li>
                 <li><a href="#downloads" class="nav-link">Downloads</a></li>
             </ul>
@@ -127,6 +138,38 @@
             </div>
         </div>
     </section>
+
+    <!-- INÍCIO DO BLOCO DE DESTAQUE PARA O ÁUDIO INSERIDO AQUI -->
+    <section id="autor-audio" style="background-color: #f9f9f9; border-left: 5px solid #d4af37; padding: 20px; margin: 30px auto; max-width: 800px; box-shadow: 0 4px 6px rgba(0,0,0,0.1); font-family: 'Georgia', serif;">
+        <div style="display: flex; align-items: center; gap: 15px; margin-bottom: 15px;">
+            <!-- Ícone opcional de microfone/fala -->
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#d4af37" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z"></path>
+                <path d="M19 10v2a7 7 0 0 1-14 0v-2"></path>
+                <line x1="12" y1="19" x2="12" y2="23"></line>
+                <line x1="8" y1="23" x2="16" y2="23"></line>
+            </svg>
+            <h2 style="margin: 0; color: #333; font-size: 1.5em;">Apresentação do Autor</h2>
+        </div>
+        
+        <p style="color: #555; line-height: 1.6; margin-bottom: 20px;">
+            Ouça Erigutemberg Meneses falando diretamente sobre <strong>"A Tirania Constitucional"</strong>. Nesta gravação exclusiva, o autor contextualiza a obra, explica a urgência do tema diante dos cenários políticos contemporâneos e convida o leitor a refletir sobre os limites entre legalidade e democracia.
+        </p>
+
+        <!-- Player de Áudio Nativo -->
+        <div style="width: 100%;">
+            <audio controls style="width: 100%; outline: none;">
+                <source src="apresentacao_autor.mp3" type="audio/mpeg">
+                Seu navegador não suporta o elemento de áudio. 
+                <a href="apresentacao_autor.mp3">Baixe o arquivo aqui.</a>
+            </audio>
+        </div>
+        
+        <small style="display: block; text-align: right; color: #888; margin-top: 10px; font-style: italic;">
+            Duração aproximada: [Insira a duração aqui] • Formato MP3
+        </small>
+    </section>
+    <!-- FIM DO BLOCO DE DESTAQUE PARA O ÁUDIO -->
 
     <!-- Scripts -->
     <script src="js/app.js"></script>
