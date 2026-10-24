@@ -6,6 +6,7 @@
 <title>A Tirania Constitucional — Erigutemberg Meneses</title>
 <meta name="description" content="Portal acadêmico da obra A Tirania Constitucional: como a legalidade pode enfraquecer a democracia e o papel do novo institucionalismo na preservação da liberdade.">
 <style>
+/* VARIÁVEIS E RESET */
 :root {
   --preto: #111;
   --branco: #fff;
@@ -54,29 +55,58 @@ body {
   display: none; background: none; border: none; font-size: 1.4rem; cursor: pointer;
 }
 
-/* HERO */
+/* HERO COM A CAPA DE FUNDO */
 .hero {
-  padding: 96px 0 80px; text-align: center; border-bottom: 1px solid var(--borda);
+  position: relative;
+  padding: 140px 0 100px; 
+  text-align: center; 
+  border-bottom: 1px solid var(--borda);
+  /* AQUI ESTÁ A CAPA COMO FUNDO */
+  background-image: linear-gradient(rgba(255, 255, 255, 0.85), rgba(255, 255, 255, 0.95)), url('capa.jpg');
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed; /* Efeito parallax suave */
 }
+
 .eyebrow {
   font-family: -apple-system, sans-serif; text-transform: uppercase;
   letter-spacing: 0.12em; font-size: 0.75rem; color: var(--cinza-escuro);
   margin-bottom: 20px;
 }
-.hero h1 { font-size: 3rem; line-height: 1.15; margin-bottom: 20px; }
-.subtitle { font-size: 1.25rem; max-width: 720px; margin: 0 auto 24px; color: #333; }
-.author { font-style: italic; color: var(--cinza-escuro); margin-bottom: 32px; }
-.hero-actions { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; }
+.hero h1 { font-size: 3rem; line-height: 1.15; margin-bottom: 20px; text-shadow: 1px 1px 2px rgba(255,255,255,0.8); }
+.subtitle { font-size: 1.25rem; max-width: 720px; margin: 0 auto 24px; color: #333; font-weight: bold; }
+.author { font-style: italic; color: var(--cinza-escuro); margin-bottom: 32px; font-size: 1.1rem; }
+.hero-actions { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; margin-bottom: 30px;}
 .btn {
   display: inline-block; padding: 12px 28px; text-decoration: none;
-  font-family: -apple-system, sans-serif; font-size: 0.95rem;
+  font-family: -apple-system, sans-serif; font-size: 0.95rem; font-weight: bold;
   border: 1px solid var(--preto); transition: all 0.2s;
 }
 .btn-primary { background: var(--preto); color: var(--branco); }
 .btn-primary:hover { background: #333; }
-.btn-outline { color: var(--preto); }
+.btn-outline { color: var(--preto); background: rgba(255,255,255,0.8); }
 .btn-outline:hover { background: var(--cinza); }
-.license { margin-top: 40px; font-size: 0.8rem; color: var(--cinza-escuro); font-family: -apple-system, sans-serif; }
+
+/* AUDIO PLAYER CUSTOMIZADO */
+.audio-container {
+  margin: 0 auto 30px auto;
+  max-width: 500px;
+  background: rgba(255,255,255,0.9);
+  padding: 15px 20px;
+  border: 1px solid var(--borda);
+  border-left: 4px solid var(--vermelho);
+  text-align: left;
+  font-family: -apple-system, sans-serif;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+}
+.audio-container p {
+  font-size: 0.85rem; color: var(--cinza-escuro); margin-bottom: 8px; text-transform: uppercase; letter-spacing: 0.05em; font-weight: bold;
+}
+.audio-container audio {
+  width: 100%;
+}
+
+.license { font-size: 0.8rem; color: var(--cinza-escuro); font-family: -apple-system, sans-serif; margin-top: 10px;}
 
 /* SEÇÕES */
 .section { padding: 80px 0; }
@@ -86,19 +116,19 @@ body {
 
 /* CARDS */
 .cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 24px; }
-.card { border: 1px solid var(--borda); background: var(--branco); }
+.card { border: 1px solid var(--borda); background: var(--branco); border-radius: 2px; box-shadow: 0 2px 4px rgba(0,0,0,0.02);}
 .card-toggle {
   width: 100%; display: flex; justify-content: space-between; align-items: center;
   padding: 20px; background: none; border: none; cursor: pointer; text-align: left;
   font-family: inherit;
 }
-.card-toggle h3 { font-size: 1.1rem; font-weight: 700; }
+.card-toggle h3 { font-size: 1.1rem; font-weight: 700; color: var(--preto); }
 .chevron { transition: transform 0.2s; font-size: 0.9rem; }
 .card-toggle[aria-expanded="true"] .chevron { transform: rotate(180deg); }
 .card-content {
-  display: none; padding: 0 20px 20px; font-size: 0.98rem; color: #333;
+  display: none; padding: 0 20px 20px; font-size: 0.98rem; color: #333; border-top: 1px solid transparent;
 }
-.card-content.open { display: block; }
+.card-content.open { display: block; border-top-color: var(--cinza); padding-top: 15px;}
 .card-content p { margin-bottom: 12px; }
 .card-content ul { margin: 8px 0 12px 20px; }
 .card-content li { margin-bottom: 6px; }
@@ -106,19 +136,19 @@ body {
 .card-content em { font-style: italic; }
 
 /* CALCULADORA IPI */
-.ipi-calc { margin-top: 16px; }
+.ipi-calc { margin-top: 20px; padding-top: 15px; border-top: 1px dashed var(--borda);}
 .ipi-row {
-  display: grid; grid-template-columns: 1fr 60px; gap: 12px;
+  display: grid; grid-template-columns: 1fr 40px; gap: 12px;
   align-items: center; margin-bottom: 10px;
-  font-family: -apple-system, sans-serif; font-size: 0.9rem;
+  font-family: -apple-system, sans-serif; font-size: 0.85rem;
 }
-.ipi-row input[type="range"] { width: 100%; }
+.ipi-row input[type="range"] { width: 100%; cursor: pointer;}
 .ipi-result {
   margin-top: 16px; padding: 12px; background: var(--cinza);
   border-left: 3px solid var(--preto); font-family: -apple-system, sans-serif;
-  font-size: 0.95rem;
+  font-size: 0.95rem; font-weight: bold;
 }
-.ipi-note { font-size: 0.8rem; color: var(--cinza-escuro); margin-top: 8px; }
+.ipi-note { font-size: 0.8rem; color: var(--cinza-escuro); margin-top: 8px; font-family: -apple-system, sans-serif;}
 
 /* AUTOR */
 .author-block { max-width: 720px; }
@@ -141,10 +171,11 @@ body {
   .main-nav {
     display: none; position: absolute; top: 100%; left: 0; right: 0;
     background: var(--branco); border-bottom: 1px solid var(--borda);
-    padding: 16px 24px;
+    padding: 16px 24px; box-shadow: 0 4px 6px rgba(0,0,0,0.1);
   }
   .main-nav.open { display: block; }
   .main-nav ul { flex-direction: column; gap: 12px; }
+  .hero { padding: 100px 0 60px; background-attachment: scroll; }
 }
 </style>
 </head>
@@ -169,12 +200,23 @@ body {
   </div>
 </header>
 
+<!-- HERO COM CAPA E AUDIO -->
 <section id="inicio" class="hero">
   <div class="container">
     <p class="eyebrow">Obra de referência · Direito Constitucional · 2026</p>
     <h1>A Tirania Constitucional</h1>
     <p class="subtitle">Como a legalidade pode enfraquecer a democracia e o papel do novo institucionalismo na preservação da liberdade</p>
     <p class="author">Erigutemberg Meneses</p>
+    
+    <!-- PLAYER DE AUDIO -->
+    <div class="audio-container">
+      <p>🎙️ Mensagem do Autor</p>
+      <audio controls preload="metadata">
+        <source src="mensagem-autor.mp3" type="audio/mpeg">
+        Seu navegador não suporta o elemento de áudio.
+      </audio>
+    </div>
+
     <div class="hero-actions">
       <a class="btn btn-primary" href="#obra">Conheça a obra</a>
       <a class="btn btn-outline" href="#ferramentas">Explore o modelo</a>
@@ -227,7 +269,7 @@ body {
         </button>
         <div class="card-content">
           <p><strong>Parte I — A Anatomia da Tirania Constitucional:</strong> concentração do poder, Constituição como arma, captura do Judiciário e legalidade autoritária.</p>
-          <p><strong>Parte II — O Novo Institucionalismo como Pedra Angular:</strong> dupla dimensão da legitimidade, governo fiduciário e não-dominação institucional.</p>
+          <p><strong>Parte II — O Novo Institucionalismo:</strong> dupla dimensão da legitimidade, governo fiduciário e não-dominação institucional.</p>
           <p><strong>Parte III — Diagnóstico e Resistência:</strong> tríade populista, IPI, SAPED e estudos comparados.</p>
           <p><strong>Parte IV — Propostas Normativas e Agenda de Pesquisa:</strong> reformas institucionais, cláusula pétrea invisível e agenda futura.</p>
         </div>
@@ -334,8 +376,7 @@ body {
           </ul>
           <p><strong>Fórmula:</strong> IPI = 0,25·D1 + 0,20·D2 + 0,20·D3 + 0,20·D4 + 0,15·D5</p>
           <p><strong>Escala:</strong> 0–4 muito comprometida; 4–6 fragilizada; 6–8 intermediária; 8–10 relativamente elevada.</p>
-          <p><em>Nota:</em> pesos, fórmula e faixas são hipóteses de trabalho. O índice não foi validado empiricamente.</p>
-
+          
           <div class="ipi-calc" aria-label="Calculadora conceitual do IPI">
             <div class="ipi-row"><label for="d1">D1 Independência judicial (25%)</label><span id="d1v">5,0</span><input type="range" id="d1" min="0" max="10" step="0.1" value="5"></div>
             <div class="ipi-row"><label for="d2">D2 Órgãos de controle (20%)</label><span id="d2v">5,0</span><input type="range" id="d2" min="0" max="10" step="0.1" value="5"></div>
