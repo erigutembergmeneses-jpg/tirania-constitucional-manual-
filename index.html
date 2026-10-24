@@ -1,610 +1,179 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>A Tirania Constitucional — Erigutemberg Meneses</title>
-<meta name="description" content="Portal acadêmico da obra A Tirania Constitucional: como a legalidade pode enfraquecer a democracia e o papel do novo institucionalismo na preservação da liberdade.">
-<style>
-/* VARIÁVEIS E RESET */
-:root {
-  --preto: #111;
-  --branco: #fff;
-  --cinza: #f4f4f4;
-  --cinza-escuro: #666;
-  --vermelho: #7a1f1f;
-  --borda: #ddd;
-  --largura: 1100px;
-}
-
-* { box-sizing: border-box; margin: 0; padding: 0; }
-
-html { scroll-behavior: smooth; }
-
-body {
-  font-family: Georgia, 'Times New Roman', serif;
-  color: var(--preto);
-  background: var(--branco);
-  line-height: 1.7;
-  font-size: 17px;
-}
-
-.container { max-width: var(--largura); margin: 0 auto; padding: 0 24px; }
-
-/* HEADER */
-.site-header {
-  border-bottom: 1px solid var(--borda);
-  position: sticky; top: 0; background: var(--branco); z-index: 100;
-}
-.header-inner {
-  display: flex; align-items: center; justify-content: space-between;
-  padding: 16px 24px; max-width: var(--largura); margin: 0 auto;
-}
-.brand { text-decoration: none; color: var(--preto); display: flex; flex-direction: column; }
-.brand-title { font-weight: 700; font-size: 1.05rem; letter-spacing: 0.02em; }
-.brand-sub { font-size: 0.8rem; color: var(--cinza-escuro); }
-
-.main-nav ul { list-style: none; display: flex; gap: 24px; }
-.main-nav a {
-  text-decoration: none; color: var(--preto); font-size: 0.95rem;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-}
-.main-nav a:hover { text-decoration: underline; }
-
-.menu-toggle {
-  display: none; background: none; border: none; font-size: 1.4rem; cursor: pointer;
-}
-
-/* HERO COM A CAPA DE FUNDO */
-.hero {
-  position: relative;
-  padding: 140px 0 100px; 
-  text-align: center; 
-  border-bottom: 1px solid var(--borda);
-  /* AQUI ESTÁ A CAPA COMO FUNDO */
-  background-image: linear-gradient(rgba(255, 255, 255, 0.85), rgba(255, 255, 255, 0.95)), url('capa.jpg');
-  background-size: cover;
-  background-position: center;
-  background-attachment: fixed; /* Efeito parallax suave */
-}
-
-.eyebrow {
-  font-family: -apple-system, sans-serif; text-transform: uppercase;
-  letter-spacing: 0.12em; font-size: 0.75rem; color: var(--cinza-escuro);
-  margin-bottom: 20px;
-}
-.hero h1 { font-size: 3rem; line-height: 1.15; margin-bottom: 20px; text-shadow: 1px 1px 2px rgba(255,255,255,0.8); }
-.subtitle { font-size: 1.25rem; max-width: 720px; margin: 0 auto 24px; color: #333; font-weight: bold; }
-.author { font-style: italic; color: var(--cinza-escuro); margin-bottom: 32px; font-size: 1.1rem; }
-.hero-actions { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; margin-bottom: 30px;}
-.btn {
-  display: inline-block; padding: 12px 28px; text-decoration: none;
-  font-family: -apple-system, sans-serif; font-size: 0.95rem; font-weight: bold;
-  border: 1px solid var(--preto); transition: all 0.2s;
-}
-.btn-primary { background: var(--preto); color: var(--branco); }
-.btn-primary:hover { background: #333; }
-.btn-outline { color: var(--preto); background: rgba(255,255,255,0.8); }
-.btn-outline:hover { background: var(--cinza); }
-
-/* AUDIO PLAYER CUSTOMIZADO */
-.audio-container {
-  margin: 0 auto 30px auto;
-  max-width: 500px;
-  background: rgba(255,255,255,0.9);
-  padding: 15px 20px;
-  border: 1px solid var(--borda);
-  border-left: 4px solid var(--vermelho);
-  text-align: left;
-  font-family: -apple-system, sans-serif;
-  box-shadow: 0 4px 6px rgba(0,0,0,0.05);
-}
-.audio-container p {
-  font-size: 0.85rem; color: var(--cinza-escuro); margin-bottom: 8px; text-transform: uppercase; letter-spacing: 0.05em; font-weight: bold;
-}
-.audio-container audio {
-  width: 100%;
-}
-
-.license { font-size: 0.8rem; color: var(--cinza-escuro); font-family: -apple-system, sans-serif; margin-top: 10px;}
-
-/* SEÇÕES */
-.section { padding: 80px 0; }
-.section-alt { background: var(--cinza); }
-.section h2 { font-size: 2rem; margin-bottom: 16px; }
-.lead { font-size: 1.1rem; color: #444; max-width: 720px; margin-bottom: 40px; }
-
-/* CARDS */
-.cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 24px; }
-.card { border: 1px solid var(--borda); background: var(--branco); border-radius: 2px; box-shadow: 0 2px 4px rgba(0,0,0,0.02);}
-.card-toggle {
-  width: 100%; display: flex; justify-content: space-between; align-items: center;
-  padding: 20px; background: none; border: none; cursor: pointer; text-align: left;
-  font-family: inherit;
-}
-.card-toggle h3 { font-size: 1.1rem; font-weight: 700; color: var(--preto); }
-.chevron { transition: transform 0.2s; font-size: 0.9rem; }
-.card-toggle[aria-expanded="true"] .chevron { transform: rotate(180deg); }
-.card-content {
-  display: none; padding: 0 20px 20px; font-size: 0.98rem; color: #333; border-top: 1px solid transparent;
-}
-.card-content.open { display: block; border-top-color: var(--cinza); padding-top: 15px;}
-.card-content p { margin-bottom: 12px; }
-.card-content ul { margin: 8px 0 12px 20px; }
-.card-content li { margin-bottom: 6px; }
-.card-content strong { font-weight: 700; }
-.card-content em { font-style: italic; }
-
-/* CALCULADORA IPI */
-.ipi-calc { margin-top: 20px; padding-top: 15px; border-top: 1px dashed var(--borda);}
-.ipi-row {
-  display: grid; grid-template-columns: 1fr 40px; gap: 12px;
-  align-items: center; margin-bottom: 10px;
-  font-family: -apple-system, sans-serif; font-size: 0.85rem;
-}
-.ipi-row input[type="range"] { width: 100%; cursor: pointer;}
-.ipi-result {
-  margin-top: 16px; padding: 12px; background: var(--cinza);
-  border-left: 3px solid var(--preto); font-family: -apple-system, sans-serif;
-  font-size: 0.95rem; font-weight: bold;
-}
-.ipi-note { font-size: 0.8rem; color: var(--cinza-escuro); margin-top: 8px; font-family: -apple-system, sans-serif;}
-
-/* AUTOR */
-.author-block { max-width: 720px; }
-.author-block p { margin-bottom: 16px; }
-.author-note { font-size: 0.9rem; color: var(--cinza-escuro); font-style: italic; }
-
-/* FOOTER */
-.site-footer {
-  border-top: 1px solid var(--borda); padding: 32px 0; text-align: center;
-  font-size: 0.85rem; color: var(--cinza-escuro);
-  font-family: -apple-system, sans-serif;
-}
-.site-footer p { margin-bottom: 6px; }
-
-/* RESPONSIVO */
-@media (max-width: 768px) {
-  .hero h1 { font-size: 2.2rem; }
-  .subtitle { font-size: 1.05rem; }
-  .menu-toggle { display: block; }
-  .main-nav {
-    display: none; position: absolute; top: 100%; left: 0; right: 0;
-    background: var(--branco); border-bottom: 1px solid var(--borda);
-    padding: 16px 24px; box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-  }
-  .main-nav.open { display: block; }
-  .main-nav ul { flex-direction: column; gap: 12px; }
-  .hero { padding: 100px 0 60px; background-attachment: scroll; }
-}
-</style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>A Tirania Constitucional | Erigutemberg Meneses</title>
+    <meta name="description" content="Como a legalidade pode enfraquecer a democracia e o papel do novo institucionalismo na preservação da liberdade.">
+    <link rel="stylesheet" href="style.css">
+    <!-- Fontes do Google para visual editorial -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
 </head>
 <body>
 
-<header class="site-header">
-  <div class="header-inner">
-    <a href="#inicio" class="brand">
-      <span class="brand-title">A Tirania Constitucional</span>
-      <span class="brand-sub">Erigutemberg Meneses</span>
-    </a>
-    <button class="menu-toggle" aria-label="Abrir menu" aria-expanded="false">☰</button>
-    <nav class="main-nav" aria-label="Navegação principal">
-      <ul>
-        <li><a href="#obra">A Obra</a></li>
-        <li><a href="#modelo">Modelo Teórico</a></li>
-        <li><a href="#ferramentas">Ferramentas</a></li>
-        <li><a href="#biblioteca">Biblioteca</a></li>
-        <li><a href="#autor">Autor</a></li>
-      </ul>
-    </nav>
-  </div>
-</header>
-
-<!-- HERO COM CAPA E AUDIO -->
-<section id="inicio" class="hero">
-  <div class="container">
-    <p class="eyebrow">Obra de referência · Direito Constitucional · 2026</p>
-    <h1>A Tirania Constitucional</h1>
-    <p class="subtitle">Como a legalidade pode enfraquecer a democracia e o papel do novo institucionalismo na preservação da liberdade</p>
-    <p class="author">Erigutemberg Meneses</p>
-    
-    <!-- PLAYER DE AUDIO -->
-    <div class="audio-container">
-      <p>🎙️ Mensagem do Autor</p>
-      <audio controls preload="metadata">
-        <source src="mensagem-autor.mp3" type="audio/mpeg">
-        Seu navegador não suporta o elemento de áudio.
-      </audio>
-    </div>
-
-    <div class="hero-actions">
-      <a class="btn btn-primary" href="#obra">Conheça a obra</a>
-      <a class="btn btn-outline" href="#ferramentas">Explore o modelo</a>
-    </div>
-    <p class="license">Licença CC BY 4.0 · Publicado em GitHub Pages e Zenodo</p>
-  </div>
-</section>
-
-<section id="obra" class="section">
-  <div class="container">
-    <h2>A Obra</h2>
-    <p class="lead">Uma investigação sobre como instrumentos formalmente legais podem ser usados, de forma cumulativa, para enfraquecer os limites constitucionais ao poder.</p>
-
-    <div class="cards">
-      <article class="card">
-        <button class="card-toggle" aria-expanded="false">
-          <h3>O paradoxo jurídico</h3><span class="chevron">▾</span>
-        </button>
-        <div class="card-content">
-          <p>A obra investiga como o aparato jurídico, criado para limitar o poder, pode ser instrumentalizado para enfraquecer as instituições democráticas por dentro. Não se trata de ruptura violenta, mas de erosão gradual por meio de instrumentos formalmente legais.</p>
+    <!-- CABEÇALHO / MENU -->
+    <header class="site-header">
+        <div class="header-container">
+            <a href="#" class="brand">
+                <span class="brand-title">A TIRANIA CONSTITUCIONAL</span>
+                <span class="brand-author">Erigutemberg Meneses</span>
+            </a>
+            <nav class="site-nav">
+                <a href="#a-obra">A Obra</a>
+                <a href="#modelo-teorico">Modelo Teórico</a>
+                <a href="#ferramentas">Ferramentas</a>
+                <a href="#biblioteca">Biblioteca</a>
+                <a href="#autor">Autor</a>
+            </nav>
         </div>
-      </article>
+    </header>
 
-      <article class="card">
-        <button class="card-toggle" aria-expanded="false">
-          <h3>Tese central</h3><span class="chevron">▾</span>
-        </button>
-        <div class="card-content">
-          <p>A legalidade, por si só, não garante a preservação da democracia quando instrumentos legais são utilizados cumulativamente para esvaziar os controles que dão sentido à ordem constitucional. A resposta exige análise rigorosa dos fatos, argumentação normativa explícita e instituições capazes de aprender, corrigir-se e resistir à captura.</p>
-        </div>
-      </article>
+    <!-- CONTEÚDO PRINCIPAL (Rola sobre a capa fixa) -->
+    <main class="content-wrapper">
+        
+        <!-- HERO SECTION (Título principal) -->
+        <section class="hero-section">
+            <p class="hero-subtitle">Obra de referência · Direito Constitucional · 2026</p>
+            <h1 class="hero-title">A Tirania<br><span class="red-text">Constitucional</span></h1>
+            <p class="hero-description">Como a legalidade pode enfraquecer a democracia e o papel do novo institucionalismo na preservação da liberdade</p>
+            <p class="hero-author">Erigutemberg Meneses</p>
+            
+            <!-- Player de Áudio Integrado -->
+            <div class="audio-card">
+                <p class="audio-label">🎙️ Mensagem do Autor</p>
+                <audio controls>
+                    <source src="audio/mensagem.mp3" type="audio/mpeg">
+                    Seu navegador não suporta o elemento de áudio.
+                </audio>
+            </div>
 
-      <article class="card">
-        <button class="card-toggle" aria-expanded="false">
-          <h3>Conceitos fundamentais</h3><span class="chevron">▾</span>
-        </button>
-        <div class="card-content">
-          <ul>
-            <li><strong>Tirania constitucional:</strong> uso da lei contra os fins da lei.</li>
-            <li><strong>Novo institucionalismo:</strong> governo como função fiduciária.</li>
-            <li><strong>Cláusula pétrea invisível:</strong> limites materiais implícitos à reforma constitucional.</li>
-            <li><strong>Democratic backsliding:</strong> regressão democrática gradual.</li>
-          </ul>
-        </div>
-      </article>
+            <div class="hero-buttons">
+                <a href="#a-obra" class="btn btn-primary">Conheça a obra</a>
+                <a href="#modelo-teorico" class="btn btn-secondary">Explore o modelo</a>
+            </div>
+        </section>
 
-      <article class="card">
-        <button class="card-toggle" aria-expanded="false">
-          <h3>Estrutura do livro</h3><span class="chevron">▾</span>
-        </button>
-        <div class="card-content">
-          <p><strong>Parte I — A Anatomia da Tirania Constitucional:</strong> concentração do poder, Constituição como arma, captura do Judiciário e legalidade autoritária.</p>
-          <p><strong>Parte II — O Novo Institucionalismo:</strong> dupla dimensão da legitimidade, governo fiduciário e não-dominação institucional.</p>
-          <p><strong>Parte III — Diagnóstico e Resistência:</strong> tríade populista, IPI, SAPED e estudos comparados.</p>
-          <p><strong>Parte IV — Propostas Normativas e Agenda de Pesquisa:</strong> reformas institucionais, cláusula pétrea invisível e agenda futura.</p>
-        </div>
-      </article>
+        <!-- SEÇÃO: A OBRA -->
+        <section id="a-obra" class="card">
+            <h2>A Obra</h2>
+            <p>Uma investigação sobre como instrumentos formalmente legais podem ser usados, de forma cumulativa, para enfraquecer os limites constitucionais ao poder.</p>
+            <p>A obra investiga como o aparato jurídico, criado para limitar o poder, pode ser instrumentalizado para enfraquecer as instituições democráticas por dentro. Não se trata de ruptura violenta, mas de erosão gradual por meio de instrumentos formalmente legais.</p>
+            <p>A legalidade, por si só, não garante a preservação da democracia quando instrumentos legais são utilizados cumulativamente para esvaziar os controles que dão sentido à ordem constitucional. A resposta exige análise rigorosa dos fatos, argumentação normativa explícita e instituições capazes de aprender, corrigir-se e resistir à captura.</p>
+            <ul>
+                <li><strong>Tirania constitucional:</strong> uso da lei contra os fins da lei.</li>
+                <li><strong>Novo institucionalismo:</strong> governo como função fiduciária.</li>
+                <li><strong>Cláusula pétrea invisível:</strong> limites materiais implícitos à reforma constitucional.</li>
+                <li><strong>Democratic backsliding:</strong> regressão democrática gradual.</li>
+            </ul>
+            <p>Parte I — A Anatomia da Tirania Constitucional: concentração do poder, Constituição como arma, captura do Judiciário e legalidade autoritária.</p>
+            <p>Parte II — O Novo Institucionalismo: dupla dimensão da legitimidade, governo fiduciário e não-dominação institucional.</p>
+            <p>Parte III — Diagnóstico e Resistência: tríade populista, IPI, SAPED e estudos comparados.</p>
+            <p>Parte IV — Propostas Normativas e Agenda de Pesquisa: reformas institucionais, cláusula pétrea invisível e agenda futura.</p>
+            <p>A obra articula três planos: (1) conceitual, com a categoria tirania constitucional; (2) normativo-institucional, com a distinção entre legitimidade de origem e legitimidade de exercício e a metáfora fiduciária; (3) metodológico, com a proposta do IPI e do SAPED. A originalidade deve ser aferida pela clareza conceitual, capacidade discriminatória e possibilidade de aplicação a casos concretos.</p>
+        </section>
 
-      <article class="card">
-        <button class="card-toggle" aria-expanded="false">
-          <h3>Contribuição original</h3><span class="chevron">▾</span>
-        </button>
-        <div class="card-content">
-          <p>A obra articula três planos: (1) conceitual, com a categoria <em>tirania constitucional</em>; (2) normativo-institucional, com a distinção entre legitimidade de origem e legitimidade de exercício e a metáfora fiduciária; (3) metodológico, com a proposta do IPI e do SAPED. A originalidade deve ser aferida pela clareza conceitual, capacidade discriminatória e possibilidade de aplicação a casos concretos.</p>
-        </div>
-      </article>
-    </div>
-  </div>
-</section>
+        <!-- SEÇÃO: MODELO TEÓRICO -->
+        <section id="modelo-teorico" class="card">
+            <h2>Modelo Teórico</h2>
+            <p>A resposta normativa à erosão democrática: legitimidade de exercício, dever fiduciário e não-dominação institucional.</p>
+            <p>A legitimidade de origem decorre de eleições livres e justas. A legitimidade de exercício diz respeito à compatibilidade do uso do poder com os princípios constitucionais e democráticos. Um governo eleito que subverte instituições perde legitimidade de exercício, ainda que conserve a investidura formal.</p>
+            <p>A perda de legitimidade normativa não implica automaticamente perda jurídica do mandato: responsabilização ou destituição exigem fundamento jurídico e observância dos procedimentos aplicáveis.</p>
+            <p>O governo administra temporariamente um patrimônio institucional que não lhe pertence. Seus deveres fiduciários desdobram-se em:</p>
+            <ul>
+                <li><strong>Lealdade:</strong> não usar as instituições para benefício próprio.</li>
+                <li><strong>Cuidado:</strong> administrar com diligência e competência.</li>
+                <li><strong>Prudência:</strong> não expor as instituições a riscos desnecessários.</li>
+            </ul>
+            <p>A metáfora é normativa: não cria, por si só, obrigações jurídicas autônomas, mas oferece critério de avaliação do exercício do poder.</p>
+            <p>Inspirada em Pettit e Skinner, a liberdade como não-dominação exige que as instituições não estejam sujeitas ao poder arbitrário do governo. Não basta que não haja interferência efetiva; é preciso que não exista a capacidade estrutural de interferir.</p>
+            <p>Três pilares de desenho institucional: mandatos fixos e escalonados, nomeações por consenso (supermaiorias) e orçamentos autônomos.</p>
+            <p>Três critérios de distinção:</p>
+            <ul>
+                <li><strong>Processual:</strong> a mudança foi aprovada com deliberação pública, participação e prazos adequados?</li>
+                <li><strong>Substantivo:</strong> a mudança preserva ou amplia as funções essenciais da instituição?</li>
+                <li><strong>Contextual:</strong> quem propõe a mudança tem conflito de interesse? Há consenso mínimo e aplicação igualitária?</li>
+            </ul>
+            <p>Proposta normativa controversa: um núcleo essencial implícito que seria condição de possibilidade das cláusulas pétreas explícitas (art. 60, § 4º, CF/88). Cinco componentes: independência judicial, liberdade de expressão, integridade eleitoral, separação de poderes efetiva e direitos fundamentais como trunfos contra a maioria.</p>
+            <p>Dialoga com a doutrina da estrutura básica indiana e com a cláusula de eternidade alemã, mas não se confunde com elas. É proposta autoral, não direito positivo pacificado.</p>
+        </section>
 
-<section id="modelo" class="section section-alt">
-  <div class="container">
-    <h2>Modelo Teórico</h2>
-    <p class="lead">A resposta normativa à erosão democrática: legitimidade de exercício, dever fiduciário e não-dominação institucional.</p>
+        <!-- SEÇÃO: FERRAMENTAS -->
+        <section id="ferramentas" class="card">
+            <h2>Ferramentas</h2>
+            <p>Instrumentos conceituais propostos pelo autor. Nenhum deles foi implementado ou validado empiricamente até o momento.</p>
+            <p>Proposta metodológica para organizar informações sobre cinco dimensões:</p>
+            <ul>
+                <li>D1 — Independência judicial (peso 25%)</li>
+                <li>D2 — Independência dos órgãos de controle (20%)</li>
+                <li>D3 — Liberdade de expressão e imprensa (20%)</li>
+                <li>D4 — Integridade eleitoral (20%)</li>
+                <li>D5 — Participação política e sociedade civil (15%)</li>
+            </ul>
+            <p><strong>Fórmula:</strong> IPI = 0,25·D1 + 0,20·D2 + 0,20·D3 + 0,20·D4 + 0,15·D5</p>
+            <p><strong>Escala:</strong> 0–4 muito comprometida; 4–6 fragilizada; 6–8 intermediária; 8–10 relativamente elevada.</p>
+            <div class="simulation-box">
+                <p><strong>Simulação:</strong> IPI = 5,00 — Preservação institucional fragilizada</p>
+                <p class="small-text">Simulação conceitual. Os valores não constituem avaliação de nenhum país real.</p>
+            </div>
+            <p>Enquanto o IPI é uma fotografia estática, o SAPED acompanha eventos ao longo do tempo. Quatro níveis de alerta:</p>
+            <ul>
+                <li><strong style="color:#4caf50;">Verde:</strong> estabilidade relativa.</li>
+                <li><strong style="color:#ffeb3b;">Amarelo:</strong> indícios que exigem esclarecimento.</li>
+                <li><strong style="color:#ff9800;">Laranja:</strong> evidências consistentes de deterioração.</li>
+                <li><strong style="color:var(--red-accent);">Vermelho:</strong> comprometimento grave e iminente.</li>
+            </ul>
+            <p>Cada evento deve ser registrado com fonte primária, verificação independente, distinção entre fato, alegação e inferência.</p>
+            <p>Cinco elementos complementares: IPI, SAPED, registro verificável de eventos, infraestrutura de transparência e rede de participação cívica.</p>
+            <p>Nenhum elemento isolado é suficiente. Um índice sem dados é abstração; um alerta sem critérios é alarme falso; uma plataforma sem auditoria é caixa-preta.</p>
+            <p><strong>Hungria (2010–2026):</strong> supermaioria de dois terços permitiu nova Lei Fundamental (2011), redução do Tribunal Constitucional de 15 para 11 juízes, aposentadoria compulsória de 274 magistrados e redesenho distrital.</p>
+            <p><strong>Polônia (2015–2023):</strong> sem supermaioria, o PiS usou leis ordinárias para paralisar o Tribunal Constitucional, criar a Câmara Disciplinar e controlar o Conselho Nacional da Magistratura.</p>
+            <p><strong>Venezuela:</strong> refundação constitucional (1999) seguida de concentração progressiva de poder, controle do TSJ e do CNE.</p>
+            <p><strong>Turquia:</strong> após o golpe de 2016, estado de emergência, purgas no Judiciário, universidades e mídia.</p>
+        </section>
 
-    <div class="cards">
-      <article class="card">
-        <button class="card-toggle" aria-expanded="false">
-          <h3>Dupla dimensão da legitimidade</h3><span class="chevron">▾</span>
-        </button>
-        <div class="card-content">
-          <p>A legitimidade de origem decorre de eleições livres e justas. A legitimidade de exercício diz respeito à compatibilidade do uso do poder com os princípios constitucionais e democráticos. Um governo eleito que subverte instituições perde legitimidade de exercício, ainda que conserve a investidura formal.</p>
-          <p>A perda de legitimidade normativa não implica automaticamente perda jurídica do mandato: responsabilização ou destituição exigem fundamento jurídico e observância dos procedimentos aplicáveis.</p>
-        </div>
-      </article>
+        <!-- SEÇÃO: BIBLIOTECA -->
+        <section id="biblioteca" class="card">
+            <h2>Biblioteca</h2>
+            <p>Referências centrais que fundamentam a obra.</p>
+            <ul class="bibliography">
+                <li>BERMEO, Nancy. <em>On democratic backsliding</em>. Journal of Democracy, 2016.</li>
+                <li>SCHEPPELE, Kim Lane. <em>Autocratic Legalism</em>. University of Chicago Law Review, 2018.</li>
+                <li>LANDAU, David. <em>Abusive Constitutionalism</em>. UC Davis Law Review, 2013.</li>
+                <li>LEVITSKY, Steven; ZIBLATT, Daniel. <em>How Democracies Die</em>. 2018.</li>
+                <li>GINSBURG, Tom; HUQ, Aziz Z. <em>How to Save a Constitutional Democracy</em>. 2018.</li>
+                <li>ROZNAI, Yaniv. <em>Unconstitutional Constitutional Amendments</em>. Oxford, 2017.</li>
+                <li>SUPREME COURT OF INDIA. <em>Kesavananda Bharati v. State of Kerala</em> (1973).</li>
+                <li>ALEMANHA. Grundgesetz, art. 79, § 3º (cláusula de eternidade).</li>
+                <li>BRASIL. Constituição Federal de 1988, art. 60, § 4º.</li>
+                <li>PETTIT, Philip. <em>Republicanismo: uma teoria da liberdade e do governo</em>. 2019.</li>
+                <li>SKINNER, Quentin. <em>Liberdade antes do Liberalismo</em>. 1999.</li>
+                <li>MUDDE, Cas; ROVIRA KALTWASSER, Cristóbal. <em>Populismo: uma breve introdução</em>. 2019.</li>
+                <li>MBEMBE, Achille. <em>Necropolítica</em>.</li>
+                <li>ALMEIDA, Silvio Luiz de. <em>Racismo estrutural</em>. 2019.</li>
+                <li>THOREAU, Henry David. <em>A Desobediência Civil</em> (1849).</li>
+                <li>RAWLS, John. <em>Uma Teoria da Justiça</em> (1971).</li>
+                <li>KING JR., Martin Luther. <em>Letter from Birmingham Jail</em> (1963).</li>
+                <li>ARENDT, Hannah. <em>Crises da República</em>.</li>
+            </ul>
+        </section>
 
-      <article class="card">
-        <button class="card-toggle" aria-expanded="false">
-          <h3>Governo como fiduciário</h3><span class="chevron">▾</span>
-        </button>
-        <div class="card-content">
-          <p>O governo administra temporariamente um patrimônio institucional que não lhe pertence. Seus deveres fiduciários desdobram-se em:</p>
-          <ul>
-            <li><strong>Lealdade:</strong> não usar as instituições para benefício próprio.</li>
-            <li><strong>Cuidado:</strong> administrar com diligência e competência.</li>
-            <li><strong>Prudência:</strong> não expor as instituições a riscos desnecessários.</li>
-          </ul>
-          <p>A metáfora é normativa: não cria, por si só, obrigações jurídicas autônomas, mas oferece critério de avaliação do exercício do poder.</p>
-        </div>
-      </article>
+        <!-- SEÇÃO: AUTOR -->
+        <section id="autor" class="card">
+            <h2>Sobre o Autor</h2>
+            <p>José Erigutemberg Meneses de Lima é advogado, economista, jurista e pesquisador. Com formação interdisciplinar, une a técnica jurídica à análise econômica e comportamental.</p>
+            <p>Sua obra <em>A Tirania Constitucional</em> surge da necessidade de compreender como maiorias eleitas podem, licitamente, desmantelar as salvaguardas da liberdade. O autor defende que a democracia não sobrevive apenas de votos, mas de instituições vivas e vigilantes.</p>
+            <p class="small-text">Identificadores acadêmicos e produção científica podem ser adicionados aqui (ORCID, Lattes, Google Scholar).</p>
+        </section>
 
-      <article class="card">
-        <button class="card-toggle" aria-expanded="false">
-          <h3>Não-dominação institucional</h3><span class="chevron">▾</span>
-        </button>
-        <div class="card-content">
-          <p>Inspirada em Pettit e Skinner, a liberdade como não-dominação exige que as instituições não estejam sujeitas ao poder arbitrário do governo. Não basta que não haja interferência efetiva; é preciso que não exista a capacidade estrutural de interferir.</p>
-          <p>Três pilares de desenho institucional: mandatos fixos e escalonados, nomeações por consenso (supermaiorias) e orçamentos autônomos.</p>
-        </div>
-      </article>
+    </main>
 
-      <article class="card">
-        <button class="card-toggle" aria-expanded="false">
-          <h3>Reforma legítima vs. subversão</h3><span class="chevron">▾</span>
-        </button>
-        <div class="card-content">
-          <p>Três critérios de distinção:</p>
-          <ul>
-            <li><strong>Processual:</strong> a mudança foi aprovada com deliberação pública, participação e prazos adequados?</li>
-            <li><strong>Substantivo:</strong> a mudança preserva ou amplia as funções essenciais da instituição?</li>
-            <li><strong>Contextual:</strong> quem propõe a mudança tem conflito de interesse? Há consenso mínimo e aplicação igualitária?</li>
-          </ul>
-        </div>
-      </article>
-
-      <article class="card">
-        <button class="card-toggle" aria-expanded="false">
-          <h3>Cláusula pétrea invisível</h3><span class="chevron">▾</span>
-        </button>
-        <div class="card-content">
-          <p>Proposta normativa controversa: um núcleo essencial implícito que seria condição de possibilidade das cláusulas pétreas explícitas (art. 60, § 4º, CF/88). Cinco componentes: independência judicial, liberdade de expressão, integridade eleitoral, separação de poderes efetiva e direitos fundamentais como trunfos contra a maioria.</p>
-          <p>Dialoga com a doutrina da estrutura básica indiana e com a cláusula de eternidade alemã, mas não se confunde com elas. É proposta autoral, não direito positivo pacificado.</p>
-        </div>
-      </article>
-    </div>
-  </div>
-</section>
-
-<section id="ferramentas" class="section">
-  <div class="container">
-    <h2>Ferramentas</h2>
-    <p class="lead">Instrumentos conceituais propostos pelo autor. Nenhum deles foi implementado ou validado empiricamente até o momento.</p>
-
-    <div class="cards">
-      <article class="card">
-        <button class="card-toggle" aria-expanded="false">
-          <h3>Índice de Preservação Institucional (IPI)</h3><span class="chevron">▾</span>
-        </button>
-        <div class="card-content">
-          <p>Proposta metodológica para organizar informações sobre cinco dimensões:</p>
-          <ul>
-            <li>D1 — Independência judicial (peso 25%)</li>
-            <li>D2 — Independência dos órgãos de controle (20%)</li>
-            <li>D3 — Liberdade de expressão e imprensa (20%)</li>
-            <li>D4 — Integridade eleitoral (20%)</li>
-            <li>D5 — Participação política e sociedade civil (15%)</li>
-          </ul>
-          <p><strong>Fórmula:</strong> IPI = 0,25·D1 + 0,20·D2 + 0,20·D3 + 0,20·D4 + 0,15·D5</p>
-          <p><strong>Escala:</strong> 0–4 muito comprometida; 4–6 fragilizada; 6–8 intermediária; 8–10 relativamente elevada.</p>
-          
-          <div class="ipi-calc" aria-label="Calculadora conceitual do IPI">
-            <div class="ipi-row"><label for="d1">D1 Independência judicial (25%)</label><span id="d1v">5,0</span><input type="range" id="d1" min="0" max="10" step="0.1" value="5"></div>
-            <div class="ipi-row"><label for="d2">D2 Órgãos de controle (20%)</label><span id="d2v">5,0</span><input type="range" id="d2" min="0" max="10" step="0.1" value="5"></div>
-            <div class="ipi-row"><label for="d3">D3 Liberdade de imprensa (20%)</label><span id="d3v">5,0</span><input type="range" id="d3" min="0" max="10" step="0.1" value="5"></div>
-            <div class="ipi-row"><label for="d4">D4 Integridade eleitoral (20%)</label><span id="d4v">5,0</span><input type="range" id="d4" min="0" max="10" step="0.1" value="5"></div>
-            <div class="ipi-row"><label for="d5">D5 Participação e sociedade civil (15%)</label><span id="d5v">5,0</span><input type="range" id="d5" min="0" max="10" step="0.1" value="5"></div>
-            <div class="ipi-result" id="ipiResult">IPI = 5,00 — Preservação institucional fragilizada</div>
-            <p class="ipi-note">Simulação conceitual. Os valores não constituem avaliação de nenhum país real.</p>
-          </div>
-        </div>
-      </article>
-
-      <article class="card">
-        <button class="card-toggle" aria-expanded="false">
-          <h3>Sistema de Alerta Precoce (SAPED)</h3><span class="chevron">▾</span>
-        </button>
-        <div class="card-content">
-          <p>Enquanto o IPI é uma fotografia estática, o SAPED acompanha eventos ao longo do tempo. Quatro níveis de alerta:</p>
-          <ul>
-            <li><strong>Verde:</strong> estabilidade relativa.</li>
-            <li><strong>Amarelo:</strong> indícios que exigem esclarecimento.</li>
-            <li><strong>Laranja:</strong> evidências consistentes de deterioração.</li>
-            <li><strong>Vermelho:</strong> comprometimento grave e iminente.</li>
-          </ul>
-          <p>Cada evento deve ser registrado com fonte primária, verificação independente, distinção entre fato, alegação e inferência.</p>
-        </div>
-      </article>
-
-      <article class="card">
-        <button class="card-toggle" aria-expanded="false">
-          <h3>Arquitetura da preservação institucional</h3><span class="chevron">▾</span>
-        </button>
-        <div class="card-content">
-          <p>Cinco elementos complementares: IPI, SAPED, registro verificável de eventos, infraestrutura de transparência e rede de participação cívica.</p>
-          <p>Nenhum elemento isolado é suficiente. Um índice sem dados é abstração; um alerta sem critérios é alarme falso; uma plataforma sem auditoria é caixa-preta.</p>
-        </div>
-      </article>
-
-      <article class="card">
-        <button class="card-toggle" aria-expanded="false">
-          <h3>Estudos de caso comparados</h3><span class="chevron">▾</span>
-        </button>
-        <div class="card-content">
-          <p><strong>Hungria (2010–2026):</strong> supermaioria de dois terços permitiu nova Lei Fundamental (2011), redução do Tribunal Constitucional de 15 para 11 juízes, aposentadoria compulsória de 274 magistrados e redesenho distrital.</p>
-          <p><strong>Polônia (2015–2023):</strong> sem supermaioria, o PiS usou leis ordinárias para paralisar o Tribunal Constitucional, criar a Câmara Disciplinar e controlar o Conselho Nacional da Magistratura.</p>
-          <p><strong>Venezuela:</strong> refundação constitucional (1999) seguida de concentração progressiva de poder, controle do TSJ e do CNE.</p>
-          <p><strong>Turquia:</strong> após o golpe de 2016, estado de emergência, purgas no Judiciário, universidades e mídia.</p>
-        </div>
-      </article>
-    </div>
-  </div>
-</section>
-
-<section id="biblioteca" class="section section-alt">
-  <div class="container">
-    <h2>Biblioteca</h2>
-    <p class="lead">Referências centrais que fundamentam a obra.</p>
-
-    <div class="cards">
-      <article class="card">
-        <button class="card-toggle" aria-expanded="false">
-          <h3>Erosão democrática e legalismo autocrático</h3><span class="chevron">▾</span>
-        </button>
-        <div class="card-content">
-          <ul>
-            <li>BERMEO, Nancy. <em>On democratic backsliding</em>. Journal of Democracy, 2016.</li>
-            <li>SCHEPPELE, Kim Lane. <em>Autocratic Legalism</em>. University of Chicago Law Review, 2018.</li>
-            <li>LANDAU, David. <em>Abusive Constitutionalism</em>. UC Davis Law Review, 2013.</li>
-            <li>LEVITSKY, Steven; ZIBLATT, Daniel. <em>How Democracies Die</em>. 2018.</li>
-            <li>GINSBURG, Tom; HUQ, Aziz Z. <em>How to Save a Constitutional Democracy</em>. 2018.</li>
-          </ul>
-        </div>
-      </article>
-
-      <article class="card">
-        <button class="card-toggle" aria-expanded="false">
-          <h3>Teoria constitucional e limites à reforma</h3><span class="chevron">▾</span>
-        </button>
-        <div class="card-content">
-          <ul>
-            <li>ROZNAI, Yaniv. <em>Unconstitutional Constitutional Amendments</em>. Oxford, 2017.</li>
-            <li>SUPREME COURT OF INDIA. <em>Kesavananda Bharati v. State of Kerala</em> (1973).</li>
-            <li>ALEMANHA. <em>Grundgesetz</em>, art. 79, § 3º (cláusula de eternidade).</li>
-            <li>BRASIL. Constituição Federal de 1988, art. 60, § 4º.</li>
-          </ul>
-        </div>
-      </article>
-
-      <article class="card">
-        <button class="card-toggle" aria-expanded="false">
-          <h3>Republicanismo e não-dominação</h3><span class="chevron">▾</span>
-        </button>
-        <div class="card-content">
-          <ul>
-            <li>PETTIT, Philip. <em>Republicanismo: uma teoria da liberdade e do governo</em>. 2019.</li>
-            <li>SKINNER, Quentin. <em>Liberdade antes do Liberalismo</em>. 1999.</li>
-          </ul>
-        </div>
-      </article>
-
-      <article class="card">
-        <button class="card-toggle" aria-expanded="false">
-          <h3>Populismo e desinformação</h3><span class="chevron">▾</span>
-        </button>
-        <div class="card-content">
-          <ul>
-            <li>MUDDE, Cas; ROVIRA KALTWASSER, Cristóbal. <em>Populismo: uma breve introdução</em>. 2019.</li>
-            <li>MBEMBE, Achille. <em>Necropolítica</em>.</li>
-            <li>ALMEIDA, Silvio Luiz de. <em>Racismo estrutural</em>. 2019.</li>
-          </ul>
-        </div>
-      </article>
-
-      <article class="card">
-        <button class="card-toggle" aria-expanded="false">
-          <h3>Desobediência civil</h3><span class="chevron">▾</span>
-        </button>
-        <div class="card-content">
-          <ul>
-            <li>THOREAU, Henry David. <em>A Desobediência Civil</em> (1849).</li>
-            <li>RAWLS, John. <em>Uma Teoria da Justiça</em> (1971).</li>
-            <li>KING JR., Martin Luther. <em>Letter from Birmingham Jail</em> (1963).</li>
-            <li>ARENDT, Hannah. <em>Crises da República</em>.</li>
-          </ul>
-        </div>
-      </article>
-    </div>
-  </div>
-</section>
-
-<section id="autor" class="section">
-  <div class="container">
-    <h2>Sobre o Autor</h2>
-    <div class="author-block">
-      <p><strong>José Erigutemberg Meneses de Lima</strong> é advogado, economista, jurista e pesquisador. Com formação interdisciplinar, une a técnica jurídica à análise econômica e comportamental.</p>
-      <p>Sua obra <em>A Tirania Constitucional</em> surge da necessidade de compreender como maiorias eleitas podem, licitamente, desmantelar as salvaguardas da liberdade. O autor defende que a democracia não sobrevive apenas de votos, mas de instituições vivas e vigilantes.</p>
-      <p class="author-note">Identificadores acadêmicos e produção científica podem ser adicionados aqui (ORCID, Lattes, Google Scholar).</p>
-    </div>
-  </div>
-</section>
-
-<footer class="site-footer">
-  <div class="container">
-    <p>A Tirania Constitucional · Erigutemberg Meneses · 2026</p>
-    <p>Licença CC BY 4.0 · Publicado em GitHub Pages e preservado no Zenodo</p>
-  </div>
-</footer>
-
-<script>
-(function () {
-  // Menu móvel
-  var menuToggle = document.querySelector('.menu-toggle');
-  var mainNav = document.querySelector('.main-nav');
-
-  if (menuToggle && mainNav) {
-    menuToggle.addEventListener('click', function () {
-      var expanded = menuToggle.getAttribute('aria-expanded') === 'true';
-      menuToggle.setAttribute('aria-expanded', String(!expanded));
-      mainNav.classList.toggle('open');
-    });
-
-    document.querySelectorAll('.main-nav a').forEach(function (link) {
-      link.addEventListener('click', function () {
-        mainNav.classList.remove('open');
-        menuToggle.setAttribute('aria-expanded', 'false');
-      });
-    });
-  }
-
-  // Cards expansíveis
-  document.querySelectorAll('.card-toggle').forEach(function (button) {
-    button.addEventListener('click', function () {
-      var expanded = button.getAttribute('aria-expanded') === 'true';
-      button.setAttribute('aria-expanded', String(!expanded));
-      var content = button.nextElementSibling;
-      if (content) content.classList.toggle('open', !expanded);
-    });
-  });
-
-  // Calculadora IPI
-  var inputs = ['d1', 'd2', 'd3', 'd4', 'd5'].map(function (id) {
-    return document.getElementById(id);
-  });
-  var labels = ['d1v', 'd2v', 'd3v', 'd4v', 'd5v'].map(function (id) {
-    return document.getElementById(id);
-  });
-  var result = document.getElementById('ipiResult');
-  var pesos = [0.25, 0.20, 0.20, 0.20, 0.15];
-
-  function fmt(n) {
-    return n.toFixed(1).replace('.', ',');
-  }
-
-  function classificar(v) {
-    if (v < 4) return 'Preservação institucional muito comprometida';
-    if (v < 6) return 'Preservação institucional fragilizada';
-    if (v < 8) return 'Preservação institucional intermediária';
-    return 'Preservação institucional relativamente elevada';
-  }
-
-  function atualizar() {
-    var soma = 0;
-    inputs.forEach(function (input, i) {
-      var v = parseFloat(input.value) || 0;
-      labels[i].textContent = fmt(v);
-      soma += v * pesos[i];
-    });
-    result.textContent = 'IPI = ' + soma.toFixed(2).replace('.', ',') + ' — ' + classificar(soma);
-  }
-
-  inputs.forEach(function (input) {
-    if (input) input.addEventListener('input', atualizar);
-  });
-
-  if (inputs.every(Boolean) && result) atualizar();
-
-  // Abre card se a URL tiver hash correspondente
-  window.addEventListener('load', function () {
-    if (window.location.hash) {
-      var target = document.querySelector(window.location.hash);
-      if (target) {
-        var btn = target.querySelector('.card-toggle');
-        if (btn && btn.getAttribute('aria-expanded') === 'false') btn.click();
-      }
-    }
-  });
-})();
-</script>
+    <!-- RODAPÉ -->
+    <footer class="site-footer">
+        <p>Licença CC BY 4.0 · Publicado em GitHub Pages e Zenodo</p>
+        <p>&copy; 2026 Erigutemberg Meneses. Todos os direitos reservados.</p>
+    </footer>
 
 </body>
 </html>
