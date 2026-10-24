@@ -1,377 +1,320 @@
-/* =========================================================
-   A Tirania Constitucional — Fundo com a Capa do Livro
-   ========================================================= */
-
+/* ==========================================================================
+   1. RESET E VARIÁVEIS DE COR (Paleta da Capa)
+   ========================================================================== */
 :root {
-  --bg-preto: #050505;
-  --bg-card: #111111;
-  --bg-strip: #0A0A0A;
-  --vermelho: #C1121F;
-  --vermelho-hover: #8B0000;
-  --dourado: #C9A227;
-  --texto-principal: #E8E8E8;
-  --texto-mutado: #999999;
-  --borda: #222222;
-
-  --fonte-titulo: 'Cinzel', serif;
-  --fonte-subtitulo: 'Lora', serif;
-  --fonte-corpo: 'Inter', sans-serif;
+  --cor-preto-fundo: #0a0a0a;
+  --cor-preto-card: rgba(18, 18, 18, 0.95); /* Fundo escuro semi-transparente */
+  --cor-vermelho: #d32f2f; /* Vermelho da capa */
+  --cor-vermelho-hover: #b71c1c;
+  --cor-texto-claro: #f5f5f5;
+  --cor-texto-mutado: #b0b0b0;
+  --cor-borda: rgba(211, 47, 47, 0.3);
+  --fonte-titulo: 'Georgia', 'Times New Roman', serif;
+  --fonte-texto: 'Helvetica Neue', Arial, sans-serif;
 }
 
-* { box-sizing: border-box; margin: 0; padding: 0; }
-html { scroll-behavior: smooth; }
+/* Força o reset em elementos que temas do GitHub costumam estilizar */
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center, dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend, table, caption,
+tbody, tfoot, thead, tr, th, td, article, aside,
+canvas, details, embed, figure, figcaption, footer,
+header, hgroup, menu, nav, output, ruby, section,
+summary, time, mark, audio, video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline;
+}
 
-body {
-  font-family: var(--fonte-corpo);
-  background-color: var(--bg-preto);
-  color: var(--texto-principal);
-  line-height: 1.8;
-  font-size: 17px;
+/* ==========================================================================
+   2. FUNDO FIXO COM A CAPA DO LIVRO
+   ========================================================================== */
+html, body {
+  height: 100%;
+  background-color: var(--cor-preto-fundo) !important;
+  color: var(--cor-texto-claro) !important;
+  font-family: var(--fonte-texto);
+  line-height: 1.7;
   -webkit-font-smoothing: antialiased;
 }
 
-.container {
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 0 24px;
+body {
+  /* ATENÇÃO: Substitua 'capa.jpg' pelo caminho real da sua imagem */
+  background-image: url('../images/capa.jpg') !important; 
+  background-size: cover !important;
+  background-position: center top !important;
+  background-attachment: fixed !important;
+  background-repeat: no-repeat !important;
+  overflow-x: hidden;
 }
 
-/* Acessibilidade: esconde visualmente, mas mantém para SEO/Leitores de Tela */
-.sr-only {
-  position: absolute;
-  width: 1px; height: 1px;
-  padding: 0; margin: -1px;
-  overflow: hidden;
-  clip: rect(0, 0, 0, 0);
-  white-space: nowrap;
-  border-width: 0;
-}
-
-/* ---------- HERO COM FUNDO DA CAPA ---------- */
-.hero-bg-cover {
-  position: relative;
-  min-height: 100vh; /* Ocupa a tela inteira */
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-end; /* Joga o conteúdo para baixo */
-  padding-bottom: 80px;
-  
-  /* AQUI ESTÁ A CAPA COMO FUNDO */
-  background-image: url('../../capa.jpg'); /* Caminho relativo da pasta CSS para a raiz */
-  background-size: cover;
-  background-position: center top;
-  background-repeat: no-repeat;
-  background-attachment: fixed; /* Efeito Parallax sutil */
-}
-
-/* Overlay escuro para garantir a leitura dos botões */
-.hero-overlay {
-  position: absolute;
-  top: 0; left: 0; width: 100%; height: 100%;
+/* Overlay escuro para garantir a leitura do texto sobre a imagem */
+body::before {
+  content: "";
+  position: fixed;
+  top: 0; left: 0; width: 100vw; height: 100vh;
   background: linear-gradient(
-    to bottom,
-    rgba(5, 5, 5, 0.1) 0%,    /* Topo quase transparente para mostrar o título da capa */
-    rgba(5, 5, 5, 0.6) 60%,   /* Meio escurecendo */
-    rgba(5, 5, 5, 0.95) 100%  /* Base quase sólida para os botões e transição */
-  );
-  z-index: 1;
+    135deg, 
+    rgba(5, 5, 5, 0.92) 0%, 
+    rgba(15, 15, 15, 0.85) 50%, 
+    rgba(5, 5, 5, 0.95) 100%
+  ) !important;
+  z-index: -1;
+  pointer-events: none;
 }
 
-.hero-content {
-  position: relative;
-  z-index: 2;
-  text-align: center;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+/* Anula fundos brancos de templates (Jekyll/Minima) */
+.wrapper, .page-content, .site-header, .site-footer, main, .container {
+  background: transparent !important;
+  background-color: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
 }
 
-.hero-label {
-  display: flex;
-  align-items: center;
-  gap: 16px;
-  margin-bottom: 32px;
-  background: rgba(0, 0, 0, 0.6);
-  padding: 8px 24px;
-  border-radius: 40px;
-  backdrop-filter: blur(4px);
-  border: 1px solid rgba(201, 162, 39, 0.3);
+/* ==========================================================================
+   3. CABEÇALHO (NAVEGAÇÃO)
+   ========================================================================== */
+.site-header, header, nav {
+  background-color: rgba(10, 10, 10, 0.98) !important;
+  border-bottom: 2px solid var(--cor-vermelho) !important;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  padding: 15px 0;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.8);
 }
-.hero-label .line {
-  width: 30px; height: 2px;
-  background: var(--dourado);
-}
-.hero-label span {
-  color: var(--dourado);
-  font-size: 0.8rem;
-  letter-spacing: 4px;
+
+.site-title, .site-title a, header h1, nav .logo {
+  color: var(--cor-texto-claro) !important;
+  font-family: var(--fonte-titulo);
+  font-weight: bold;
+  letter-spacing: 1px;
   text-transform: uppercase;
-  font-weight: 600;
-}
-
-.hero-actions { 
-  display: flex; 
-  gap: 16px; 
-  flex-wrap: wrap; 
-  justify-content: center;
-}
-
-.btn {
-  display: inline-block;
-  padding: 16px 36px;
-  font-family: var(--fonte-corpo);
-  font-weight: 600;
   text-decoration: none;
-  font-size: 0.9rem;
-  text-transform: uppercase;
-  letter-spacing: 1px;
-  transition: all 0.3s ease;
-  border: 2px solid transparent;
-  border-radius: 2px;
-  text-align: center;
-  backdrop-filter: blur(4px);
-}
-.btn-red {
-  background: var(--vermelho);
-  color: #FFFFFF;
-  border-color: var(--vermelho);
-}
-.btn-red:hover {
-  background: var(--vermelho-hover);
-  border-color: var(--vermelho-hover);
-  transform: translateY(-2px);
-  box-shadow: 0 8px 24px rgba(193, 18, 31, 0.4);
-}
-.btn-gold {
-  background: rgba(0,0,0,0.4);
-  color: var(--dourado);
-  border-color: var(--dourado);
-}
-.btn-gold:hover {
-  background: var(--dourado);
-  color: var(--bg-preto);
-  transform: translateY(-2px);
 }
 
-/* ---------- FICHA TÉCNICA (STRIP) ---------- */
-.ficha-strip {
-  background: var(--bg-strip);
-  border-bottom: 1px solid var(--borda);
-  padding: 24px 0;
+.site-nav .page-link, nav a {
+  color: var(--cor-texto-mutado) !important;
+  font-family: var(--fonte-texto);
   font-size: 0.85rem;
-  color: var(--texto-mutado);
-  border-top: 1px solid var(--borda);
-}
-.ficha-content {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 12px 40px;
-  text-align: center;
-}
-.ficha-content strong { color: var(--dourado); font-weight: 600; }
-
-/* ---------- SEÇÕES ---------- */
-.section { padding: 100px 0; }
-.section-dark { background: var(--bg-strip); }
-.section-title {
-  font-family: var(--fonte-titulo);
-  font-size: 2.2rem;
-  color: #FFFFFF;
-  margin-bottom: 56px;
-  text-align: center;
-  position: relative;
-  padding-bottom: 20px;
-  letter-spacing: 1px;
-}
-.section-title::after {
-  content: '';
-  position: absolute;
-  bottom: 0; left: 50%;
-  transform: translateX(-50%);
-  width: 60px; height: 3px;
-  background: var(--vermelho);
-}
-
-/* ---------- CARDS ---------- */
-.cards-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-  gap: 32px;
-}
-.card {
-  background: var(--bg-card);
-  border: 1px solid var(--borda);
-  border-radius: 4px;
-  padding: 40px 32px;
-  transition: all 0.3s ease;
-  position: relative;
-  overflow: hidden;
-}
-.card::before {
-  content: '';
-  position: absolute;
-  top: 0; left: 0; width: 100%; height: 2px;
-  background: var(--dourado);
-  transform: scaleX(0);
-  transform-origin: left;
-  transition: transform 0.3s ease;
-}
-.card:hover::before { transform: scaleX(1); }
-.card:hover {
-  transform: translateY(-6px);
-  border-color: rgba(201, 162, 39, 0.3);
-  box-shadow: 0 10px 30px rgba(0,0,0,0.5);
-}
-.card-featured { border-color: rgba(193, 18, 31, 0.3); }
-.card-featured::before { background: var(--vermelho); }
-.card-icon { font-size: 2rem; margin-bottom: 20px; filter: grayscale(1); opacity: 0.8; }
-.card-title {
-  font-family: var(--fonte-titulo);
-  font-size: 1.3rem;
-  color: var(--dourado);
-  margin-bottom: 12px;
-  font-weight: 700;
-}
-.card-subtitle {
-  font-family: var(--fonte-subtitulo);
-  font-style: italic;
-  color: var(--vermelho);
-  margin-bottom: 20px;
-  font-size: 1rem;
-}
-.card-text { color: var(--texto-mutado); text-align: justify; font-size: 0.95rem; }
-.card-list { list-style: none; padding: 0; }
-.card-list li {
-  margin-bottom: 16px;
-  padding-left: 20px;
-  position: relative;
-  text-align: justify;
-  font-size: 0.95rem;
-  color: var(--texto-mutado);
-}
-.card-list li strong { color: var(--texto-principal); }
-.card-list li::before {
-  content: '■';
-  position: absolute;
-  left: 0; top: 8px;
-  color: var(--vermelho);
-  font-size: 0.5rem;
-}
-.card-badges { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 24px; }
-.badge {
-  color: var(--dourado);
-  border: 1px solid rgba(201, 162, 39, 0.4);
-  font-size: 0.7rem;
-  padding: 6px 14px;
-  border-radius: 2px;
   font-weight: 600;
-  letter-spacing: 1px;
   text-transform: uppercase;
+  letter-spacing: 1.5px;
+  margin-left: 20px;
+  transition: color 0.3s ease;
 }
 
-/* ---------- AUTOR ---------- */
-.section-author { border-top: 1px solid var(--borda); }
-.author-block {
-  display: grid;
-  grid-template-columns: 280px 1fr;
-  gap: 60px;
-  align-items: center;
+.site-nav .page-link:hover, nav a:hover {
+  color: var(--cor-vermelho) !important;
 }
-.author-photo-wrap {
+
+/* ==========================================================================
+   4. CARDS DE CONTEÚDO (ROLAGEM SOBRE A CAPA)
+   ========================================================================== */
+section, article, .post, .post-content, .card {
+  background-color: var(--cor-preto-card) !important;
+  backdrop-filter: blur(10px); /* Efeito de vidro embaçado */
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.05) !important;
+  border-left: 5px solid var(--cor-vermelho) !important; /* Detalhe vermelho */
+  border-radius: 8px;
+  padding: 40px 50px;
+  margin: 40px auto;
+  max-width: 950px;
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.9);
   position: relative;
-  width: 280px; height: 280px;
-  border-radius: 50%;
-  overflow: hidden;
-  border: 2px solid var(--dourado);
-  box-shadow: 0 0 30px rgba(201, 162, 39, 0.1);
-  background: var(--bg-card);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin: 0 auto;
+  z-index: 10;
 }
-.author-photo { width: 100%; height: 100%; object-fit: cover; }
-.author-initials {
-  position: absolute;
-  font-family: var(--fonte-titulo);
-  font-size: 5rem;
-  color: var(--dourado);
-  z-index: 0;
-}
-.no-photo .author-initials { z-index: 1; }
 
-.author-name {
+/* ==========================================================================
+   5. TIPOGRAFIA (Títulos, Parágrafos, Listas)
+   ========================================================================== */
+h1, h2, h3, h4, h5, h6 {
   font-family: var(--fonte-titulo);
-  font-size: 2rem;
-  color: #FFFFFF;
-  margin-bottom: 8px;
-}
-.author-role {
-  color: var(--vermelho);
+  color: var(--cor-texto-claro) !important;
   font-weight: 700;
-  text-transform: uppercase;
-  font-size: 0.85rem;
-  letter-spacing: 2px;
-  margin-bottom: 24px;
-}
-.author-bio {
-  color: var(--texto-mutado);
-  text-align: justify;
-  margin-bottom: 40px;
-  font-size: 1rem;
-}
-.author-bio strong, .author-bio em { color: var(--dourado); }
-
-.author-audio {
-  background: var(--bg-card);
-  border-left: 3px solid var(--vermelho);
-  padding: 24px 32px;
-  border-radius: 2px;
-}
-.audio-caption {
-  color: var(--texto-principal);
-  margin-bottom: 16px;
-  font-size: 0.95rem;
-}
-.audio-caption strong { color: var(--dourado); }
-.audio-player {
-  width: 100%;
-  max-width: 480px;
-  filter: invert(1) hue-rotate(180deg);
-  border-radius: 30px;
+  margin-top: 1.5em;
+  margin-bottom: 0.8em;
+  line-height: 1.3;
 }
 
-@media (max-width: 768px) {
-  .author-block { grid-template-columns: 1fr; text-align: center; gap: 40px; }
-  .author-bio { text-align: left; }
-}
-
-/* ---------- FOOTER ---------- */
-.site-footer {
-  background: #000000;
-  color: var(--texto-mutado);
-  padding: 60px 0;
+h1 {
+  font-size: 2.8rem;
   text-align: center;
-  border-top: 1px solid var(--borda);
+  color: #ffffff !important;
+  text-shadow: 2px 2px 8px rgba(0,0,0,0.8);
+  margin-top: 60px;
 }
-.footer-title {
-  font-family: var(--fonte-titulo);
-  color: var(--dourado);
-  font-size: 1.2rem;
-  margin-bottom: 12px;
-}
-.footer-meta { font-size: 0.9rem; margin-bottom: 8px; }
-.footer-meta a { color: var(--texto-principal); text-decoration: none; border-bottom: 1px solid var(--vermelho); }
-.footer-meta a:hover { color: var(--dourado); }
-.footer-small { font-size: 0.8rem; opacity: 0.6; margin-top: 16px; }
 
-/* Responsivo Mobile */
-@media (max-width: 768px) {
-  .hero-bg-cover {
-    background-attachment: scroll; /* Melhora performance no celular */
-    min-height: 85vh;
+h2 {
+  font-size: 2rem;
+  border-bottom: 2px solid var(--cor-vermelho);
+  padding-bottom: 10px;
+  display: inline-block;
+  margin-top: 2em;
+}
+
+h3 {
+  font-size: 1.5rem;
+  color: var(--cor-vermelho) !important; /* Subtítulos em vermelho */
+}
+
+p, li, dd, dt {
+  font-family: var(--fonte-texto);
+  color: var(--cor-texto-mutado) !important;
+  font-size: 1.1rem;
+  margin-bottom: 1.2em;
+  text-align: justify;
+}
+
+/* Destaques no texto */
+strong, b {
+  color: var(--cor-texto-claro) !important;
+  font-weight: bold;
+}
+
+em, i {
+  color: var(--cor-vermelho) !important;
+  font-style: italic;
+}
+
+/* Listas com marcadores vermelhos */
+ul, ol {
+  padding-left: 20px;
+  margin-bottom: 1.5em;
+}
+
+ul li::marker, ol li::marker {
+  color: var(--cor-vermelho);
+  font-weight: bold;
+}
+
+/* ==========================================================================
+   6. LINKS E BOTÕES
+   ========================================================================== */
+a {
+  color: var(--cor-vermelho) !important;
+  text-decoration: none;
+  transition: all 0.3s ease;
+}
+
+a:hover {
+  color: #ffffff !important;
+  text-decoration: underline;
+}
+
+/* Botões (Se houver classes específicas no seu HTML) */
+.btn, .button, button, input[type="submit"] {
+  display: inline-block;
+  background-color: var(--cor-vermelho) !important;
+  color: #ffffff !important;
+  font-family: var(--fonte-texto);
+  font-weight: bold;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  padding: 15px 30px;
+  border: 2px solid var(--cor-vermelho) !important;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-decoration: none;
+  margin: 10px 5px;
+}
+
+.btn:hover, .button:hover, button:hover, input[type="submit"]:hover {
+  background-color: transparent !important;
+  color: var(--cor-vermelho) !important;
+  box-shadow: 0 0 15px rgba(211, 47, 47, 0.4);
+}
+
+/* Botão Secundário (Outline) */
+.btn-outline, .btn-secondary {
+  background-color: transparent !important;
+  color: var(--cor-texto-claro) !important;
+  border: 2px solid var(--cor-texto-claro) !important;
+}
+
+.btn-outline:hover, .btn-secondary:hover {
+  border-color: var(--cor-vermelho) !important;
+  color: var(--cor-vermelho) !important;
+}
+
+/* ==========================================================================
+   7. MÍDIA E ELEMENTOS ESPECÍFICOS
+   ========================================================================== */
+audio {
+  width: 100%;
+  margin: 20px 0;
+  border-radius: 30px;
+  background-color: #000;
+  border: 1px solid var(--cor-borda);
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 4px;
+}
+
+/* Citação / Blockquote */
+blockquote {
+  border-left: 4px solid var(--cor-vermelho);
+  padding-left: 20px;
+  margin: 20px 0;
+  font-style: italic;
+  color: var(--cor-texto-claro) !important;
+  background: rgba(255, 255, 255, 0.03);
+  padding: 20px;
+  border-radius: 0 8px 8px 0;
+}
+
+/* Rodapé */
+.site-footer, footer {
+  background-color: rgba(10, 10, 10, 0.98) !important;
+  border-top: 1px solid var(--cor-borda) !important;
+  color: var(--cor-texto-mutado) !important;
+  text-align: center;
+  padding: 30px 0;
+  margin-top: 60px;
+}
+
+/* ==========================================================================
+   8. RESPONSIVIDADE (Celulares e Tablets)
+   ========================================================================== */
+@media screen and (max-width: 768px) {
+  body {
+    background-attachment: scroll !important; /* Melhora a performance no mobile */
   }
-  .hero-label { flex-direction: column; gap: 8px; text-align: center; }
-  .hero-label .line { display: none; }
+  
+  section, article, .post, .post-content, .card {
+    padding: 25px 20px;
+    margin: 20px 10px;
+    border-left: 3px solid var(--cor-vermelho) !important;
+  }
+
+  h1 {
+    font-size: 2rem;
+  }
+
+  h2 {
+    font-size: 1.5rem;
+  }
+
+  p, li {
+    font-size: 1rem;
+    text-align: left; /* Justificar em telas pequenas dificulta a leitura */
+  }
+  
+  .btn, .button {
+    width: 100%;
+    margin: 10px 0;
+    text-align: center;
+  }
 }
