@@ -15,7 +15,7 @@
    FUNDO FIXO COM A CAPA DO LIVRO
    ========================================= */
 body {
-  /* Substitua 'caminho-da-sua-imagem.jpg' pelo caminho real da imagem da capa */
+  /* Substitua 'capa.jpg' pelo caminho real da imagem da capa */
   background-image: url('capa.jpg'); 
   background-size: cover;
   background-position: center center;
