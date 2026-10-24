@@ -16,7 +16,7 @@
    ========================================= */
 body {
   /* Substitua 'capa.jpg' pelo caminho real da imagem da capa */
-  background-image: url('assets/capa.jpg'); 
+  background-image: url('capa.jpg'); 
   background-size: cover;
   background-position: center center;
   background-attachment: fixed; /* Isso mantém a imagem fixa enquanto rola */
@@ -177,4 +177,19 @@ audio {
   border-radius: 30px;
   /* O player nativo não aceita muitas cores, mas o background ajuda */
   background-color: var(--preto-fundo); 
+}
+/* Força o fundo em containers comuns de templates */
+.page-content, 
+.wrapper, 
+main {
+    background: transparent !important;
+    background-color: transparent !important;
+}
+
+/* Garante que o body e html tenham a imagem */
+html, body {
+    background-image: url('capa.jpg') !important; 
+    background-attachment: fixed !important;
+    background-size: cover !important;
+    background-color: #0a0a0a !important;
 }
