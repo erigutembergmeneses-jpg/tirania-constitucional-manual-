@@ -1,695 +1,569 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  
-  <title>A Tirania Constitucional & Cap. 9 — Erigutemberg Meneses</title>
-  <meta name="description" content="Obra completa e Repositório Digital do Capítulo 9: Alerta Precoce e Monitoramento da Preservação Institucional.">
-  <meta name="author" content="Erigutemberg Meneses">
-  
-  <!-- Open Graph / Social Media -->
-  <meta property="og:title" content="A Tirania Constitucional — Erigutemberg Meneses">
-  <meta property="og:description" content="Como a legalidade pode enfraquecer a democracia. Inclui metodologias IPI e SAPED.">
-  <meta property="og:image" content="capa.jpg">
-  <meta property="og:type" content="website">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>A Tirania Constitucional — Erigutemberg Meneses</title>
+<meta name="description" content="Portal acadêmico da obra A Tirania Constitucional: como a legalidade pode enfraquecer a democracia e o papel do novo institucionalismo na preservação da liberdade.">
+<style>
+:root {
+  --preto: #111;
+  --branco: #fff;
+  --cinza: #f4f4f4;
+  --cinza-escuro: #666;
+  --vermelho: #7a1f1f;
+  --borda: #ddd;
+  --largura: 1100px;
+}
 
-  <!-- Fonts -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700;900&family=Lora:ital,wght@0,400;0,600;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+* { box-sizing: border-box; margin: 0; padding: 0; }
 
-  <style>
-    /* ===================== VARIÁVEIS E RESET ===================== */
-    :root {
-      --bg-dark: #0f0f11;
-      --bg-card: #1c1c1f;
-      --text-main: #e0e0e0;
-      --text-muted: #a0a0a0;
-      --accent-red: #d32f2f;
-      --accent-gold: #c5a058;
-      --border-color: #333;
-      --font-serif: 'Lora', serif;
-      --font-sans: 'Inter', sans-serif;
-      --font-display: 'Cinzel', serif;
-    }
+html { scroll-behavior: smooth; }
 
-    * { margin: 0; padding: 0; box-sizing: border-box; }
-    
-    body {
-      background-color: var(--bg-dark);
-      color: var(--text-main);
-      font-family: var(--font-sans);
-      line-height: 1.6;
-      overflow-x: hidden;
-    }
+body {
+  font-family: Georgia, 'Times New Roman', serif;
+  color: var(--preto);
+  background: var(--branco);
+  line-height: 1.7;
+  font-size: 17px;
+}
 
-    a { text-decoration: none; color: inherit; transition: 0.3s; }
-    ul { list-style: none; }
-    
-    .container {
-      max-width: 1200px;
-      margin: 0 auto;
-      padding: 0 20px;
-    }
+.container { max-width: var(--largura); margin: 0 auto; padding: 0 24px; }
 
-    .sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0, 0, 0, 0); white-space: nowrap; border-width: 0; }
+/* HEADER */
+.site-header {
+  border-bottom: 1px solid var(--borda);
+  position: sticky; top: 0; background: var(--branco); z-index: 100;
+}
+.header-inner {
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 16px 24px; max-width: var(--largura); margin: 0 auto;
+}
+.brand { text-decoration: none; color: var(--preto); display: flex; flex-direction: column; }
+.brand-title { font-weight: 700; font-size: 1.05rem; letter-spacing: 0.02em; }
+.brand-sub { font-size: 0.8rem; color: var(--cinza-escuro); }
 
-    /* ===================== HERO SECTION ===================== */
-    .hero-bg-cover {
-      position: relative;
-      min-height: 100vh;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      /* Usa a imagem da capa como fundo */
-      background-image: url('capa.jpg'); 
-      background-size: cover;
-      background-position: center;
-      background-repeat: no-repeat;
-      background-attachment: fixed; /* Efeito parallax sutil */
-    }
+.main-nav ul { list-style: none; display: flex; gap: 24px; }
+.main-nav a {
+  text-decoration: none; color: var(--preto); font-size: 0.95rem;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+}
+.main-nav a:hover { text-decoration: underline; }
 
-    .hero-overlay {
-      position: absolute;
-      top: 0; left: 0; right: 0; bottom: 0;
-      background: linear-gradient(to bottom, rgba(15,15,17,0.7), rgba(15,15,17,0.9));
-      z-index: 1;
-    }
+.menu-toggle {
+  display: none; background: none; border: none; font-size: 1.4rem; cursor: pointer;
+}
 
-    .hero-content {
-      position: relative;
-      z-index: 2;
-      text-align: center;
-      padding-top: 50px;
-    }
+/* HERO */
+.hero {
+  padding: 96px 0 80px; text-align: center; border-bottom: 1px solid var(--borda);
+}
+.eyebrow {
+  font-family: -apple-system, sans-serif; text-transform: uppercase;
+  letter-spacing: 0.12em; font-size: 0.75rem; color: var(--cinza-escuro);
+  margin-bottom: 20px;
+}
+.hero h1 { font-size: 3rem; line-height: 1.15; margin-bottom: 20px; }
+.subtitle { font-size: 1.25rem; max-width: 720px; margin: 0 auto 24px; color: #333; }
+.author { font-style: italic; color: var(--cinza-escuro); margin-bottom: 32px; }
+.hero-actions { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; }
+.btn {
+  display: inline-block; padding: 12px 28px; text-decoration: none;
+  font-family: -apple-system, sans-serif; font-size: 0.95rem;
+  border: 1px solid var(--preto); transition: all 0.2s;
+}
+.btn-primary { background: var(--preto); color: var(--branco); }
+.btn-primary:hover { background: #333; }
+.btn-outline { color: var(--preto); }
+.btn-outline:hover { background: var(--cinza); }
+.license { margin-top: 40px; font-size: 0.8rem; color: var(--cinza-escuro); font-family: -apple-system, sans-serif; }
 
-    .hero-label {
-      display: inline-flex;
-      align-items: center;
-      gap: 10px;
-      font-family: var(--font-display);
-      letter-spacing: 2px;
-      text-transform: uppercase;
-      font-size: 0.9rem;
-      color: var(--accent-gold);
-      margin-bottom: 20px;
-    }
+/* SEÇÕES */
+.section { padding: 80px 0; }
+.section-alt { background: var(--cinza); }
+.section h2 { font-size: 2rem; margin-bottom: 16px; }
+.lead { font-size: 1.1rem; color: #444; max-width: 720px; margin-bottom: 40px; }
 
-    .hero-label .line {
-      width: 30px;
-      height: 1px;
-      background: var(--accent-gold);
-    }
+/* CARDS */
+.cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 24px; }
+.card { border: 1px solid var(--borda); background: var(--branco); }
+.card-toggle {
+  width: 100%; display: flex; justify-content: space-between; align-items: center;
+  padding: 20px; background: none; border: none; cursor: pointer; text-align: left;
+  font-family: inherit;
+}
+.card-toggle h3 { font-size: 1.1rem; font-weight: 700; }
+.chevron { transition: transform 0.2s; font-size: 0.9rem; }
+.card-toggle[aria-expanded="true"] .chevron { transform: rotate(180deg); }
+.card-content {
+  display: none; padding: 0 20px 20px; font-size: 0.98rem; color: #333;
+}
+.card-content.open { display: block; }
+.card-content p { margin-bottom: 12px; }
+.card-content ul { margin: 8px 0 12px 20px; }
+.card-content li { margin-bottom: 6px; }
+.card-content strong { font-weight: 700; }
+.card-content em { font-style: italic; }
 
-    .main-title {
-      font-family: var(--font-display);
-      font-size: clamp(2.5rem, 5vw, 4.5rem);
-      font-weight: 900;
-      line-height: 1.1;
-      margin-bottom: 10px;
-      text-shadow: 0 4px 10px rgba(0,0,0,0.5);
-    }
+/* CALCULADORA IPI */
+.ipi-calc { margin-top: 16px; }
+.ipi-row {
+  display: grid; grid-template-columns: 1fr 60px; gap: 12px;
+  align-items: center; margin-bottom: 10px;
+  font-family: -apple-system, sans-serif; font-size: 0.9rem;
+}
+.ipi-row input[type="range"] { width: 100%; }
+.ipi-result {
+  margin-top: 16px; padding: 12px; background: var(--cinza);
+  border-left: 3px solid var(--preto); font-family: -apple-system, sans-serif;
+  font-size: 0.95rem;
+}
+.ipi-note { font-size: 0.8rem; color: var(--cinza-escuro); margin-top: 8px; }
 
-    .main-title span.red { color: var(--accent-red); display: block; }
-    .main-title span.white { color: #fff; }
+/* AUTOR */
+.author-block { max-width: 720px; }
+.author-block p { margin-bottom: 16px; }
+.author-note { font-size: 0.9rem; color: var(--cinza-escuro); font-style: italic; }
 
-    .subtitle {
-      font-family: var(--font-serif);
-      font-style: italic;
-      font-size: 1.2rem;
-      color: var(--text-muted);
-      margin-bottom: 40px;
-      max-width: 600px;
-      margin-left: auto;
-      margin-right: auto;
-    }
+/* FOOTER */
+.site-footer {
+  border-top: 1px solid var(--borda); padding: 32px 0; text-align: center;
+  font-size: 0.85rem; color: var(--cinza-escuro);
+  font-family: -apple-system, sans-serif;
+}
+.site-footer p { margin-bottom: 6px; }
 
-    .hero-actions {
-      display: flex;
-      gap: 20px;
-      justify-content: center;
-      flex-wrap: wrap;
-    }
-
-    .btn {
-      padding: 12px 30px;
-      border-radius: 4px;
-      font-weight: 600;
-      text-transform: uppercase;
-      font-size: 0.9rem;
-      letter-spacing: 1px;
-      cursor: pointer;
-      border: 1px solid transparent;
-    }
-
-    .btn-red { background: var(--accent-red); color: white; }
-    .btn-red:hover { background: #b71c1c; transform: translateY(-2px); }
-    
-    .btn-outline { background: transparent; border-color: var(--accent-gold); color: var(--accent-gold); }
-    .btn-outline:hover { background: var(--accent-gold); color: var(--bg-dark); }
-
-    /* ===================== FICHA TÉCNICA STRIP ===================== */
-    .ficha-strip {
-      background: #151515;
-      border-top: 1px solid var(--border-color);
-      border-bottom: 1px solid var(--border-color);
-      padding: 15px 0;
-      font-size: 0.85rem;
-      color: var(--text-muted);
-    }
-
-    .ficha-content {
-      display: flex;
-      justify-content: space-between;
-      flex-wrap: wrap;
-      gap: 15px;
-    }
-
-    .ficha-item strong { color: var(--text-main); }
-
-    /* ===================== SEÇÕES GERAIS ===================== */
-    .section { padding: 80px 0; }
-    .section-dark { background: var(--bg-dark); }
-    .section-alt { background: #161618; }
-    
-    .section-title {
-      font-family: var(--font-display);
-      font-size: 2rem;
-      text-align: center;
-      margin-bottom: 50px;
-      color: #fff;
-      position: relative;
-    }
-    
-    .section-title::after {
-      content: '';
-      display: block;
-      width: 60px;
-      height: 3px;
-      background: var(--accent-red);
-      margin: 15px auto 0;
-    }
-
-    /* ===================== CARDS GRID ===================== */
-    .cards-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-      gap: 30px;
-    }
-
-    .card {
-      background: var(--bg-card);
-      border: 1px solid var(--border-color);
-      padding: 30px;
-      border-radius: 8px;
-      transition: 0.3s;
-      position: relative;
-      overflow: hidden;
-    }
-
-    .card:hover {
-      border-color: var(--accent-gold);
-      transform: translateY(-5px);
-      box-shadow: 0 10px 30px rgba(0,0,0,0.3);
-    }
-
-    .card-icon { font-size: 2rem; margin-bottom: 15px; opacity: 0.8; }
-    .card-title { font-family: var(--font-display); font-size: 1.3rem; margin-bottom: 10px; color: var(--accent-gold); }
-    .card-subtitle { font-size: 0.9rem; color: var(--text-muted); margin-bottom: 15px; font-style: italic; }
-    .card-text { font-size: 0.95rem; color: #ccc; }
-    
-    .card-list li { margin-bottom: 10px; font-size: 0.95rem; padding-left: 15px; position: relative; }
-    .card-list li::before { content: '•'; color: var(--accent-red); position: absolute; left: 0; }
-
-    .badge {
-      display: inline-block;
-      background: rgba(255,255,255,0.1);
-      padding: 4px 10px;
-      border-radius: 20px;
-      font-size: 0.75rem;
-      margin-top: 15px;
-      margin-right: 5px;
-      border: 1px solid rgba(255,255,255,0.1);
-    }
-
-    /* ===================== AUTOR & AUDIO ===================== */
-    .author-block {
-      display: flex;
-      gap: 40px;
-      align-items: flex-start;
-      background: var(--bg-card);
-      padding: 40px;
-      border-radius: 10px;
-      border: 1px solid var(--border-color);
-    }
-
-    @media (max-width: 768px) {
-      .author-block { flex-direction: column; align-items: center; text-align: center; }
-    }
-
-    .author-photo-wrap {
-      flex-shrink: 0;
-      width: 150px;
-      height: 150px;
-      border-radius: 50%;
-      overflow: hidden;
-      border: 3px solid var(--accent-gold);
-      position: relative;
-      background: #222;
-    }
-
-    .author-photo { width: 100%; height: 100%; object-fit: cover; }
-    .author-initials {
-      position: absolute; top: 0; left: 0; width: 100%; height: 100%;
-      display: flex; align-items: center; justify-content: center;
-      font-family: var(--font-display); font-size: 3rem; color: var(--accent-gold);
-      z-index: -1; /* Fica atrás se houver foto */
-    }
-    .no-photo .author-initials { z-index: 1; } /* Se falhar a foto, mostra iniciais */
-    .no-photo .author-photo { display: none; }
-
-    .author-info h3 { font-family: var(--font-display); font-size: 1.5rem; margin-bottom: 5px; }
-    .author-role { color: var(--accent-red); font-weight: 600; margin-bottom: 15px; font-size: 0.9rem; text-transform: uppercase; letter-spacing: 1px;}
-    .author-bio { margin-bottom: 25px; color: #ddd; }
-
-    .audio-caption { font-size: 0.9rem; color: var(--text-muted); margin-bottom: 10px; font-style: italic; }
-    .audio-player { width: 100%; filter: invert(1) sepia(1) saturate(5) hue-rotate(15deg); /* Estilo customizado simples */ }
-
-    /* ===================== CAPÍTULO 9 (NOVO CONTEÚDO) ===================== */
-    .chapter-header {
-      text-align: center;
-      margin-bottom: 40px;
-      padding-bottom: 20px;
-      border-bottom: 1px dashed var(--border-color);
-    }
-    .chapter-tag {
-      background: var(--accent-red);
-      color: white;
-      padding: 5px 12px;
-      border-radius: 4px;
-      font-size: 0.8rem;
-      font-weight: bold;
-      text-transform: uppercase;
-      display: inline-block;
-      margin-bottom: 15px;
-    }
-    .transparency-note {
-      background: rgba(197, 160, 88, 0.1);
-      border-left: 4px solid var(--accent-gold);
-      padding: 20px;
-      margin-bottom: 40px;
-      font-size: 0.95rem;
-      color: #eee;
-    }
-
-    .methodology-table {
-      width: 100%;
-      border-collapse: collapse;
-      margin: 20px 0;
-      font-size: 0.9rem;
-    }
-    .methodology-table th, .methodology-table td {
-      padding: 12px 15px;
-      text-align: left;
-      border-bottom: 1px solid var(--border-color);
-    }
-    .methodology-table th { color: var(--accent-gold); font-family: var(--font-display); }
-    .methodology-table tr:hover { background: rgba(255,255,255,0.03); }
-
-    .formula-box {
-      background: #000;
-      border: 1px solid var(--accent-red);
-      padding: 20px;
-      font-family: monospace;
-      font-size: 1.1rem;
-      color: #ffcccc;
-      text-align: center;
-      margin: 20px 0;
-      border-radius: 6px;
-    }
-
-    .limitations-list {
-      columns: 2;
-      column-gap: 40px;
-      margin-top: 20px;
-    }
-    @media(max-width: 768px) { .limitations-list { columns: 1; } }
-    
-    .limitation-item {
-      break-inside: avoid;
-      margin-bottom: 15px;
-      padding-left: 20px;
-      position: relative;
-      font-size: 0.9rem;
-      color: #bbb;
-    }
-    .limitation-item::before {
-      content: '⚠';
-      position: absolute;
-      left: 0;
-      color: var(--accent-red);
-    }
-
-    .resources-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-      gap: 20px;
-      margin-top: 30px;
-    }
-    .resource-card {
-      background: #222;
-      padding: 20px;
-      border-radius: 6px;
-      border: 1px solid #333;
-    }
-    .resource-card h4 { color: var(--accent-gold); margin-bottom: 10px; font-size: 1rem; }
-    .resource-link { display: block; color: #aaa; font-size: 0.85rem; margin-top: 5px; }
-    .resource-link:hover { color: white; text-decoration: underline; }
-
-    .qr-section {
-      display: flex;
-      justify-content: center;
-      gap: 40px;
-      flex-wrap: wrap;
-      margin-top: 40px;
-      padding-top: 40px;
-      border-top: 1px solid var(--border-color);
-    }
-    .qr-item { text-align: center; }
-    .qr-placeholder {
-      width: 120px; height: 120px;
-      background: #fff;
-      margin: 0 auto 10px;
-      display: flex; align-items: center; justify-content: center;
-      color: #000; font-size: 0.7rem; text-align: center; padding: 5px;
-    }
-    .qr-label { font-size: 0.8rem; color: var(--text-muted); }
-
-    /* ===================== FOOTER ===================== */
-    .site-footer {
-      background: #0a0a0a;
-      padding: 40px 0;
-      border-top: 1px solid var(--border-color);
-      text-align: center;
-      font-size: 0.85rem;
-      color: var(--text-muted);
-    }
-    .footer-title { font-family: var(--font-display); font-size: 1.2rem; color: #fff; margin-bottom: 10px; }
-    .footer-meta a { color: var(--accent-gold); text-decoration: underline; }
-    .footer-small { font-size: 0.75rem; margin-top: 10px; opacity: 0.7; }
-
-  </style>
+/* RESPONSIVO */
+@media (max-width: 768px) {
+  .hero h1 { font-size: 2.2rem; }
+  .subtitle { font-size: 1.05rem; }
+  .menu-toggle { display: block; }
+  .main-nav {
+    display: none; position: absolute; top: 100%; left: 0; right: 0;
+    background: var(--branco); border-bottom: 1px solid var(--borda);
+    padding: 16px 24px;
+  }
+  .main-nav.open { display: block; }
+  .main-nav ul { flex-direction: column; gap: 12px; }
+}
+</style>
 </head>
 <body>
 
-  <!-- ===================== HERO ===================== -->
-  <header class="hero-bg-cover">
-    <div class="hero-overlay"></div>
-    
-    <div class="container hero-content">
-      <div class="hero-label">
-        <span class="line"></span>
-        <span>Obra de Referência · Manual Executivo · 2026</span>
-      </div>
-      
-      <h1 class="main-title">
-        <span class="white">A TIRANIA</span>
-        <span class="red">CONSTITUCIONAL</span>
-      </h1>
-      <p class="subtitle">Como a Legalidade Pode Enfraquecer a Democracia<br>e o Novo Institucionalismo na Preservação da Liberdade</p>
-
-      <div class="hero-actions">
-        <a href="#obra" class="btn btn-red">Explorar a Obra</a>
-        <a href="#capitulo9" class="btn btn-outline">Capítulo 9: Metodologia</a>
-        <a href="#autor" class="btn btn-outline">Ouvir o Autor</a>
-      </div>
-    </div>
-  </header>
-
-  <!-- ===================== FICHA TÉCNICA ===================== -->
-  <section class="ficha-strip">
-    <div class="container ficha-content">
-      <span class="ficha-item"><strong>Obra:</strong> A Tirania Constitucional</span>
-      <span class="ficha-item"><strong>Autor:</strong> Erigutemberg Meneses</span>
-      <span class="ficha-item"><strong>Edição:</strong> 1ª ed. — Blumenau/Brasília, 2026</span>
-      <span class="ficha-item"><strong>Licença:</strong> CC BY-NC-SA 4.0 / CC BY 4.0 (Repo)</span>
-      <span class="ficha-item"><strong>Status:</strong> Ativo em GitHub & Zenodo</span>
-    </div>
-  </section>
-
-  <!-- ===================== SOBRE A OBRA (CARDS ORIGINAIS) ===================== -->
-  <section class="section section-dark" id="obra">
-    <div class="container">
-      <h2 class="section-title">Sobre a Obra Central</h2>
-      <div class="cards-grid">
-
-        <!-- Card 1: A Tese -->
-        <article class="card card-featured">
-          <div class="card-icon" aria-hidden="true">⚖️</div>
-          <h3 class="card-title">O Paradoxo Jurídico</h3>
-          <p class="card-subtitle">Legalidade vs. Legitimidade Democrática</p>
-          <p class="card-text">
-            A obra investiga como o aparato jurídico, criado para limitar o poder, pode ser instrumentalizado para enfraquecer as instituições democráticas por dentro. Não se trata de ruptura violenta, mas de erosão gradual através de instrumentos formalmente legais.
-          </p>
-        </article>
-
-        <!-- Card 2: Conceitos Chave -->
-        <article class="card">
-          <div class="card-icon" aria-hidden="true">📚</div>
-          <h3 class="card-title">Conceitos Fundamentais</h3>
-          <ul class="card-list">
-            <li><strong>Tiranía Constitucional:</strong> Uso da lei contra os fins da lei.</li>
-            <li><strong>Novo Institucionalismo:</strong> Governo como função fiduciária.</li>
-            <li><strong>Clausula Pétrea Invisível:</strong> Limites materiais implícitos.</li>
-            <li><strong>Democratic Backsliding:</strong> Regressão democrática silenciosa.</li>
-          </ul>
-        </article>
-
-        <!-- Card 3: Objetivo -->
-        <article class="card">
-          <div class="card-icon" aria-hidden="true">🛡️</div>
-          <h3 class="card-title">Propósito da Pesquisa</h3>
-          <p class="card-text">
-            Fornecer critérios metodológicos para distinguir o conflito democrático legítimo dos processos velados que minam a liberdade. Propor ferramentas operacionais (IPI e SAPED) para vigilância institucional permanente.
-          </p>
-          <div class="card-badges">
-            <span class="badge">Jurídico</span>
-            <span class="badge">Político</span>
-            <span class="badge">Social</span>
-          </div>
-        </article>
-
-      </div>
-    </div>
-  </section>
-
-  <!-- ===================== CAPÍTULO 9: DETALHAMENTO METODOLÓGICO ===================== -->
-  <section class="section section-alt" id="capitulo9">
-    <div class="container">
-      
-      <div class="chapter-header">
-        <span class="chapter-tag">Repositório Digital Complementar</span>
-        <h2 class="section-title" style="margin-bottom: 10px;">Capítulo 9 — Alerta Precoce e Monitoramento</h2>
-        <p style="color: var(--text-muted); font-family: var(--font-serif);">Arquitetura de Preservação Institucional</p>
-      </div>
-
-      <div class="transparency-note">
-        <strong>Nota de Transparência Metodológica:</strong> Este capítulo apresenta uma proposta teórica e operacional. Os instrumentos descritos abaixo (IPI, SAPED, Observatório) são modelos conceituais abertos. Não houve implementação técnica finalizada, coleta de dados empíricos massivos ou validação estatística conclusiva até a presente data. O objetivo é fomentar a auditoria futura e a colaboração científica.
-      </div>
-
-      <!-- Elementos do Monitoramento -->
-      <div class="cards-grid" style="margin-bottom: 50px;">
-        <article class="card">
-          <h3 class="card-title">1. IPI (Índice de Preservação Institucional)</h3>
-          <p class="card-text">Ferramenta sintética para mensurar a saúde das dimensões essenciais da democracia.</p>
-        </article>
-        <article class="card">
-          <h3 class="card-title">2. SAPED (Sistema de Alerta Precoce)</h3>
-          <p class="card-text">Adiciona a dimensão temporal, identificando sinais prévios de deterioração antes que sejam irreversíveis.</p>
-        </article>
-        <article class="card">
-          <h3 class="card-title">3. Infraestrutura Aberta</h3>
-          <p class="card-text">Registro verificável de eventos, API pública e rede de participação cívica ("Vigia Democrático").</p>
-        </article>
-      </div>
-
-      <!-- Detalhes do IPI -->
-      <h3 style="font-family: var(--font-display); color: var(--accent-gold); margin-bottom: 20px;">Detalhamento Técnico: O IPI</h3>
-      <p>O Índice propõe cinco dimensões ponderadas para avaliar a capacidade do Estado de corrigir abusos e proteger direitos.</p>
-      
-      <table class="methodology-table">
-        <thead>
-          <tr>
-            <th>Dimensão</th>
-            <th>Descrição Resumida</th>
-            <th>Peso Proposto</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td>D1: Independência Judicial</td>
-            <td>Autonomia real dos tribunais frente ao executivo/legislativo.</td>
-            <td>25%</td>
-          </tr>
-          <tr>
-            <td>D2: Órgãos de Controle</td>
-            <td>Eficácia de MP, TC, CGU e polícias federais independentes.</td>
-            <td>20%</td>
-          </tr>
-          <tr>
-            <td>D3: Liberdade de Imprensa</td>
-            <td>Pluralismo midiático e ausência de censura estatal direta/indireta.</td>
-            <td>20%</td>
-          </tr>
-          <tr>
-            <td>D4: Integridade Eleitoral</td>
-            <td>Justiça eleitoral, financiamento transparente e acesso igualitário.</td>
-            <td>20%</td>
-          </tr>
-          <tr>
-            <td>D5: Sociedade Civil</td>
-            <td>Liberdade de associação, protesto e participação política ativa.</td>
-            <td>15%</td>
-          </tr>
-        </tbody>
-      </table>
-
-      <div class="formula-box">
-        IPI = (0,25 × D₁) + (0,20 × D₂) + (0,20 × D₃) + (0,20 × D₄) + (0,15 × D₅)
-      </div>
-
-      <h4 style="margin-top: 20px; color: #fff;">Escala de Classificação (Hipotética)</h4>
-      <ul class="card-list" style="columns: 2; margin-top: 10px;">
-        <li><strong>0 a &lt; 4:</strong> Erosão Crítica (Colapso iminente)</li>
-        <li><strong>4 a &lt; 6:</strong> Erosão Moderada (Riscos sistêmicos)</li>
-        <li><strong>6 a &lt; 8:</strong> Preservação Moderada (Instabilidade leve)</li>
-        <li><strong>8 a 10:</strong> Preservação Elevada (Saúde Institucional)</li>
+<header class="site-header">
+  <div class="header-inner">
+    <a href="#inicio" class="brand">
+      <span class="brand-title">A Tirania Constitucional</span>
+      <span class="brand-sub">Erigutemberg Meneses</span>
+    </a>
+    <button class="menu-toggle" aria-label="Abrir menu" aria-expanded="false">☰</button>
+    <nav class="main-nav" aria-label="Navegação principal">
+      <ul>
+        <li><a href="#obra">A Obra</a></li>
+        <li><a href="#modelo">Modelo Teórico</a></li>
+        <li><a href="#ferramentas">Ferramentas</a></li>
+        <li><a href="#biblioteca">Biblioteca</a></li>
+        <li><a href="#autor">Autor</a></li>
       </ul>
+    </nav>
+  </div>
+</header>
 
-      <!-- Limitações Reconhecidas -->
-      <h3 style="font-family: var(--font-display); color: var(--accent-red); margin: 40px 0 20px;">Limitações e Riscos Assumidos</h3>
-      <div class="limitations-list">
-        <div class="limitation-item">Falta de validação empírica dos pesos atribuídos às dimensões.</div>
-        <div class="limitation-item">Ausência de consulta Delphi formal com painel internacional de especialistas.</div>
-        <div class="limitation-item">Dificuldade de obtenção de dados comparáveis em tempo real entre países.</div>
-        <div class="limitation-item">Risco de subjetividade na interpretação de "ameaças" versus "conflitos legítimos".</div>
-        <div class="limitation-item">Potencial uso político indevido do índice por grupos de interesse.</div>
-        <div class="limitation-item">Necessidade de memória de cálculo histórica robusta para tendências.</div>
-      </div>
-
-      <!-- Arquivos e Recursos do Repositório -->
-      <h3 style="font-family: var(--font-display); color: var(--accent-gold); margin: 40px 0 20px;">Recursos Disponíveis no Repositório Git</h3>
-      <div class="resources-grid">
-        <div class="resource-card">
-          <h4>📄 Textos Base</h4>
-          <a href="#" class="resource-link">Texto Integral Cap. 9 (Markdown)</a>
-          <a href="#" class="resource-link">Resumo Executivo Acadêmico</a>
-        </div>
-        <div class="resource-card">
-          <h4>⚙️ Metodologia</h4>
-          <a href="#" class="resource-link">Manual Operacional do IPI</a>
-          <a href="#" class="resource-link">Fluxograma do SAPED</a>
-          <a href="#" class="resource-link">Ficha de Avaliação Padrão</a>
-        </div>
-        <div class="resource-card">
-          <h4>💻 Dados & API</h4>
-          <a href="#" class="resource-link">Spec Técnica da API Pública</a>
-          <a href="#" class="resource-link">Exemplos JSON de Eventos</a>
-          <a href="#" class="resource-link">Calculadora Web (Protótipo)</a>
-        </div>
-        <div class="resource-card">
-          <h4>🤝 Colaboração</h4>
-          <a href="#" class="resource-link">Guia de Contribuição (CONTRIBUTING.md)</a>
-          <a href="#" class="resource-link">Termos de Uso dos Dados</a>
-          <a href="#" class="resource-link">Agenda de Validação Futura</a>
-        </div>
-      </div>
-
-      <!-- QR Codes Section -->
-      <div class="qr-section">
-        <div class="qr-item">
-          <div class="qr-placeholder">[QR CODE]<br>Link Repo GitHub</div>
-          <div class="qr-label">QR 9.1: Repositório Oficial</div>
-        </div>
-        <div class="qr-item">
-          <div class="qr-placeholder">[QR CODE]<br>Doc. Polônia/DW</div>
-          <div class="qr-label">QR 9.2: Caso Estudo Polônia</div>
-        </div>
-        <div class="qr-item">
-          <div class="qr-placeholder">[QR CODE]<br>Calc. IPI Online</div>
-          <div class="qr-label">QR 9.3: Calculadora Conceitual</div>
-        </div>
-      </div>
-
-      <div style="text-align: center; margin-top: 40px; font-size: 0.8rem; color: #666;">
-        <p>Citação Sugerida: MENESSES, E. Capítulo 9 — Alerta Precoce... In: A Tirania Constitucional. 2026.</p>
-        <p>Licença do Repositório: Creative Commons Atribuição 4.0 Internacional (CC BY 4.0).</p>
-      </div>
-
+<section id="inicio" class="hero">
+  <div class="container">
+    <p class="eyebrow">Obra de referência · Direito Constitucional · 2026</p>
+    <h1>A Tirania Constitucional</h1>
+    <p class="subtitle">Como a legalidade pode enfraquecer a democracia e o papel do novo institucionalismo na preservação da liberdade</p>
+    <p class="author">Erigutemberg Meneses</p>
+    <div class="hero-actions">
+      <a class="btn btn-primary" href="#obra">Conheça a obra</a>
+      <a class="btn btn-outline" href="#ferramentas">Explore o modelo</a>
     </div>
-  </section>
+    <p class="license">Licença CC BY 4.0 · Publicado em GitHub Pages e Zenodo</p>
+  </div>
+</section>
 
-  <!-- ===================== AUTOR E ÁUDIO ===================== -->
-  <section class="section section-dark" id="autor">
-    <div class="container">
-      <h2 class="section-title">Encontro com o Autor</h2>
+<section id="obra" class="section">
+  <div class="container">
+    <h2>A Obra</h2>
+    <p class="lead">Uma investigação sobre como instrumentos formalmente legais podem ser usados, de forma cumulativa, para enfraquecer os limites constitucionais ao poder.</p>
 
-      <div class="author-block">
-        <div class="author-photo-wrap">
-          <!-- Tenta carregar autor.jpg, se falhar mostra iniciais EM via CSS -->
-          <img src="autor.jpg" alt="Retrato de Erigutemberg Meneses" class="author-photo"
-               onerror="this.style.display='none'; this.parentElement.classList.add('no-photo');">
-          <div class="author-initials" aria-hidden="true">EM</div>
+    <div class="cards">
+      <article class="card">
+        <button class="card-toggle" aria-expanded="false">
+          <h3>O paradoxo jurídico</h3><span class="chevron">▾</span>
+        </button>
+        <div class="card-content">
+          <p>A obra investiga como o aparato jurídico, criado para limitar o poder, pode ser instrumentalizado para enfraquecer as instituições democráticas por dentro. Não se trata de ruptura violenta, mas de erosão gradual por meio de instrumentos formalmente legais.</p>
         </div>
+      </article>
 
-        <div class="author-info">
-          <h3 class="author-name">José Erigutemberg Meneses de Lima</h3>
-          <p class="author-role">Advogado · Economista · Jurista · Pesquisador</p>
-          
-          <p class="author-bio">
-            Com formação interdisciplinar, Meneses une a técnica jurídica à análise econômica e comportamental. 
-            Sua obra <em>A Tirania Constitucional</em> surge da necessidade premente de compreender como maiorias 
-            eleitas podem, licitamente, desmantelar as salvaguardas da liberdade. Ele defende que a democracia 
-            não sobrevive apenas de votos, mas de instituições vivas e vigilantes.
-          </p>
+      <article class="card">
+        <button class="card-toggle" aria-expanded="false">
+          <h3>Tese central</h3><span class="chevron">▾</span>
+        </button>
+        <div class="card-content">
+          <p>A legalidade, por si só, não garante a preservação da democracia quando instrumentos legais são utilizados cumulativamente para esvaziar os controles que dão sentido à ordem constitucional. A resposta exige análise rigorosa dos fatos, argumentação normativa explícita e instituições capazes de aprender, corrigir-se e resistir à captura.</p>
+        </div>
+      </article>
 
-          <div class="author-audio">
-            <p class="audio-caption">
-              <strong>▶ Mensagem do Autor:</strong> Ouça Erigutemberg Meneses contextualizando a urgência do tema, 
-              explicando a diferença entre legalidade e legitimidade, e convidando o leitor a refletir sobre o futuro 
-              do constitucionalismo brasileiro.
-            </p>
-            
-            <!-- Player de Audio -->
-            <audio controls preload="metadata" class="audio-player">
-              <source src="mensagem-autor.mp3" type="audio/mpeg">
-              Seu navegador não suporta o elemento de áudio nativo. 
-              <a href="mensagem-autor.mp3">Baixe o MP3 aqui</a>.
-            </audio>
+      <article class="card">
+        <button class="card-toggle" aria-expanded="false">
+          <h3>Conceitos fundamentais</h3><span class="chevron">▾</span>
+        </button>
+        <div class="card-content">
+          <ul>
+            <li><strong>Tirania constitucional:</strong> uso da lei contra os fins da lei.</li>
+            <li><strong>Novo institucionalismo:</strong> governo como função fiduciária.</li>
+            <li><strong>Cláusula pétrea invisível:</strong> limites materiais implícitos à reforma constitucional.</li>
+            <li><strong>Democratic backsliding:</strong> regressão democrática gradual.</li>
+          </ul>
+        </div>
+      </article>
+
+      <article class="card">
+        <button class="card-toggle" aria-expanded="false">
+          <h3>Estrutura do livro</h3><span class="chevron">▾</span>
+        </button>
+        <div class="card-content">
+          <p><strong>Parte I — A Anatomia da Tirania Constitucional:</strong> concentração do poder, Constituição como arma, captura do Judiciário e legalidade autoritária.</p>
+          <p><strong>Parte II — O Novo Institucionalismo como Pedra Angular:</strong> dupla dimensão da legitimidade, governo fiduciário e não-dominação institucional.</p>
+          <p><strong>Parte III — Diagnóstico e Resistência:</strong> tríade populista, IPI, SAPED e estudos comparados.</p>
+          <p><strong>Parte IV — Propostas Normativas e Agenda de Pesquisa:</strong> reformas institucionais, cláusula pétrea invisível e agenda futura.</p>
+        </div>
+      </article>
+
+      <article class="card">
+        <button class="card-toggle" aria-expanded="false">
+          <h3>Contribuição original</h3><span class="chevron">▾</span>
+        </button>
+        <div class="card-content">
+          <p>A obra articula três planos: (1) conceitual, com a categoria <em>tirania constitucional</em>; (2) normativo-institucional, com a distinção entre legitimidade de origem e legitimidade de exercício e a metáfora fiduciária; (3) metodológico, com a proposta do IPI e do SAPED. A originalidade deve ser aferida pela clareza conceitual, capacidade discriminatória e possibilidade de aplicação a casos concretos.</p>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section id="modelo" class="section section-alt">
+  <div class="container">
+    <h2>Modelo Teórico</h2>
+    <p class="lead">A resposta normativa à erosão democrática: legitimidade de exercício, dever fiduciário e não-dominação institucional.</p>
+
+    <div class="cards">
+      <article class="card">
+        <button class="card-toggle" aria-expanded="false">
+          <h3>Dupla dimensão da legitimidade</h3><span class="chevron">▾</span>
+        </button>
+        <div class="card-content">
+          <p>A legitimidade de origem decorre de eleições livres e justas. A legitimidade de exercício diz respeito à compatibilidade do uso do poder com os princípios constitucionais e democráticos. Um governo eleito que subverte instituições perde legitimidade de exercício, ainda que conserve a investidura formal.</p>
+          <p>A perda de legitimidade normativa não implica automaticamente perda jurídica do mandato: responsabilização ou destituição exigem fundamento jurídico e observância dos procedimentos aplicáveis.</p>
+        </div>
+      </article>
+
+      <article class="card">
+        <button class="card-toggle" aria-expanded="false">
+          <h3>Governo como fiduciário</h3><span class="chevron">▾</span>
+        </button>
+        <div class="card-content">
+          <p>O governo administra temporariamente um patrimônio institucional que não lhe pertence. Seus deveres fiduciários desdobram-se em:</p>
+          <ul>
+            <li><strong>Lealdade:</strong> não usar as instituições para benefício próprio.</li>
+            <li><strong>Cuidado:</strong> administrar com diligência e competência.</li>
+            <li><strong>Prudência:</strong> não expor as instituições a riscos desnecessários.</li>
+          </ul>
+          <p>A metáfora é normativa: não cria, por si só, obrigações jurídicas autônomas, mas oferece critério de avaliação do exercício do poder.</p>
+        </div>
+      </article>
+
+      <article class="card">
+        <button class="card-toggle" aria-expanded="false">
+          <h3>Não-dominação institucional</h3><span class="chevron">▾</span>
+        </button>
+        <div class="card-content">
+          <p>Inspirada em Pettit e Skinner, a liberdade como não-dominação exige que as instituições não estejam sujeitas ao poder arbitrário do governo. Não basta que não haja interferência efetiva; é preciso que não exista a capacidade estrutural de interferir.</p>
+          <p>Três pilares de desenho institucional: mandatos fixos e escalonados, nomeações por consenso (supermaiorias) e orçamentos autônomos.</p>
+        </div>
+      </article>
+
+      <article class="card">
+        <button class="card-toggle" aria-expanded="false">
+          <h3>Reforma legítima vs. subversão</h3><span class="chevron">▾</span>
+        </button>
+        <div class="card-content">
+          <p>Três critérios de distinção:</p>
+          <ul>
+            <li><strong>Processual:</strong> a mudança foi aprovada com deliberação pública, participação e prazos adequados?</li>
+            <li><strong>Substantivo:</strong> a mudança preserva ou amplia as funções essenciais da instituição?</li>
+            <li><strong>Contextual:</strong> quem propõe a mudança tem conflito de interesse? Há consenso mínimo e aplicação igualitária?</li>
+          </ul>
+        </div>
+      </article>
+
+      <article class="card">
+        <button class="card-toggle" aria-expanded="false">
+          <h3>Cláusula pétrea invisível</h3><span class="chevron">▾</span>
+        </button>
+        <div class="card-content">
+          <p>Proposta normativa controversa: um núcleo essencial implícito que seria condição de possibilidade das cláusulas pétreas explícitas (art. 60, § 4º, CF/88). Cinco componentes: independência judicial, liberdade de expressão, integridade eleitoral, separação de poderes efetiva e direitos fundamentais como trunfos contra a maioria.</p>
+          <p>Dialoga com a doutrina da estrutura básica indiana e com a cláusula de eternidade alemã, mas não se confunde com elas. É proposta autoral, não direito positivo pacificado.</p>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section id="ferramentas" class="section">
+  <div class="container">
+    <h2>Ferramentas</h2>
+    <p class="lead">Instrumentos conceituais propostos pelo autor. Nenhum deles foi implementado ou validado empiricamente até o momento.</p>
+
+    <div class="cards">
+      <article class="card">
+        <button class="card-toggle" aria-expanded="false">
+          <h3>Índice de Preservação Institucional (IPI)</h3><span class="chevron">▾</span>
+        </button>
+        <div class="card-content">
+          <p>Proposta metodológica para organizar informações sobre cinco dimensões:</p>
+          <ul>
+            <li>D1 — Independência judicial (peso 25%)</li>
+            <li>D2 — Independência dos órgãos de controle (20%)</li>
+            <li>D3 — Liberdade de expressão e imprensa (20%)</li>
+            <li>D4 — Integridade eleitoral (20%)</li>
+            <li>D5 — Participação política e sociedade civil (15%)</li>
+          </ul>
+          <p><strong>Fórmula:</strong> IPI = 0,25·D1 + 0,20·D2 + 0,20·D3 + 0,20·D4 + 0,15·D5</p>
+          <p><strong>Escala:</strong> 0–4 muito comprometida; 4–6 fragilizada; 6–8 intermediária; 8–10 relativamente elevada.</p>
+          <p><em>Nota:</em> pesos, fórmula e faixas são hipóteses de trabalho. O índice não foi validado empiricamente.</p>
+
+          <div class="ipi-calc" aria-label="Calculadora conceitual do IPI">
+            <div class="ipi-row"><label for="d1">D1 Independência judicial (25%)</label><span id="d1v">5,0</span><input type="range" id="d1" min="0" max="10" step="0.1" value="5"></div>
+            <div class="ipi-row"><label for="d2">D2 Órgãos de controle (20%)</label><span id="d2v">5,0</span><input type="range" id="d2" min="0" max="10" step="0.1" value="5"></div>
+            <div class="ipi-row"><label for="d3">D3 Liberdade de imprensa (20%)</label><span id="d3v">5,0</span><input type="range" id="d3" min="0" max="10" step="0.1" value="5"></div>
+            <div class="ipi-row"><label for="d4">D4 Integridade eleitoral (20%)</label><span id="d4v">5,0</span><input type="range" id="d4" min="0" max="10" step="0.1" value="5"></div>
+            <div class="ipi-row"><label for="d5">D5 Participação e sociedade civil (15%)</label><span id="d5v">5,0</span><input type="range" id="d5" min="0" max="10" step="0.1" value="5"></div>
+            <div class="ipi-result" id="ipiResult">IPI = 5,00 — Preservação institucional fragilizada</div>
+            <p class="ipi-note">Simulação conceitual. Os valores não constituem avaliação de nenhum país real.</p>
           </div>
         </div>
-      </div>
-    </div>
-  </section>
+      </article>
 
-  <!-- ===================== FOOTER ===================== -->
-  <footer class="site-footer">
-    <div class="container footer-inner">
-      <p class="footer-title">A Tirania Constitucional</p>
-      <p class="footer-meta">
-        © 2026 Erigutemberg Meneses.<br>
-        Livro: <a href="#">CC BY-NC-SA 4.0</a> | Repositório Cap. 9: <a href="#">CC BY 4.0</a>
-      </p>
-      <p class="footer-meta footer-small">
-        DOI (Zenodo): <em>a ser atribuído após depósito final</em> · 
-        Preservado em: GitHub Pages, Internet Archive, Zenodo.
-      </p>
-      <div style="margin-top: 20px;">
-        <a href="#" class="btn btn-outline" style="padding: 8px 20px; font-size: 0.8rem;">Voltar ao Topo ↑</a>
-      </div>
+      <article class="card">
+        <button class="card-toggle" aria-expanded="false">
+          <h3>Sistema de Alerta Precoce (SAPED)</h3><span class="chevron">▾</span>
+        </button>
+        <div class="card-content">
+          <p>Enquanto o IPI é uma fotografia estática, o SAPED acompanha eventos ao longo do tempo. Quatro níveis de alerta:</p>
+          <ul>
+            <li><strong>Verde:</strong> estabilidade relativa.</li>
+            <li><strong>Amarelo:</strong> indícios que exigem esclarecimento.</li>
+            <li><strong>Laranja:</strong> evidências consistentes de deterioração.</li>
+            <li><strong>Vermelho:</strong> comprometimento grave e iminente.</li>
+          </ul>
+          <p>Cada evento deve ser registrado com fonte primária, verificação independente, distinção entre fato, alegação e inferência.</p>
+        </div>
+      </article>
+
+      <article class="card">
+        <button class="card-toggle" aria-expanded="false">
+          <h3>Arquitetura da preservação institucional</h3><span class="chevron">▾</span>
+        </button>
+        <div class="card-content">
+          <p>Cinco elementos complementares: IPI, SAPED, registro verificável de eventos, infraestrutura de transparência e rede de participação cívica.</p>
+          <p>Nenhum elemento isolado é suficiente. Um índice sem dados é abstração; um alerta sem critérios é alarme falso; uma plataforma sem auditoria é caixa-preta.</p>
+        </div>
+      </article>
+
+      <article class="card">
+        <button class="card-toggle" aria-expanded="false">
+          <h3>Estudos de caso comparados</h3><span class="chevron">▾</span>
+        </button>
+        <div class="card-content">
+          <p><strong>Hungria (2010–2026):</strong> supermaioria de dois terços permitiu nova Lei Fundamental (2011), redução do Tribunal Constitucional de 15 para 11 juízes, aposentadoria compulsória de 274 magistrados e redesenho distrital.</p>
+          <p><strong>Polônia (2015–2023):</strong> sem supermaioria, o PiS usou leis ordinárias para paralisar o Tribunal Constitucional, criar a Câmara Disciplinar e controlar o Conselho Nacional da Magistratura.</p>
+          <p><strong>Venezuela:</strong> refundação constitucional (1999) seguida de concentração progressiva de poder, controle do TSJ e do CNE.</p>
+          <p><strong>Turquia:</strong> após o golpe de 2016, estado de emergência, purgas no Judiciário, universidades e mídia.</p>
+        </div>
+      </article>
     </div>
-  </footer>
+  </div>
+</section>
+
+<section id="biblioteca" class="section section-alt">
+  <div class="container">
+    <h2>Biblioteca</h2>
+    <p class="lead">Referências centrais que fundamentam a obra.</p>
+
+    <div class="cards">
+      <article class="card">
+        <button class="card-toggle" aria-expanded="false">
+          <h3>Erosão democrática e legalismo autocrático</h3><span class="chevron">▾</span>
+        </button>
+        <div class="card-content">
+          <ul>
+            <li>BERMEO, Nancy. <em>On democratic backsliding</em>. Journal of Democracy, 2016.</li>
+            <li>SCHEPPELE, Kim Lane. <em>Autocratic Legalism</em>. University of Chicago Law Review, 2018.</li>
+            <li>LANDAU, David. <em>Abusive Constitutionalism</em>. UC Davis Law Review, 2013.</li>
+            <li>LEVITSKY, Steven; ZIBLATT, Daniel. <em>How Democracies Die</em>. 2018.</li>
+            <li>GINSBURG, Tom; HUQ, Aziz Z. <em>How to Save a Constitutional Democracy</em>. 2018.</li>
+          </ul>
+        </div>
+      </article>
+
+      <article class="card">
+        <button class="card-toggle" aria-expanded="false">
+          <h3>Teoria constitucional e limites à reforma</h3><span class="chevron">▾</span>
+        </button>
+        <div class="card-content">
+          <ul>
+            <li>ROZNAI, Yaniv. <em>Unconstitutional Constitutional Amendments</em>. Oxford, 2017.</li>
+            <li>SUPREME COURT OF INDIA. <em>Kesavananda Bharati v. State of Kerala</em> (1973).</li>
+            <li>ALEMANHA. <em>Grundgesetz</em>, art. 79, § 3º (cláusula de eternidade).</li>
+            <li>BRASIL. Constituição Federal de 1988, art. 60, § 4º.</li>
+          </ul>
+        </div>
+      </article>
+
+      <article class="card">
+        <button class="card-toggle" aria-expanded="false">
+          <h3>Republicanismo e não-dominação</h3><span class="chevron">▾</span>
+        </button>
+        <div class="card-content">
+          <ul>
+            <li>PETTIT, Philip. <em>Republicanismo: uma teoria da liberdade e do governo</em>. 2019.</li>
+            <li>SKINNER, Quentin. <em>Liberdade antes do Liberalismo</em>. 1999.</li>
+          </ul>
+        </div>
+      </article>
+
+      <article class="card">
+        <button class="card-toggle" aria-expanded="false">
+          <h3>Populismo e desinformação</h3><span class="chevron">▾</span>
+        </button>
+        <div class="card-content">
+          <ul>
+            <li>MUDDE, Cas; ROVIRA KALTWASSER, Cristóbal. <em>Populismo: uma breve introdução</em>. 2019.</li>
+            <li>MBEMBE, Achille. <em>Necropolítica</em>.</li>
+            <li>ALMEIDA, Silvio Luiz de. <em>Racismo estrutural</em>. 2019.</li>
+          </ul>
+        </div>
+      </article>
+
+      <article class="card">
+        <button class="card-toggle" aria-expanded="false">
+          <h3>Desobediência civil</h3><span class="chevron">▾</span>
+        </button>
+        <div class="card-content">
+          <ul>
+            <li>THOREAU, Henry David. <em>A Desobediência Civil</em> (1849).</li>
+            <li>RAWLS, John. <em>Uma Teoria da Justiça</em> (1971).</li>
+            <li>KING JR., Martin Luther. <em>Letter from Birmingham Jail</em> (1963).</li>
+            <li>ARENDT, Hannah. <em>Crises da República</em>.</li>
+          </ul>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section id="autor" class="section">
+  <div class="container">
+    <h2>Sobre o Autor</h2>
+    <div class="author-block">
+      <p><strong>José Erigutemberg Meneses de Lima</strong> é advogado, economista, jurista e pesquisador. Com formação interdisciplinar, une a técnica jurídica à análise econômica e comportamental.</p>
+      <p>Sua obra <em>A Tirania Constitucional</em> surge da necessidade de compreender como maiorias eleitas podem, licitamente, desmantelar as salvaguardas da liberdade. O autor defende que a democracia não sobrevive apenas de votos, mas de instituições vivas e vigilantes.</p>
+      <p class="author-note">Identificadores acadêmicos e produção científica podem ser adicionados aqui (ORCID, Lattes, Google Scholar).</p>
+    </div>
+  </div>
+</section>
+
+<footer class="site-footer">
+  <div class="container">
+    <p>A Tirania Constitucional · Erigutemberg Meneses · 2026</p>
+    <p>Licença CC BY 4.0 · Publicado em GitHub Pages e preservado no Zenodo</p>
+  </div>
+</footer>
+
+<script>
+(function () {
+  // Menu móvel
+  var menuToggle = document.querySelector('.menu-toggle');
+  var mainNav = document.querySelector('.main-nav');
+
+  if (menuToggle && mainNav) {
+    menuToggle.addEventListener('click', function () {
+      var expanded = menuToggle.getAttribute('aria-expanded') === 'true';
+      menuToggle.setAttribute('aria-expanded', String(!expanded));
+      mainNav.classList.toggle('open');
+    });
+
+    document.querySelectorAll('.main-nav a').forEach(function (link) {
+      link.addEventListener('click', function () {
+        mainNav.classList.remove('open');
+        menuToggle.setAttribute('aria-expanded', 'false');
+      });
+    });
+  }
+
+  // Cards expansíveis
+  document.querySelectorAll('.card-toggle').forEach(function (button) {
+    button.addEventListener('click', function () {
+      var expanded = button.getAttribute('aria-expanded') === 'true';
+      button.setAttribute('aria-expanded', String(!expanded));
+      var content = button.nextElementSibling;
+      if (content) content.classList.toggle('open', !expanded);
+    });
+  });
+
+  // Calculadora IPI
+  var inputs = ['d1', 'd2', 'd3', 'd4', 'd5'].map(function (id) {
+    return document.getElementById(id);
+  });
+  var labels = ['d1v', 'd2v', 'd3v', 'd4v', 'd5v'].map(function (id) {
+    return document.getElementById(id);
+  });
+  var result = document.getElementById('ipiResult');
+  var pesos = [0.25, 0.20, 0.20, 0.20, 0.15];
+
+  function fmt(n) {
+    return n.toFixed(1).replace('.', ',');
+  }
+
+  function classificar(v) {
+    if (v < 4) return 'Preservação institucional muito comprometida';
+    if (v < 6) return 'Preservação institucional fragilizada';
+    if (v < 8) return 'Preservação institucional intermediária';
+    return 'Preservação institucional relativamente elevada';
+  }
+
+  function atualizar() {
+    var soma = 0;
+    inputs.forEach(function (input, i) {
+      var v = parseFloat(input.value) || 0;
+      labels[i].textContent = fmt(v);
+      soma += v * pesos[i];
+    });
+    result.textContent = 'IPI = ' + soma.toFixed(2).replace('.', ',') + ' — ' + classificar(soma);
+  }
+
+  inputs.forEach(function (input) {
+    if (input) input.addEventListener('input', atualizar);
+  });
+
+  if (inputs.every(Boolean) && result) atualizar();
+
+  // Abre card se a URL tiver hash correspondente
+  window.addEventListener('load', function () {
+    if (window.location.hash) {
+      var target = document.querySelector(window.location.hash);
+      if (target) {
+        var btn = target.querySelector('.card-toggle');
+        if (btn && btn.getAttribute('aria-expanded') === 'false') btn.click();
+      }
+    }
+  });
+})();
+</script>
 
 </body>
 </html>
