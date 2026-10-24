@@ -1,195 +1,320 @@
-/* =========================================
-   PALETA DE CORES E VARIÁVEIS
-   ========================================= */
+/* ==========================================================================
+   1. RESET E VARIÁVEIS DE COR (Paleta da Capa)
+   ========================================================================== */
 :root {
-  --preto-fundo: #0a0a0a;
-  --preto-card: rgba(15, 15, 15, 0.92); /* Fundo do card quase opaco para leitura */
-  --vermelho-destaque: #d32f2f; /* Vermelho baseado na capa */
-  --vermelho-hover: #b71c1c;
-  --texto-claro: #f5f5f5;
-  --texto-mutado: #a0a0a0;
-  --borda-sutil: rgba(211, 47, 47, 0.3); /* Linha vermelha sutil */
+  --cor-preto-fundo: #0a0a0a;
+  --cor-preto-card: rgba(18, 18, 18, 0.95); /* Fundo escuro semi-transparente */
+  --cor-vermelho: #d32f2f; /* Vermelho da capa */
+  --cor-vermelho-hover: #b71c1c;
+  --cor-texto-claro: #f5f5f5;
+  --cor-texto-mutado: #b0b0b0;
+  --cor-borda: rgba(211, 47, 47, 0.3);
+  --fonte-titulo: 'Georgia', 'Times New Roman', serif;
+  --fonte-texto: 'Helvetica Neue', Arial, sans-serif;
 }
 
-/* =========================================
-   FUNDO FIXO COM A CAPA DO LIVRO
-   ========================================= */
-body {
-  /* Substitua 'capa.jpg' pelo caminho real da imagem da capa */
-  background-image: url('capa.jpg'); 
-  background-size: cover;
-  background-position: center center;
-  background-attachment: fixed; /* Isso mantém a imagem fixa enquanto rola */
-  background-color: var(--preto-fundo); /* Fallback */
-  color: var(--texto-claro);
-  font-family: 'Georgia', serif; /* Fonte com serifa para ar de livro/jurídico */
+/* Força o reset em elementos que temas do GitHub costumam estilizar */
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center, dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend, table, caption,
+tbody, tfoot, thead, tr, th, td, article, aside,
+canvas, details, embed, figure, figcaption, footer,
+header, hgroup, menu, nav, output, ruby, section,
+summary, time, mark, audio, video {
   margin: 0;
   padding: 0;
-  line-height: 1.6;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline;
 }
 
-/* Overlay escuro para garantir leitura sobre a imagem da capa */
+/* ==========================================================================
+   2. FUNDO FIXO COM A CAPA DO LIVRO
+   ========================================================================== */
+html, body {
+  height: 100%;
+  background-color: var(--cor-preto-fundo) !important;
+  color: var(--cor-texto-claro) !important;
+  font-family: var(--fonte-texto);
+  line-height: 1.7;
+  -webkit-font-smoothing: antialiased;
+}
+
+body {
+  /* ATENÇÃO: Substitua 'capa.jpg' pelo caminho real da sua imagem */
+  background-image: url('../images/capa.jpg') !important; 
+  background-size: cover !important;
+  background-position: center top !important;
+  background-attachment: fixed !important;
+  background-repeat: no-repeat !important;
+  overflow-x: hidden;
+}
+
+/* Overlay escuro para garantir a leitura do texto sobre a imagem */
 body::before {
   content: "";
   position: fixed;
-  top: 0;
-  left: 0;
-  width: 100vw;
-  height: 100vh;
+  top: 0; left: 0; width: 100vw; height: 100vh;
   background: linear-gradient(
-    to bottom,
-    rgba(10, 10, 10, 0.85) 0%,   /* Escurece o topo */
-    rgba(10, 10, 10, 0.95) 50%,  /* Escurece o meio */
-    rgba(10, 10, 10, 0.75) 100%  /* Permite ver um pouco da capa no final */
-  );
-  z-index: -1; /* Fica atrás de todo o conteúdo */
+    135deg, 
+    rgba(5, 5, 5, 0.92) 0%, 
+    rgba(15, 15, 15, 0.85) 50%, 
+    rgba(5, 5, 5, 0.95) 100%
+  ) !important;
+  z-index: -1;
+  pointer-events: none;
 }
 
-/* =========================================
-   ESTILIZAÇÃO DOS CARDS (ROLAGEM SOBRE A CAPA)
-   ========================================= */
-section, article, .card, .content-wrapper {
-  background-color: var(--preto-card);
-  backdrop-filter: blur(8px); /* Efeito de vidro embaçado */
-  border: 1px solid var(--borda-sutil);
-  border-left: 4px solid var(--vermelho-destaque); /* Detalhe vermelho lateral */
+/* Anula fundos brancos de templates (Jekyll/Minima) */
+.wrapper, .page-content, .site-header, .site-footer, main, .container {
+  background: transparent !important;
+  background-color: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
+}
+
+/* ==========================================================================
+   3. CABEÇALHO (NAVEGAÇÃO)
+   ========================================================================== */
+.site-header, header, nav {
+  background-color: rgba(10, 10, 10, 0.98) !important;
+  border-bottom: 2px solid var(--cor-vermelho) !important;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  padding: 15px 0;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.8);
+}
+
+.site-title, .site-title a, header h1, nav .logo {
+  color: var(--cor-texto-claro) !important;
+  font-family: var(--fonte-titulo);
+  font-weight: bold;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  text-decoration: none;
+}
+
+.site-nav .page-link, nav a {
+  color: var(--cor-texto-mutado) !important;
+  font-family: var(--fonte-texto);
+  font-size: 0.85rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  margin-left: 20px;
+  transition: color 0.3s ease;
+}
+
+.site-nav .page-link:hover, nav a:hover {
+  color: var(--cor-vermelho) !important;
+}
+
+/* ==========================================================================
+   4. CARDS DE CONTEÚDO (ROLAGEM SOBRE A CAPA)
+   ========================================================================== */
+section, article, .post, .post-content, .card {
+  background-color: var(--cor-preto-card) !important;
+  backdrop-filter: blur(10px); /* Efeito de vidro embaçado */
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.05) !important;
+  border-left: 5px solid var(--cor-vermelho) !important; /* Detalhe vermelho */
   border-radius: 8px;
-  padding: 40px;
+  padding: 40px 50px;
   margin: 40px auto;
-  max-width: 900px;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.8);
+  max-width: 950px;
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.9);
   position: relative;
   z-index: 10;
 }
 
-/* Títulos */
-h1, h2, h3, h4 {
-  color: var(--texto-claro);
-  text-align: left; /* Alinhamento mais formal */
-  margin-bottom: 20px;
+/* ==========================================================================
+   5. TIPOGRAFIA (Títulos, Parágrafos, Listas)
+   ========================================================================== */
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--fonte-titulo);
+  color: var(--cor-texto-claro) !important;
   font-weight: 700;
+  margin-top: 1.5em;
+  margin-bottom: 0.8em;
+  line-height: 1.3;
+}
+
+h1 {
+  font-size: 2.8rem;
+  text-align: center;
+  color: #ffffff !important;
+  text-shadow: 2px 2px 8px rgba(0,0,0,0.8);
+  margin-top: 60px;
 }
 
 h2 {
-  border-bottom: 2px solid var(--vermelho-destaque);
+  font-size: 2rem;
+  border-bottom: 2px solid var(--cor-vermelho);
   padding-bottom: 10px;
   display: inline-block;
+  margin-top: 2em;
 }
 
-/* Textos e Parágrafos */
-p, li {
-  color: var(--texto-mutado);
+h3 {
+  font-size: 1.5rem;
+  color: var(--cor-vermelho) !important; /* Subtítulos em vermelho */
+}
+
+p, li, dd, dt {
+  font-family: var(--fonte-texto);
+  color: var(--cor-texto-mutado) !important;
   font-size: 1.1rem;
+  margin-bottom: 1.2em;
   text-align: justify;
 }
 
-strong {
-  color: var(--texto-claro);
+/* Destaques no texto */
+strong, b {
+  color: var(--cor-texto-claro) !important;
+  font-weight: bold;
 }
 
-/* Links dentro do texto */
+em, i {
+  color: var(--cor-vermelho) !important;
+  font-style: italic;
+}
+
+/* Listas com marcadores vermelhos */
+ul, ol {
+  padding-left: 20px;
+  margin-bottom: 1.5em;
+}
+
+ul li::marker, ol li::marker {
+  color: var(--cor-vermelho);
+  font-weight: bold;
+}
+
+/* ==========================================================================
+   6. LINKS E BOTÕES
+   ========================================================================== */
 a {
-  color: var(--vermelho-destaque);
+  color: var(--cor-vermelho) !important;
   text-decoration: none;
-  transition: color 0.3s ease;
+  transition: all 0.3s ease;
 }
 
 a:hover {
-  color: var(--texto-claro);
+  color: #ffffff !important;
+  text-decoration: underline;
 }
 
-/* =========================================
-   BOTÕES DA PÁGINA INICIAL
-   ========================================= */
-.buttons-container {
-  display: flex;
-  gap: 20px;
-  justify-content: center;
-  margin-top: 30px;
-}
-
-.btn {
-  padding: 15px 30px;
-  font-size: 1rem;
+/* Botões (Se houver classes específicas no seu HTML) */
+.btn, .button, button, input[type="submit"] {
+  display: inline-block;
+  background-color: var(--cor-vermelho) !important;
+  color: #ffffff !important;
+  font-family: var(--fonte-texto);
   font-weight: bold;
   text-transform: uppercase;
   letter-spacing: 1px;
+  padding: 15px 30px;
+  border: 2px solid var(--cor-vermelho) !important;
   border-radius: 4px;
   cursor: pointer;
   transition: all 0.3s ease;
   text-decoration: none;
-  display: inline-block;
+  margin: 10px 5px;
 }
 
-/* Botão Primário (Vermelho) */
-.btn-primary, .btn-conheca {
-  background-color: var(--vermelho-destaque);
-  color: #ffffff;
-  border: 1px solid var(--vermelho-destaque);
+.btn:hover, .button:hover, button:hover, input[type="submit"]:hover {
+  background-color: transparent !important;
+  color: var(--cor-vermelho) !important;
+  box-shadow: 0 0 15px rgba(211, 47, 47, 0.4);
 }
 
-.btn-primary:hover, .btn-conheca:hover {
-  background-color: var(--vermelho-hover);
-  box-shadow: 0 0 15px rgba(211, 47, 47, 0.5); /* Brilho vermelho */
+/* Botão Secundário (Outline) */
+.btn-outline, .btn-secondary {
+  background-color: transparent !important;
+  color: var(--cor-texto-claro) !important;
+  border: 2px solid var(--cor-texto-claro) !important;
 }
 
-/* Botão Secundário (Outline Branco/Vermelho) */
-.btn-secondary, .btn-explore {
-  background-color: transparent;
-  color: var(--texto-claro);
-  border: 1px solid var(--texto-claro);
+.btn-outline:hover, .btn-secondary:hover {
+  border-color: var(--cor-vermelho) !important;
+  color: var(--cor-vermelho) !important;
 }
 
-.btn-secondary:hover, .btn-explore:hover {
-  border-color: var(--vermelho-destaque);
-  color: var(--vermelho-destaque);
-}
-
-/* =========================================
-   MENU DE NAVEGAÇÃO
-   ========================================= */
-nav {
-  background-color: rgba(10, 10, 10, 0.95) !important;
-  border-bottom: 2px solid var(--vermelho-destaque);
-  position: sticky;
-  top: 0;
-  z-index: 100;
-}
-
-nav a {
-  color: var(--texto-claro) !important;
-  font-family: 'Arial', sans-serif; /* Menu mais moderno */
-  font-weight: 600;
-  text-transform: uppercase;
-  font-size: 0.9rem;
-}
-
-nav a:hover {
-  color: var(--vermelho-destaque) !important;
-}
-
-/* =========================================
-   PLAYER DE ÁUDIO (Mensagem do Autor)
-   ========================================= */
+/* ==========================================================================
+   7. MÍDIA E ELEMENTOS ESPECÍFICOS
+   ========================================================================== */
 audio {
   width: 100%;
-  margin-top: 15px;
+  margin: 20px 0;
   border-radius: 30px;
-  /* O player nativo não aceita muitas cores, mas o background ajuda */
-  background-color: var(--preto-fundo); 
-}
-/* Força o fundo em containers comuns de templates */
-.page-content, 
-.wrapper, 
-main {
-    background: transparent !important;
-    background-color: transparent !important;
+  background-color: #000;
+  border: 1px solid var(--cor-borda);
 }
 
-/* Garante que o body e html tenham a imagem */
-html, body {
-    background-image: url('capa.jpg') !important; 
-    background-attachment: fixed !important;
-    background-size: cover !important;
-    background-color: #0a0a0a !important;
+img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 4px;
+}
+
+/* Citação / Blockquote */
+blockquote {
+  border-left: 4px solid var(--cor-vermelho);
+  padding-left: 20px;
+  margin: 20px 0;
+  font-style: italic;
+  color: var(--cor-texto-claro) !important;
+  background: rgba(255, 255, 255, 0.03);
+  padding: 20px;
+  border-radius: 0 8px 8px 0;
+}
+
+/* Rodapé */
+.site-footer, footer {
+  background-color: rgba(10, 10, 10, 0.98) !important;
+  border-top: 1px solid var(--cor-borda) !important;
+  color: var(--cor-texto-mutado) !important;
+  text-align: center;
+  padding: 30px 0;
+  margin-top: 60px;
+}
+
+/* ==========================================================================
+   8. RESPONSIVIDADE (Celulares e Tablets)
+   ========================================================================== */
+@media screen and (max-width: 768px) {
+  body {
+    background-attachment: scroll !important; /* Melhora a performance no mobile */
+  }
+  
+  section, article, .post, .post-content, .card {
+    padding: 25px 20px;
+    margin: 20px 10px;
+    border-left: 3px solid var(--cor-vermelho) !important;
+  }
+
+  h1 {
+    font-size: 2rem;
+  }
+
+  h2 {
+    font-size: 1.5rem;
+  }
+
+  p, li {
+    font-size: 1rem;
+    text-align: left; /* Justificar em telas pequenas dificulta a leitura */
+  }
+  
+  .btn, .button {
+    width: 100%;
+    margin: 10px 0;
+    text-align: center;
+  }
 }
