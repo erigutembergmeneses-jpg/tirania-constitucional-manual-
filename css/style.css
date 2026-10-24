@@ -16,7 +16,7 @@
    ========================================= */
 body {
   /* Substitua 'caminho-da-sua-imagem.jpg' pelo caminho real da imagem da capa */
-  background-image: url('capa-do-livro.jpg'); 
+  background-image: url('capa.jpg'); 
   background-size: cover;
   background-position: center center;
   background-attachment: fixed; /* Isso mantém a imagem fixa enquanto rola */
