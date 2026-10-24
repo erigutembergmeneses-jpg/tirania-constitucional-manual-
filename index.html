@@ -26,9 +26,9 @@
                         serif: ['Playfair Display', 'serif'],
                     },
                     colors: {
-                        primary: '#1e3a5f', // Azul marinho acadêmico
-                        accent: '#c9a961',  // Dourado sóbrio
-                        surface: '#f8fafc', // Cinza muito claro
+                        primary: '#1e3a5f',
+                        accent: '#c9a961',
+                        surface: '#f8fafc',
                     }
                 }
             }
@@ -36,7 +36,6 @@
     </script>
     
     <style>
-        /* Estilização customizada para o player de áudio */
         audio {
             width: 100%;
             height: 40px;
@@ -49,6 +48,51 @@
             background: linear-gradient(to right, #c9a961, #e2c88a);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
+        }
+        
+        /* Estilização dos sliders do simulador */
+        input[type=range].slider {
+            -webkit-appearance: none;
+            appearance: none;
+            background: transparent;
+        }
+        input[type=range].slider::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            appearance: none;
+            height: 20px;
+            width: 20px;
+            border-radius: 50%;
+            background: #c9a961;
+            cursor: pointer;
+            margin-top: -8px;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.3);
+            transition: transform 0.2s;
+        }
+        input[type=range].slider::-webkit-slider-thumb:hover {
+            transform: scale(1.2);
+        }
+        input[type=range].slider::-webkit-slider-runnable-track {
+            width: 100%;
+            height: 4px;
+            cursor: pointer;
+            background: rgba(255,255,255,0.3);
+            border-radius: 2px;
+        }
+        input[type=range].slider::-moz-range-thumb {
+            height: 20px;
+            width: 20px;
+            border-radius: 50%;
+            background: #c9a961;
+            cursor: pointer;
+            border: none;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.3);
+        }
+        input[type=range].slider::-moz-range-track {
+            width: 100%;
+            height: 4px;
+            cursor: pointer;
+            background: rgba(255,255,255,0.3);
+            border-radius: 2px;
         }
     </style>
 </head>
@@ -68,7 +112,6 @@
                     <a href="#biblioteca" class="text-slate-600 hover:text-primary transition-colors font-medium text-sm">Biblioteca</a>
                     <a href="#autor" class="text-slate-600 hover:text-primary transition-colors font-medium text-sm">Sobre o Autor</a>
                 </div>
-                <!-- Mobile menu button -->
                 <div class="md:hidden flex items-center">
                     <button onclick="document.getElementById('mobile-menu').classList.toggle('hidden')" class="text-slate-600 hover:text-primary">
                         <i class="fas fa-bars text-xl"></i>
@@ -76,7 +119,6 @@
                 </div>
             </div>
         </div>
-        <!-- Mobile Menu -->
         <div id="mobile-menu" class="hidden md:hidden bg-white border-t border-slate-100">
             <div class="px-4 pt-2 pb-4 space-y-1">
                 <a href="#obra" class="block px-3 py-2 text-slate-600 hover:bg-slate-50 rounded-md">A Obra</a>
@@ -107,7 +149,7 @@
             </p>
             <p class="text-lg text-accent font-medium mb-10">Erigutemberg Meneses</p>
             
-            <!-- Audio Player Estilizado -->
+            <!-- Audio Player -->
             <div class="max-w-md mx-auto bg-white/10 backdrop-blur-md rounded-xl p-4 border border-white/20 mb-10">
                 <div class="flex items-center gap-3 mb-2">
                     <i class="fas fa-microphone-lines text-accent"></i>
@@ -119,13 +161,32 @@
                 </audio>
             </div>
 
-            <div class="flex flex-col sm:flex-row gap-4 justify-center">
+            <div class="flex flex-col sm:flex-row gap-4 justify-center mb-10">
                 <a href="#obra" class="px-8 py-3 bg-accent hover:bg-amber-500 text-primary font-semibold rounded-lg transition-all shadow-lg hover:shadow-accent/20">
                     Conheça a Obra
                 </a>
                 <a href="#modelo" class="px-8 py-3 bg-transparent border-2 border-white/30 hover:border-white text-white font-semibold rounded-lg transition-all">
                     Explore o Modelo
                 </a>
+            </div>
+
+            <!-- FASE 1: Botões de Download e Citação -->
+            <div class="flex flex-col sm:flex-row gap-4 justify-center items-center">
+                <button onclick="downloadResumo()" class="flex items-center gap-2 px-6 py-3 bg-white text-primary font-semibold rounded-lg transition-all shadow-lg hover:shadow-xl border-2 border-white hover:bg-slate-50">
+                    <i class="fas fa-file-pdf text-red-500 text-xl"></i>
+                    <span>Baixar Resumo em PDF</span>
+                </button>
+                
+                <div class="flex flex-col sm:flex-row gap-2">
+                    <button onclick="copiarCitacao('abnt')" class="flex items-center gap-2 px-4 py-2 bg-white/20 hover:bg-white/30 text-white rounded-lg transition-all text-sm border border-white/30">
+                        <i class="fas fa-copy"></i>
+                        <span>Citar ABNT</span>
+                    </button>
+                    <button onclick="copiarCitacao('apa')" class="flex items-center gap-2 px-4 py-2 bg-white/20 hover:bg-white/30 text-white rounded-lg transition-all text-sm border border-white/30">
+                        <i class="fas fa-copy"></i>
+                        <span>Citar APA</span>
+                    </button>
+                </div>
             </div>
         </div>
     </header>
@@ -359,8 +420,165 @@
                 </div>
             </div>
 
+            <!-- FASE 2: Simulador Interativo do IPI -->
+            <div class="mt-16 bg-gradient-to-br from-primary to-slate-800 p-8 rounded-2xl shadow-2xl">
+                <div class="text-center mb-8">
+                    <h3 class="font-serif text-2xl md:text-3xl font-bold text-white mb-3">
+                        <i class="fas fa-calculator text-accent mr-3"></i>
+                        Simulador Interativo do IPI
+                    </h3>
+                    <p class="text-slate-300 text-sm">
+                        Arraste os controles para simular diferentes cenários e calcular o IPI em tempo real
+                    </p>
+                </div>
+
+                <div class="grid md:grid-cols-2 gap-8">
+                    <!-- Controles -->
+                    <div class="space-y-6">
+                        <div class="bg-white/10 backdrop-blur-sm p-4 rounded-lg border border-white/20">
+                            <div class="flex justify-between items-center mb-2">
+                                <label class="text-white font-medium text-sm">
+                                    <i class="fas fa-gavel text-accent mr-2"></i>
+                                    D1 — Independência Judicial (25%)
+                                </label>
+                                <span id="valorD1" class="text-accent font-bold text-lg">5.0</span>
+                            </div>
+                            <input type="range" id="sliderD1" min="0" max="10" step="0.1" value="5" 
+                                   class="w-full h-2 bg-white/20 rounded-lg appearance-none cursor-pointer slider"
+                                   oninput="atualizarIPI()">
+                            <div class="flex justify-between text-xs text-slate-400 mt-1">
+                                <span>0 (Comprometida)</span>
+                                <span>10 (Elevada)</span>
+                            </div>
+                        </div>
+
+                        <div class="bg-white/10 backdrop-blur-sm p-4 rounded-lg border border-white/20">
+                            <div class="flex justify-between items-center mb-2">
+                                <label class="text-white font-medium text-sm">
+                                    <i class="fas fa-shield-alt text-accent mr-2"></i>
+                                    D2 — Órgãos de Controle (20%)
+                                </label>
+                                <span id="valorD2" class="text-accent font-bold text-lg">5.0</span>
+                            </div>
+                            <input type="range" id="sliderD2" min="0" max="10" step="0.1" value="5" 
+                                   class="w-full h-2 bg-white/20 rounded-lg appearance-none cursor-pointer slider"
+                                   oninput="atualizarIPI()">
+                            <div class="flex justify-between text-xs text-slate-400 mt-1">
+                                <span>0 (Comprometida)</span>
+                                <span>10 (Elevada)</span>
+                            </div>
+                        </div>
+
+                        <div class="bg-white/10 backdrop-blur-sm p-4 rounded-lg border border-white/20">
+                            <div class="flex justify-between items-center mb-2">
+                                <label class="text-white font-medium text-sm">
+                                    <i class="fas fa-newspaper text-accent mr-2"></i>
+                                    D3 — Liberdade de Expressão (20%)
+                                </label>
+                                <span id="valorD3" class="text-accent font-bold text-lg">5.0</span>
+                            </div>
+                            <input type="range" id="sliderD3" min="0" max="10" step="0.1" value="5" 
+                                   class="w-full h-2 bg-white/20 rounded-lg appearance-none cursor-pointer slider"
+                                   oninput="atualizarIPI()">
+                            <div class="flex justify-between text-xs text-slate-400 mt-1">
+                                <span>0 (Comprometida)</span>
+                                <span>10 (Elevada)</span>
+                            </div>
+                        </div>
+
+                        <div class="bg-white/10 backdrop-blur-sm p-4 rounded-lg border border-white/20">
+                            <div class="flex justify-between items-center mb-2">
+                                <label class="text-white font-medium text-sm">
+                                    <i class="fas fa-vote-yea text-accent mr-2"></i>
+                                    D4 — Integridade Eleitoral (20%)
+                                </label>
+                                <span id="valorD4" class="text-accent font-bold text-lg">5.0</span>
+                            </div>
+                            <input type="range" id="sliderD4" min="0" max="10" step="0.1" value="5" 
+                                   class="w-full h-2 bg-white/20 rounded-lg appearance-none cursor-pointer slider"
+                                   oninput="atualizarIPI()">
+                            <div class="flex justify-between text-xs text-slate-400 mt-1">
+                                <span>0 (Comprometida)</span>
+                                <span>10 (Elevada)</span>
+                            </div>
+                        </div>
+
+                        <div class="bg-white/10 backdrop-blur-sm p-4 rounded-lg border border-white/20">
+                            <div class="flex justify-between items-center mb-2">
+                                <label class="text-white font-medium text-sm">
+                                    <i class="fas fa-users text-accent mr-2"></i>
+                                    D5 — Participação Política (15%)
+                                </label>
+                                <span id="valorD5" class="text-accent font-bold text-lg">5.0</span>
+                            </div>
+                            <input type="range" id="sliderD5" min="0" max="10" step="0.1" value="5" 
+                                   class="w-full h-2 bg-white/20 rounded-lg appearance-none cursor-pointer slider"
+                                   oninput="atualizarIPI()">
+                            <div class="flex justify-between text-xs text-slate-400 mt-1">
+                                <span>0 (Comprometida)</span>
+                                <span>10 (Elevada)</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Resultado -->
+                    <div class="flex flex-col justify-center">
+                        <div class="bg-white/10 backdrop-blur-sm p-8 rounded-xl border border-white/20 text-center">
+                            <div class="mb-4">
+                                <p class="text-slate-300 text-sm uppercase tracking-wider mb-2">Índice de Preservação Institucional</p>
+                                <div id="resultadoIPI" class="text-6xl font-bold text-white mb-2">5.00</div>
+                                <div id="classificacaoIPI" class="inline-block px-4 py-2 rounded-full bg-orange-400 text-white font-semibold text-sm">
+                                    Fragilizada
+                                </div>
+                            </div>
+                            
+                            <div class="mt-6 pt-6 border-t border-white/20">
+                                <p class="text-slate-300 text-xs mb-4">Escala de Avaliação:</p>
+                                <div class="space-y-2 text-left">
+                                    <div class="flex items-center gap-3">
+                                        <div class="w-4 h-4 rounded-full bg-red-500"></div>
+                                        <span class="text-slate-300 text-sm">0–4: Muito comprometida</span>
+                                    </div>
+                                    <div class="flex items-center gap-3">
+                                        <div class="w-4 h-4 rounded-full bg-orange-400"></div>
+                                        <span class="text-slate-300 text-sm">4–6: Fragilizada</span>
+                                    </div>
+                                    <div class="flex items-center gap-3">
+                                        <div class="w-4 h-4 rounded-full bg-yellow-400"></div>
+                                        <span class="text-slate-300 text-sm">6–8: Intermediária</span>
+                                    </div>
+                                    <div class="flex items-center gap-3">
+                                        <div class="w-4 h-4 rounded-full bg-green-500"></div>
+                                        <span class="text-slate-300 text-sm">8–10: Relativamente elevada</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="mt-6 pt-6 border-t border-white/20">
+                                <p id="interpretacaoIPI" class="text-slate-200 text-sm italic">
+                                    Preservação institucional fragilizada. Existem sinais de erosão que exigem atenção e medidas corretivas.
+                                </p>
+                            </div>
+                        </div>
+
+                        <button onclick="resetarSimulador()" class="mt-4 w-full px-6 py-3 bg-accent hover:bg-amber-500 text-primary font-semibold rounded-lg transition-all">
+                            <i class="fas fa-redo mr-2"></i>
+                            Resetar Valores
+                        </button>
+                    </div>
+                </div>
+
+                <div class="mt-8 p-4 bg-white/5 rounded-lg border border-white/10">
+                    <p class="text-slate-400 text-xs text-center italic">
+                        <i class="fas fa-info-circle mr-1"></i>
+                        Simulação conceitual. Os valores não constituem avaliação de nenhum país real. 
+                        Fórmula: IPI = 0,25·D1 + 0,20·D2 + 0,20·D3 + 0,20·D4 + 0,15·D5
+                    </p>
+                </div>
+            </div>
+
             <!-- SAPED -->
-            <div class="mb-16">
+            <div class="mt-16">
                 <h3 class="font-serif text-2xl font-bold text-primary mb-6 flex items-center gap-3">
                     <span class="bg-primary text-white w-8 h-8 rounded-full flex items-center justify-center text-sm">2</span>
                     Sistema de Alerta e Prevenção de Erosão Democrática (SAPED)
@@ -402,7 +620,7 @@
             </div>
 
             <!-- Estudos de Caso -->
-            <div>
+            <div class="mt-16">
                 <h3 class="font-serif text-2xl font-bold text-primary mb-6 flex items-center gap-3">
                     <span class="bg-primary text-white w-8 h-8 rounded-full flex items-center justify-center text-sm">3</span>
                     Estudos Comparados
@@ -410,7 +628,7 @@
                 <div class="grid md:grid-cols-2 gap-6">
                     <div class="bg-white p-6 rounded-xl shadow-sm border border-slate-200 hover:shadow-md transition-shadow">
                         <div class="flex items-center gap-3 mb-3">
-                            <span class="text-2xl">🇭🇺</span>
+                            <span class="text-2xl">🇭</span>
                             <h4 class="font-bold text-primary text-lg">Hungria (2010–2026)</h4>
                         </div>
                         <p class="text-slate-600 text-sm">Supermaioria de dois terços permitiu nova Lei Fundamental (2011), redução do Tribunal Constitucional de 15 para 11 juízes, aposentadoria compulsória de 274 magistrados e redesenho distrital.</p>
@@ -431,7 +649,7 @@
                     </div>
                     <div class="bg-white p-6 rounded-xl shadow-sm border border-slate-200 hover:shadow-md transition-shadow">
                         <div class="flex items-center gap-3 mb-3">
-                            <span class="text-2xl">🇹🇷</span>
+                            <span class="text-2xl">🇹</span>
                             <h4 class="font-bold text-primary text-lg">Turquia</h4>
                         </div>
                         <p class="text-slate-600 text-sm">Após o golpe de 2016, estado de emergência, purgas no Judiciário, universidades e mídia.</p>
@@ -547,6 +765,219 @@
             </div>
         </div>
     </footer>
+
+    <!-- Modal de Citação (FASE 1) -->
+    <div id="modalCitacao" class="fixed inset-0 bg-black/50 hidden items-center justify-center z-50 p-4">
+        <div class="bg-white rounded-xl max-w-2xl w-full p-6 relative">
+            <button onclick="fecharModal()" class="absolute top-4 right-4 text-slate-400 hover:text-slate-600">
+                <i class="fas fa-times text-xl"></i>
+            </button>
+            <h3 class="font-serif text-2xl font-bold text-primary mb-4">Citação da Obra</h3>
+            <div class="bg-slate-100 p-4 rounded-lg mb-4">
+                <p id="textoCitacao" class="text-slate-700 text-sm font-mono break-words"></p>
+            </div>
+            <div class="flex gap-3">
+                <button onclick="copiarTexto()" class="flex-1 px-4 py-2 bg-primary text-white rounded-lg hover:bg-primary/90 transition-colors">
+                    <i class="fas fa-copy mr-2"></i>Copiar
+                </button>
+                <button onclick="fecharModal()" class="flex-1 px-4 py-2 bg-slate-200 text-slate-700 rounded-lg hover:bg-slate-300 transition-colors">
+                    Fechar
+                </button>
+            </div>
+            <p id="mensagemCopiado" class="text-green-600 text-sm mt-3 hidden text-center">✓ Copiado para a área de transferência!</p>
+        </div>
+    </div>
+
+    <!-- SCRIPTS -->
+    <script>
+        // ============================================
+        // FASE 1: Download do Resumo e Citações
+        // ============================================
+        
+        function downloadResumo() {
+            const conteudo = `RESUMO DA OBRA
+═══════════════════════════════════════════
+
+A TIRANIA CONSTITUCIONAL
+Como a legalidade pode enfraquecer a democracia e o papel do novo institucionalismo na preservação da liberdade
+
+Autor: Erigutemberg Meneses
+Ano: 2026
+Site: https://erigutembergmeneses-jpg.github.io/tirania-constitucional-manual-/
+
+═══════════════════════════════════════════
+
+SOBRE A OBRA
+
+Uma investigação sobre como instrumentos formalmente legais podem ser usados, de forma cumulativa, para enfraquecer os limites constitucionais ao poder.
+
+A obra investiga como o aparato jurídico, criado para limitar o poder, pode ser instrumentalizado para enfraquecer as instituições democráticas por dentro. Não se trata de ruptura violenta, mas de erosão gradual por meio de instrumentos formalmente legais.
+
+A legalidade, por si só, não garante a preservação da democracia quando instrumentos legais são utilizados cumulativamente para esvaziar os controles que dão sentido à ordem constitucional. A resposta exige análise rigorosa dos fatos, argumentação normativa explícita e instituições capazes de aprender, corrigir-se e resistir à captura.
+
+═══════════════════════════════════════════
+
+CONCEITOS-CHAVE
+
+• Tirania constitucional: uso da lei contra os fins da lei.
+• Novo institucionalismo: governo como função fiduciária.
+• Cláusula pétrea invisível: limites materiais implícitos à reforma constitucional.
+• Democratic backsliding: regressão democrática gradual.
+
+═══════════════════════════════════════════
+
+ESTRUTURA DA OBRA
+
+PARTE I — A Anatomia da Tirania Constitucional
+Concentração do poder, Constituição como arma, captura do Judiciário e legalidade autoritária.
+
+PARTE II — O Novo Institucionalismo
+Dupla dimensão da legitimidade, governo fiduciário e não-dominação institucional.
+
+PARTE III — Diagnóstico e Resistência
+Tríade populista, IPI, SAPED e estudos comparados.
+
+PARTE IV — Propostas Normativas e Agenda de Pesquisa
+Reformas institucionais, cláusula pétrea invisível e agenda futura.
+
+═══════════════════════════════════════════
+
+CONTRIBUIÇÃO ORIGINAL
+
+A obra articula três planos:
+(1) Conceitual, com a categoria tirania constitucional;
+(2) Normativo-institucional, com a distinção entre legitimidade de origem e legitimidade de exercício e a metáfora fiduciária;
+(3) Metodológico, com a proposta do IPI e do SAPED.
+
+A originalidade deve ser aferida pela clareza conceitual, capacidade discriminatória e possibilidade de aplicação a casos concretos.
+
+═══════════════════════════════════════════
+
+CONTATO
+
+José Erigutemberg Meneses de Lima
+Advogado, Economista, Jurista e Pesquisador
+
+© 2026 Erigutemberg Meneses. Todos os direitos reservados.
+`;
+            
+            const blob = new Blob([conteudo], { type: 'text/plain;charset=utf-8' });
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = 'resumo-tirania-constitucional.txt';
+            document.body.appendChild(a);
+            a.click();
+            document.body.removeChild(a);
+            URL.revokeObjectURL(url);
+            
+            alert('Resumo baixado com sucesso!\n\nPara converter em PDF:\n1. Abra o arquivo .txt baixado\n2. Pressione Ctrl+P (ou Cmd+P no Mac)\n3. Selecione "Salvar como PDF"');
+        }
+
+        let citacaoAtual = '';
+
+        function copiarCitacao(formato) {
+            const citacoes = {
+                abnt: 'MENESES, Erigutemberg. A Tirania Constitucional: como a legalidade pode enfraquecer a democracia e o papel do novo institucionalismo na preservação da liberdade. 2026. Disponível em: https://erigutembergmeneses-jpg.github.io/tirania-constitucional-manual-/. Acesso em: ' + new Date().toLocaleDateString('pt-BR') + '.',
+                apa: 'Meneses, E. (2026). A Tirania Constitucional: como a legalidade pode enfraquecer a democracia e o papel do novo institucionalismo na preservação da liberdade. Recuperado de https://erigutembergmeneses-jpg.github.io/tirania-constitucional-manual-/'
+            };
+            
+            citacaoAtual = citacoes[formato];
+            document.getElementById('textoCitacao').textContent = citacaoAtual;
+            document.getElementById('modalCitacao').classList.remove('hidden');
+            document.getElementById('modalCitacao').classList.add('flex');
+            document.getElementById('mensagemCopiado').classList.add('hidden');
+        }
+
+        function copiarTexto() {
+            navigator.clipboard.writeText(citacaoAtual).then(() => {
+                document.getElementById('mensagemCopiado').classList.remove('hidden');
+                setTimeout(() => {
+                    document.getElementById('mensagemCopiado').classList.add('hidden');
+                }, 3000);
+            }).catch(err => {
+                const textArea = document.createElement('textarea');
+                textArea.value = citacaoAtual;
+                document.body.appendChild(textArea);
+                textArea.select();
+                document.execCommand('copy');
+                document.body.removeChild(textArea);
+                document.getElementById('mensagemCopiado').classList.remove('hidden');
+            });
+        }
+
+        function fecharModal() {
+            document.getElementById('modalCitacao').classList.add('hidden');
+            document.getElementById('modalCitacao').classList.remove('flex');
+        }
+
+        document.getElementById('modalCitacao').addEventListener('click', function(e) {
+            if (e.target === this) {
+                fecharModal();
+            }
+        });
+
+        // ============================================
+        // FASE 2: Simulador Interativo do IPI
+        // ============================================
+        
+        function atualizarIPI() {
+            const d1 = parseFloat(document.getElementById('sliderD1').value);
+            const d2 = parseFloat(document.getElementById('sliderD2').value);
+            const d3 = parseFloat(document.getElementById('sliderD3').value);
+            const d4 = parseFloat(document.getElementById('sliderD4').value);
+            const d5 = parseFloat(document.getElementById('sliderD5').value);
+
+            document.getElementById('valorD1').textContent = d1.toFixed(1);
+            document.getElementById('valorD2').textContent = d2.toFixed(1);
+            document.getElementById('valorD3').textContent = d3.toFixed(1);
+            document.getElementById('valorD4').textContent = d4.toFixed(1);
+            document.getElementById('valorD5').textContent = d5.toFixed(1);
+
+            const ipi = (0.25 * d1) + (0.20 * d2) + (0.20 * d3) + (0.20 * d4) + (0.15 * d5);
+            
+            document.getElementById('resultadoIPI').textContent = ipi.toFixed(2);
+
+            let classificacao, cor, interpretacao;
+            
+            if (ipi < 4) {
+                classificacao = 'Muito Comprometida';
+                cor = 'bg-red-500';
+                interpretacao = 'Situação crítica. As instituições democráticas estão severamente comprometidas e requerem intervenção urgente.';
+            } else if (ipi < 6) {
+                classificacao = 'Fragilizada';
+                cor = 'bg-orange-400';
+                interpretacao = 'Preservação institucional fragilizada. Existem sinais de erosão que exigem atenção e medidas corretivas.';
+            } else if (ipi < 8) {
+                classificacao = 'Intermediária';
+                cor = 'bg-yellow-400';
+                interpretacao = 'Situação intermediária. As instituições mantêm certa resiliência, mas há vulnerabilidades que precisam ser monitoradas.';
+            } else {
+                classificacao = 'Relativamente Elevada';
+                cor = 'bg-green-500';
+                interpretacao = 'Boa preservação institucional. As salvaguardas democráticas estão funcionando adequadamente.';
+            }
+
+            const classificacaoEl = document.getElementById('classificacaoIPI');
+            classificacaoEl.textContent = classificacao;
+            classificacaoEl.className = 'inline-block px-4 py-2 rounded-full ' + cor + ' text-white font-semibold text-sm';
+
+            document.getElementById('interpretacaoIPI').textContent = interpretacao;
+        }
+
+        function resetarSimulador() {
+            document.getElementById('sliderD1').value = 5;
+            document.getElementById('sliderD2').value = 5;
+            document.getElementById('sliderD3').value = 5;
+            document.getElementById('sliderD4').value = 5;
+            document.getElementById('sliderD5').value = 5;
+            atualizarIPI();
+        }
+
+        document.addEventListener('DOMContentLoaded', function() {
+            atualizarIPI();
+        });
+    </script>
 
 </body>
 </html>
