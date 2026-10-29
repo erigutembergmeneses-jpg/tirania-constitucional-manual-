@@ -1,0 +1,458 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Apêndice B — Manual Operacional do IPI e do SAPED | A Tirania Constitucional</title>
+  <meta name="description" content="Manual operacional preliminar do IPI e do SAPED: matriz de codificação, protocolo Delphi, scripts de cálculo, ficha de avaliação, API projetada e formulário de registro de eventos.">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <!-- Cabeçalho / navegação (reaproveitar o do index.html) -->
+  <header class="site-header">
+    <nav class="site-nav">
+      <a href="index.html" class="site-logo">A Tirania Constitucional</a>
+      <ul class="nav-links">
+        <li><a href="index.html#obra">A Obra</a></li>
+        <li><a href="index.html#modelo">Modelo Teórico</a></li>
+        <li><a href="index.html#ferramentas">Ferramentas</a></li>
+        <li><a href="apendice-b.html" class="active">Apêndice B</a></li>
+        <li><a href="index.html#biblioteca">Biblioteca</a></li>
+        <li><a href="index.html#autor">Autor</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main class="apendice-main">
+
+    <!-- B.1 -->
+    <section id="b1" class="apendice-section">
+      <h1>Apêndice B — Manual Operacional Preliminar do IPI e do SAPED</h1>
+      <h2>Instrumentos de codificação, cálculo, documentação e validação</h2>
+
+      <h3>B.1. Finalidade, alcance e estágio de desenvolvimento</h3>
+      <p>
+        Este apêndice reúne os instrumentos metodológicos propostos para a aplicação,
+        a documentação, a auditoria e o aperfeiçoamento do Índice de Preservação
+        Institucional (IPI) e do Sistema de Alerta Precoce para Erosão Democrática
+        (SAPED), apresentados conceitualmente no Capítulo 9.
+      </p>
+      <p>
+        Sua finalidade não é reproduzir a fundamentação teórica do capítulo, mas
+        oferecer recursos para compreender como a proposta pode ser operacionalizada,
+        quais evidências deverão sustentar as avaliações e quais procedimentos ainda
+        precisam de validação independente.
+      </p>
+      <div class="aviso aviso-importante">
+        <strong>Importante:</strong> o IPI e o SAPED são apresentados aqui como propostas
+        em desenvolvimento. A consulta Delphi ainda não foi realizada. Os indicadores,
+        pesos e critérios não devem ser descritos como consensualmente validados ou
+        empiricamente confirmados.
+      </div>
+    </section>
+
+    <!-- B.2 -->
+    <section id="b2" class="apendice-section">
+      <h3>B.2. Matriz preliminar de codificação dos indicadores</h3>
+      <p>
+        Esta matriz operacionaliza provisoriamente as cinco dimensões do IPI em 25
+        indicadores. As fontes listadas são referências possíveis para consulta, não
+        uma declaração de que os dados já foram coletados.
+      </p>
+
+      <!-- D1 -->
+      <details class="dimensao-card" open>
+        <summary><strong>D1 — Independência judicial</strong> (peso proposto: 25%)</summary>
+        <table class="tabela-indicadores">
+          <thead>
+            <tr><th>Código</th><th>Indicador</th><th>Fontes possíveis</th><th>Âncoras (0–10)</th></tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>D1.1</td>
+              <td>Garantias contra remoção arbitrária de juízes</td>
+              <td>V-Dem; Constitute Project</td>
+              <td>10: garantias efetivas e respeitadas; 0: inexistência ou violação sistemática.</td>
+            </tr>
+            <tr>
+              <td>D1.2</td>
+              <td>Autonomia orçamentária do Judiciário</td>
+              <td>WJP Rule of Law Index; Open Budget Survey</td>
+              <td>10: autonomia efetiva; 0: subordinação ou controle que inviabilize a atuação independente.</td>
+            </tr>
+            <tr>
+              <td>D1.3</td>
+              <td>Capacidade de decidir contra o governo sem retaliação</td>
+              <td>V-Dem; decisões judiciais; associações de magistrados</td>
+              <td>10: decisões adversas cumpridas sem retaliação; 0: retaliação sistemática.</td>
+            </tr>
+            <tr>
+              <td>D1.4</td>
+              <td>Existência e efetividade de regras de conduta judicial</td>
+              <td>CNJ; Comissão de Veneza; normas oficiais</td>
+              <td>10: regras claras e aplicadas com independência; 0: ausência ou inefetividade.</td>
+            </tr>
+            <tr>
+              <td>D1.5</td>
+              <td>Transparência decisória e acesso público a processos</td>
+              <td>WJP; portais judiciais; dados abertos</td>
+              <td>10: publicidade ampla e acessível; 0: sigilo sistemático injustificado.</td>
+            </tr>
+          </tbody>
+        </table>
+        <p class="nota-agregacao">
+          Agregação provisória: média aritmética simples dos cinco indicadores, desde
+          que todos tenham pontuação válida e comparável.
+        </p>
+      </details>
+
+      <!-- D2 -->
+      <details class="dimensao-card">
+        <summary><strong>D2 — Independência dos órgãos de controle</strong> (peso proposto: 20%)</summary>
+        <!-- Inserir aqui a tabela D2 (D2.1 a D2.5) do Apêndice B -->
+       
+           
+        <p class="placeholder">[ Código	Indicador Operacional	Fonte Prevista	Regra de Pontuação (0–10)
+D2.1	Autonomia funcional de Tribunais de Contas e Controladorias	V-Dem (v2lgoversight); INTOSAI reports	10 = autonomia plena; 0 = subordinação hierárquica ao Executivo
+D2.2	Capacidade técnica e estabilidade de corpo funcional	WJP; relatórios anuais dos órgãos	10 = quadro estável e qualificado; 0 = rotatividade política e desqualificação
+D2.3	Publicidade e tempestividade dos resultados de auditorias	Open Budget Survey; portais de transparência	10 = relatórios públicos e tempestivos; 0 = retenção ou sigilo
+D2.4	Existência de canal de denúncia protegido (whistleblower)	OECD Anti-Bribery Convention; Transparency International	10 = proteção legal efetiva; 0 = ausência ou perseguição
+D2.5	Investigação de agentes de alto escalão (sem seletividade)	V-Dem (v2x_corr); relatórios da sociedade civil	10 = investigações sem discriminação política; 0 = seletividade ou paralisiaInserir tabela D2 — ver Apêndice B, B.2.2]</p>
+      </details>
+
+      <!-- D3 -->
+      <details class="dimensao-card">
+        <summary><strong>D3 — Liberdade de expressão e de imprensa</strong> (peso proposto: 20%)</summary>
+        <p class="placeholder">[Código	Indicador Operacional	Fonte Prevista	Regra de Pontuação (0–10)
+D3.1	Ausência de censura prévia estatal	Freedom House (FOTN); V-Dem (v2mecensor)	10 = vedação constitucional e prática; 0 = censura formal ou informal
+D3.2	Pluralismo de propriedade de mídia	Media Pluralism Monitor (EU); Reporters Without Borders	10 = pluralismo efetivo; 0 = concentração monopolística alinhada ao governo
+D3.3	Segurança de jornalistas (ausência de assassinatos, prisões arbitrárias)	CPJ; RSF; V-Dem (v2mecrit)	10 = zero casos; 0 = perseguição sistemática
+D3.4	Acesso à informação pública (LAI e equivalentes)	RTI Rating; Access Info Europe	10 = lei robusta e efetiva; 0 = ausência ou obstrução
+D3.5	Independência editorial da mídia pública	EBU; relatórios da Comissão de Veneza	10 = autonomia editorial; 0 = instrumento de propaganda governamental
+Inserir tabela D3 — ver Apêndice B, B.2.3]</p>
+      </details>
+
+      <!-- D4 -->
+      <details class="dimensao-card">
+        <summary><strong>D4 — Integridade eleitoral</strong> (peso proposto: 20%)</summary>
+        <p class="placeholder">[Código	Indicador Operacional	Fonte Prevista	Regra de Pontuação (0–10)
+D4.1	Imparcialidade da administração eleitoral	V-Dem (v2elembaut); IDEA	10 = órgão técnico e autônomo; 0 = partidarização
+D4.2	Igualdade de acesso à mídia e financiamento	V-Dem (v2elembcam); relatórios de observadores	10 = regras equitativas; 0 = vantagens sistemáticas do incumbente
+D4.3	Liberdade de organização partidária	V-Dem (v2psorgs); Freedom House	10 = plena liberdade; 0 = barreiras legais ou práticas
+D4.4	Existência de mecanismos de contestação e fiscalização	IDEA; relatórios de missões de observação	10 = recursos efetivos; 0 = inexistência ou inefetividade
+D4.5	Aceitação pública dos resultados e alternância	V-Dem (v2elfreair); Latinobarómetro	10 = ampla aceitação; 0 = contestação sistemática sem base probatória
+Inserir tabela D4 — ver Apêndice B, B.2.4]</p>
+      </details>
+
+      <!-- D5 -->
+      <details class="dimensao-card">
+        <summary><strong>D5 — Participação política e sociedade civil</strong> (peso proposto: 15%)</summary>
+        <p class="placeholder">[Código	Indicador Operacional	Fonte Prevista	Regra de Pontuação (0–10)
+D5.1	Liberdade de associação e reunião pacífica	V-Dem (v2cssassoc, v2cssassemb); Freedom House	10 = plenas liberdades; 0 = restrições sistemáticas
+D5.2	Existência de canais institucionais de participação	OECD; relatórios nacionais	10 = conselhos deliberativos efetivos; 0 = ausência ou caráter meramente consultivo
+D5.3	Proteção de ativistas e defensores de direitos humanos	Front Line Defenders; V-Dem (v2csorgan)	10 = proteção efetiva; 0 = criminalização ou assassinatos
+D5.4	Atuação autônoma de ONGs (sem rotulação persecutória)	CIVICUS Monitor; relatórios temáticos	10 = plena autonomia; 0 = leis de "agentes estrangeiros" ou equivalentes
+D5.5	Existência de orçamento participativo e iniciativas populares	IPEA; IDEA; relatórios municipais	10 = instrumentos efetivos; 0 = ausência
+Inserir tabela D5 — ver Apêndice B, B.2.5]</p>
+      </details>
+
+      <h4>B.2.6. Regras transversais de codificação</h4>
+      <ol class="regras-lista">
+        <li>Identificar a variável original, a fonte, a versão, o período e a direção interpretativa antes de converter qualquer valor.</li>
+        <li>Normalização linear: <code>Xnorm = 10 × (X − Xmin) / (Xmax − Xmin)</code>, quando aplicável e justificada.</li>
+        <li>Quando valores maiores representarem deterioração, inverter: <code>Xinv = 10 − Xnorm</code>.</li>
+        <li>Não combinar escalas distintas sem registrar a transformação aplicada.</li>
+        <li>Não realizar imputação automática de dados ausentes. Categorias: (a) ausência de informação; (b) indisponibilidade da fonte; (c) informação inconclusiva; (d) indicador inaplicável.</li>
+        <li>O IPI agregado será "não calculável" quando qualquer dimensão não dispuser de pontuação válida.</li>
+        <li>Codificação dupla: divergências superiores a 2 pontos serão encaminhadas a terceiro avaliador.</li>
+      </ol>
+    </section>
+
+    <!-- B.3 -->
+    <section id="b3" class="apendice-section">
+      <h3>B.3. Protocolo proposto para consulta Delphi</h3>
+      <div class="aviso aviso-atencao">
+        Esta seção descreve um procedimento <strong>futuro</strong> de consulta a
+        especialistas. A consulta <strong>não foi realizada</strong> até a preparação
+        desta versão.
+      </div>
+      <h4>B.3.1. Objetivos</h4>
+      <ul>
+        <li>Avaliar a pertinência conceitual das cinco dimensões e dos 25 indicadores.</li>
+        <li>Identificar indicadores redundantes, ausentes, ambíguos ou de difícil mensuração.</li>
+        <li>Examinar os pesos relativos das dimensões.</li>
+        <li>Avaliar clareza, viabilidade de coleta, comparabilidade e regras de conversão.</li>
+      </ul>
+
+      <h4>B.3.2. Composição do painel — proposta inicial</h4>
+      <p>
+        Painel de 20 a 30 participantes: juristas constitucionais (30%), cientistas
+        políticos (25%), especialistas em estatística ou mensuração (20%), jornalistas
+        investigativos (15%) e representantes de organizações da sociedade civil (10%).
+      </p>
+
+      <h4>B.3.3. Rodadas propostas</h4>
+      <ol class="rodadas-delphi">
+        <li><strong>Rodada 1 — Consulta aberta:</strong> indicadores a excluir/reformular, dimensões ausentes, fontes inadequadas, justificativa dos pesos.</li>
+        <li><strong>Rodada 2 — Questionário estruturado:</strong> escala 1–7 para pertinência, clareza e viabilidade; distribuição de 100 pontos entre dimensões.</li>
+        <li><strong>Rodada 3 — Devolutiva e consolidação:</strong> estatísticas agregadas, síntese de justificativas e divergências persistentes.</li>
+      </ol>
+
+      <h4>B.3.4. Critérios de análise e consenso</h4>
+      <p>
+        Coeficiente de variação (CV) como medida de dispersão: consenso forte se CV ≤ 0,25;
+        moderado entre 0,26 e 0,40; dissenso se CV > 0,40. Limiares provisórios. Devem
+        ser complementados por mediana, intervalo interquartil e distribuição das respostas.
+      </p>
+
+      <h4>B.3.5. Produtos esperados</h4>
+      <ol>
+        <li>Relatório metodológico com composição efetiva do painel e taxas de resposta.</li>
+        <li>Matriz revisada com histórico das alterações.</li>
+        <li>Recomendação sobre os pesos, sem ocultar dissensos.</li>
+        <li>Dicionário de variáveis e regras de codificação atualizado.</li>
+        <li>Registro de limitações e plano de validação subsequente.</li>
+      </ol>
+    </section>
+
+    <!-- B.4 -->
+    <section id="b4" class="apendice-section">
+      <h3>B.4. Procedimentos de cálculo e reprodução</h3>
+      <p>Fórmula:</p>
+      <p class="formula-ipi"><code>IPI = 0,25·D1 + 0,20·D2 + 0,20·D3 + 0,20·D4 + 0,15·D5</code></p>
+      <p>Faixas interpretativas propostas:</p>
+      <ul class="faixas-ipi">
+        <li>0 a menos de 4,0: preservação institucional muito comprometida.</li>
+        <li>4,0 a menos de 6,0: fragilizada.</li>
+        <li>6,0 a menos de 8,0: intermediária.</li>
+        <li>8,0 a 10,0: relativamente elevada.</li>
+      </ul>
+
+      <h4>B.4.1. Exemplo numérico ilustrativo</h4>
+      <table class="tabela-exemplo">
+        <thead>
+          <tr><th>Dimensão</th><th>Pontuação</th><th>Peso</th><th>Contribuição</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>D1</td><td>8,0</td><td>0,25</td><td>2,00</td></tr>
+          <tr><td>D2</td><td>7,0</td><td>0,20</td><td>1,40</td></tr>
+          <tr><td>D3</td><td>6,0</td><td>0,20</td><td>1,20</td></tr>
+          <tr><td>D4</td><td>8,0</td><td>0,20</td><td>1,60</td></tr>
+          <tr><td>D5</td><td>5,0</td><td>0,15</td><td>0,75</td></tr>
+          <tr><td><strong>Total</strong></td><td>—</td><td>1,00</td><td><strong>6,95</strong></td></tr>
+        </tbody>
+      </table>
+      <p class="nota">IPI ilustrativo = 6,95 → "preservação institucional intermediária". Valores não representam país ou período real.</p>
+
+      <h4>B.4.2. Implementação de referência em Python</h4>
+      <pre class="bloco-codigo"><code>PESOS = {"D1": 0.25, "D2": 0.20, "D3": 0.20, "D4": 0.20, "D5": 0.15}
+
+def classificar_ipi(ipi):
+    if ipi &lt; 4:
+        return "Preservação institucional muito comprometida"
+    if ipi &lt; 6:
+        return "Preservação institucional fragilizada"
+    if ipi &lt; 8:
+        return "Preservação institucional intermediária"
+    return "Preservação institucional relativamente elevada"
+
+def calcular_ipi(d1, d2, d3, d4, d5):
+    dimensoes = {"D1": d1, "D2": d2, "D3": d3, "D4": d4, "D5": d5}
+    ausentes = [k for k, v in dimensoes.items() if v is None]
+    if ausentes:
+        return {
+            "ipi": None, "classificacao": None,
+            "status": "NAO_CALCULAVEL",
+            "dimensoes": dimensoes,
+            "dimensoes_ausentes": ausentes
+        }
+    for nome, valor in dimensoes.items():
+        if not isinstance(valor, (int, float)) or not 0 &lt;= valor &lt;= 10:
+            raise ValueError(f"{nome} deve ser numérico e estar entre 0 e 10.")
+    ipi = round(sum(dimensoes[k] * PESOS[k] for k in PESOS), 4)
+    return {
+        "ipi": ipi,
+        "classificacao": classificar_ipi(ipi),
+        "status": "CALCULADO",
+        "dimensoes": dimensoes,
+        "dimensoes_ausentes": []
+    }
+
+if __name__ == "__main__":
+    resultado = calcular_ipi(8, 7, 6, 8, 5)
+    print(resultado)  # IPI: 6.95; faixa intermediária</code></pre>
+      <p><a class="btn-download" href="assets/ipi.py" download>⬇ Baixar script Python (ipi.py)</a></p>
+
+      <h4>B.4.3. Implementação de referência em R</h4>
+      <pre class="bloco-codigo"><code>pesos &lt;- c(D1 = 0.25, D2 = 0.20, D3 = 0.20, D4 = 0.20, D5 = 0.15)
+
+classificar_ipi &lt;- function(ipi) {
+  if (ipi &lt; 4) return("Preservação institucional muito comprometida")
+  if (ipi &lt; 6) return("Preservação institucional fragilizada")
+  if (ipi &lt; 8) return("Preservação institucional intermediária")
+  return("Preservação institucional relativamente elevada")
+}
+
+calcular_ipi &lt;- function(d1, d2, d3, d4, d5) {
+  dimensoes &lt;- c(D1 = d1, D2 = d2, D3 = d3, D4 = d4, D5 = d5)
+  if (any(is.na(dimensoes))) {
+    return(list(ipi = NA_real_, classificacao = NA_character_,
+                status = "NAO_CALCULAVEL", dimensoes = dimensoes))
+  }
+  if (any(!is.finite(dimensoes)) || any(dimensoes &lt; 0 | dimensoes &gt; 10)) {
+    stop("Todas as dimensões devem ser finitas e estar entre 0 e 10.")
+  }
+  ipi &lt;- round(sum(dimensoes * pesos), 4)
+  list(ipi = ipi, classificacao = classificar_ipi(ipi),
+       status = "CALCULADO", dimensoes = dimensoes)
+}
+
+calcular_ipi(8, 7, 6, 8, 5)  # IPI = 6.95</code></pre>
+      <p><a class="btn-download" href="assets/ipi.R" download>⬇ Baixar script R (ipi.R)</a></p>
+
+      <h4>B.4.4. Reprodutibilidade e auditoria</h4>
+      <ul>
+        <li>Executar os scripts em ambiente documentado e confirmar equivalência entre linguagens.</li>
+        <li>Publicar código, matriz de dados, dicionário de variáveis e histórico de versões em repositório acessível.</li>
+        <li>Registrar versão do manual, versão do script, data de execução, fontes, período de referência e hash SHA-256 dos dados.</li>
+        <li>Não afirmar que dados estão depositados em Zenodo ou GitHub sem verificar endereço, versão e licença.</li>
+      </ul>
+    </section>
+
+    <!-- B.5 -->
+    <section id="b5" class="apendice-section">
+      <h3>B.5. Ficha-padrão para avaliação institucional</h3>
+      <p>Preencher uma ficha por unidade analisada e período de referência.</p>
+      <p>
+        <a class="btn-primario" href="assets/ficha-avaliacao-ipi.pdf" download>⬇ Baixar ficha em PDF</a>
+        <a class="btn-secundario" href="https://forms.gle/SUBSTITUIR-PELO-LINK-DO-FORMULARIO" target="_blank" rel="noopener">📝 Preencher ficha online</a>
+      </p>
+      <div class="aviso aviso-info">
+        Substituir o link do formulário online por um Google Forms (ou similar) com os
+        mesmos campos da ficha em PDF. Enquanto o formulário não for criado, manter
+        apenas o PDF para download.
+      </div>
+    </section>
+
+    <!-- B.6 -->
+    <section id="b6" class="apendice-section">
+      <h3>B.6. Arquitetura projetada para dados e interoperabilidade</h3>
+      <div class="aviso aviso-atencao">
+        A descrição abaixo registra uma arquitetura de referência. <strong>Não significa
+        que a API esteja implementada ou acessível.</strong> Endpoints, autenticação e
+        formatos deverão ser confirmados quando houver implantação.
+      </div>
+
+      <h4>B.6.1. Princípios de projeto</h4>
+      <ul>
+        <li>HTTPS e respostas estruturadas em JSON (opcionalmente CSV).</li>
+        <li>Documentação versionada, idealmente compatível com OpenAPI.</li>
+        <li>Metadados claros: país, período, fontes, versão do método, data de atualização.</li>
+        <li>Identificadores persistentes e histórico de versões.</li>
+        <li>Interoperabilidade com V-Dem, WJP e IDEA, sem presumir equivalência.</li>
+      </ul>
+
+      <h4>B.6.2. Endpoints ilustrativos</h4>
+      <table class="tabela-endpoints">
+        <thead><tr><th>Endpoint</th><th>Método</th><th>Finalidade</th></tr></thead>
+        <tbody>
+          <tr><td><code>/v1/ipi/{pais}/{ano}</code></td><td>GET</td><td>Resultado agregado e dimensões.</td></tr>
+          <tr><td><code>/v1/ipi/{pais}/series</code></td><td>GET</td><td>Série temporal.</td></tr>
+          <tr><td><code>/v1/saped/eventos</code></td><td>GET</td><td>Lista de eventos registrados.</td></tr>
+          <tr><td><code>/v1/saped/eventos/{id}</code></td><td>GET</td><td>Evento específico.</td></tr>
+          <tr><td><code>/v1/saped/alertas</code></td><td>GET</td><td>Alertas emitidos.</td></tr>
+          <tr><td><code>/v1/dicionario</code></td><td>GET</td><td>Dicionário e metadados.</td></tr>
+          <tr><td><code>/v1/calculadora</code></td><td>POST</td><td>Cálculo a partir de dimensões fornecidas.</td></tr>
+        </tbody>
+      </table>
+      <p class="nota">Os endereços são exemplos de desenho técnico, não links ativos.</p>
+
+      <h4>B.6.3. Exemplo ilustrativo de registro de evento em JSON</h4>
+      <pre class="bloco-codigo"><code>{
+  "event_id": "EXEMPLO-2026-0001",
+  "event_date": "AAAA-MM-DD",
+  "jurisdiction": "código da jurisdição",
+  "institution": "instituição relacionada",
+  "dimension": "D1",
+  "event_type": "categoria documentada",
+  "description": "Descrição factual, sem conclusão antecipada",
+  "source_references": [],
+  "verification_status": "em_analise",
+  "severity": null,
+  "confidence": null,
+  "last_updated": "AAAA-MM-DDThh:mm:ssZ",
+  "correction_history": []
+}</code></pre>
+
+      <h4>B.6.4. Princípios de gestão dos dados</h4>
+      <p>
+        Se houver repositório público, orientar a gestão pelos princípios FAIR:
+        localizáveis, acessíveis, interoperáveis e reutilizáveis.
+      </p>
+    </section>
+
+    <!-- B.7 -->
+    <section id="b7" class="apendice-section">
+      <h3>B.7. Formulário de registro e acompanhamento de eventos SAPED</h3>
+      <p>
+        O formulário destina-se ao registro rastreável de fatos potencialmente relevantes
+        para o acompanhamento de instituições democráticas. O preenchimento não equivale,
+        por si só, à confirmação de erosão democrática.
+      </p>
+      <p>
+        <a class="btn-primario" href="assets/formulario-saped.pdf" download>⬇ Baixar formulário SAPED em PDF</a>
+        <a class="btn-secundario" href="https://forms.gle/SUBSTITUIR-PELO-LINK-DO-FORMULARIO-SAPED" target="_blank" rel="noopener">📝 Preencher formulário online</a>
+      </p>
+      <div class="aviso aviso-info">
+        Substituir o link por um Google Forms com os campos do formulário (identificação,
+        descrição factual, fontes, classificação, efeito institucional, explicações
+        alternativas, resposta da instituição, decisão de acompanhamento).
+      </div>
+    </section>
+
+    <!-- B.8 -->
+    <section id="b8" class="apendice-section">
+      <h3>B.8. Condições de uso, limitações e colaboração</h3>
+      <p>
+        A versão final deste apêndice deverá indicar a licença efetivamente adotada para
+        textos, formulários e códigos. Se o material for publicado sob
+        <strong>Creative Commons Atribuição 4.0 Internacional (CC BY 4.0)</strong>,
+        a reutilização deverá observar os termos dessa licença e manter a atribuição.
+      </p>
+
+      <h4>B.8.1. Limitações atuais</h4>
+      <ul>
+        <li>A matriz de indicadores e as regras de pontuação são preliminares.</li>
+        <li>A consulta Delphi ainda não foi realizada.</li>
+        <li>Os exemplos computacionais precisam ser testados em ambiente documentado.</li>
+        <li>A arquitetura da API é prospectiva e não comprova serviço público ativo.</li>
+        <li>Resultados do IPI não devem ser interpretados isoladamente como prova causal.</li>
+      </ul>
+
+      <h4>Colaboração</h4>
+      <p>
+        Pesquisadores, jornalistas, instituições de ensino e organizações da sociedade
+        civil podem contribuir para revisar indicadores, propor fontes, testar os scripts
+        e avaliar adaptações regionais. Contato: <a href="mailto:contato@exemplo.org">contato@exemplo.org</a>
+        <em>(substituir por endereço verificado antes da publicação).</em>
+      </p>
+      <p class="nota-final">
+        <strong>Nota conclusiva:</strong> este apêndice converte a proposta conceitual do
+        Capítulo 9 em instrumentos preliminares de codificação, cálculo, registro e
+        auditoria. Sua contribuição reside em tornar explícitos os procedimentos que
+        poderão ser testados e contestados, não em antecipar uma validação ainda pendente.
+      </p>
+    </section>
+
+    <p class="voltar-topo"><a href="#b1">↑ Voltar ao topo do Apêndice B</a></p>
+
+  </main>
+
+  <footer class="site-footer">
+    <p>© 2026 Erigutemberg Meneses · <a href="index.html">A Tirania Constitucional</a> · Licença CC BY 4.0</p>
+  </footer>
+
+  <script src="js/script.js"></script>
+</body>
+</html>
